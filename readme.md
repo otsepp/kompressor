@@ -5,7 +5,7 @@ Tiivist‰‰ teksti‰ ja j‰lleen purkaa sit‰.
 
 ### Dokumentaatio
 
-[M‰‰rittelydokumentti](/blob/master/dokumentaatio/m‰‰rittelydokumentti.md)
+[M‰‰rittelydokumentti](/dokumentaatio/m‰‰rittelydokumentti.md)
 
 #### Viikkoraportit
 
