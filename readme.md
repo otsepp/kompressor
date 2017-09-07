@@ -9,5 +9,5 @@ Tiivist‰‰ teksti‰ ja j‰lleen purkaa sit‰.
 
 #### Viikkoraportit
 
-[Viikko 1](/blob/master/dokumentaatio/viikkoraportit/viikko1.md)
+[Viikko 1](/dokumentaatio/viikkoraportit/viikko1.md)
 
