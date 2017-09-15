@@ -1,34 +1,46 @@
 
 package kompressor;
 
-import java.io.UnsupportedEncodingException;
-import java.util.Scanner;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Main {
 
     public static void main(String[] args) {
-        Integer i = new Integer(112);
-//        String input = readInputTEST();
+        System.out.println(encode("zululzu"));
     }
     
-    public static String readInputTEST() {
-        Scanner s = new Scanner(System.in);
+    public static String encode(String a) {
+        Map<String, Integer> dictionary = initialiseEncodingDictionary();
+        int code = 25; //get by final field!!!
         
-        System.out.println("Syötä merkkijono joka koostuu kirjaimista a - c :");
-        System.out.print("\t>");
+        String encoded = "";
         
-        String input = s.nextLine();
+        String s = "";
+        String ch = "";
         
-        if (input.matches("[a-c]+")) {
-            try {
-                System.out.println("Merkkijonon \"" + input + "\" koko on " + input.getBytes("UTF-8").length * 8 +" bittiä.");
-            } catch (UnsupportedEncodingException e) {
-                System.out.println(e);
+        for (int i = 0; i < a.length(); i++) {
+            ch = a.charAt(i) + "";
+            if (dictionary.containsKey(s + ch)) {
+                s = s + ch;
+            } else {
+                encoded = encoded.concat(dictionary.get(s) + " ");
+                dictionary.put(s + ch, ++code);
+                s = ch;
             }
-        } else {
-            System.out.println("Virheellinen syöte!");
         }
-        return input;
+        encoded = encoded.concat(dictionary.get(s) + " ");
+        return encoded;
+    }
+    
+    public static Map<String, Integer> initialiseEncodingDictionary() {
+         Map<String, Integer> dictionary = new HashMap();
+        //a - z
+        for (int i = 0, j = 97; i < 26; i++, j++) {
+            System.out.println((char) j + " = " + j + " -> " + i);
+            dictionary.put((char) j + "", i);
+        }
+        return dictionary;
     }
     
 }
