@@ -23,7 +23,7 @@ public class Main {
     
     public static List<Integer> encode(String s) {
         Map<String, Integer> dictionary = initialiseEncodingDictionary();
-        int nextCode = initalDictionarySize + 1; 
+        int nextCode = initalDictionarySize; 
         List<Integer> encoded = new ArrayList();
         String b = "";
         String a = "";
@@ -45,7 +45,7 @@ public class Main {
     
     public static String decode(List<Integer> encoded) {
         Map<Integer, String> dictionary = initialiseDecodingDictionary();
-        int nextCode = initalDictionarySize + 1;
+        int nextCode = initalDictionarySize;
         String decoded = "";
         String prev = "";
         
