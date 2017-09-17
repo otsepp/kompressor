@@ -11,3 +11,5 @@ Tiivist‰‰ teksti‰ ja j‰lleen purkaa sit‰.
 
 [Viikko 1](/dokumentaatio/viikkoraportit/viikko1.md)
 
+[Viikko 2](/dokumentaatio/viikkoraportit/viikko2.md)
+
