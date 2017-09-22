@@ -1,5 +1,6 @@
-package kompressor;
+package kompressor.lzw;
 
+import kompressor.lzw.LempelZivWelch;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;

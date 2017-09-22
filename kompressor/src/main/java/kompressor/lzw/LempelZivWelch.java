@@ -1,5 +1,5 @@
 
-package kompressor;
+package kompressor.lzw;
 
 import java.util.ArrayList;
 import java.util.HashMap;

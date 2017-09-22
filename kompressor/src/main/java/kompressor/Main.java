@@ -1,6 +1,7 @@
 
 package kompressor;
 
+import kompressor.lzw.LempelZivWelch;
 import java.util.List;
 import java.util.Scanner;
 
