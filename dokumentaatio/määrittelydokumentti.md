@@ -9,4 +9,7 @@ Tavoitteena on totetuttaa molemmat LZW:n toiminnot aika-ja tilavaativuudella O(n
 
 ##### Lähteet
 https://www.cs.duke.edu/csed/curious/compression/lzw.html
-http://www.matthewflickinger.com/lab/whatsinagif/lzw_image_data.asp
+
+http://web.mit.edu/6.02/www/s2012/handouts/3.pdf
+
+http://www.soc.napier.ac.uk/~bill/pdf/ADCO_C03.PDF
