@@ -12,12 +12,6 @@ class Node implements Comparable<Node>{
         this.c = c;
         this.freq = freq;
     }
-    public Node(Character c, int freq, Node right, Node left) {
-        this.c = c;
-        this.freq = freq;
-        this.right = right;
-        this.left = left;
-    }
     @Override
     public int compareTo(Node n) {
         if (n.freq > this.freq) {
@@ -39,18 +33,12 @@ class Tree {
         this.root = root;
     }
     
-    public String searchCode(char c) {
-        return "";
-    }
-    
     public Character searchCharacter(String code) {
         Node n = root;
-        
         if (n.c != null) {
             return n.c;
         }
-        
-        Character chr = null;
+        Character cr = null;
         for (char c : code.toCharArray()) {
             if (c == '1' && n.left != null) {
                 n = n.left;
@@ -59,11 +47,39 @@ class Tree {
             } else {
                 return null;
             }
-            chr = n.c;
+            cr = n.c;
         }
-        return chr;
+        return cr;
     }
     
+     public String searchCode(char c) {
+         return searchNode(root, c, new StringBuilder());
+    }
+    
+     //CLEAN UP ??
+     private String searchNode(Node n, char c, StringBuilder code) {
+        if (n == null) {
+            return null;
+        }
+        if (n.c == null) {
+            String left = searchNode(n.left, c, new StringBuilder(code).append("1"));
+            String right = searchNode(n.right, c, new StringBuilder(code).append("0"));
+            
+            if (left == null) {
+                return right;
+            } else {
+                return left;
+            }
+            
+        } else {
+            if (n.c == c) {
+                return code.toString();
+            } else {
+                return null;
+            }
+        }
+     }
+     
 }
 
 public class Main {
@@ -82,7 +98,7 @@ public class Main {
         
         for (int i = 0; i < freqs.length; i++) {
             if (freqs[i] > 0) {
-                System.out.println((char) i + "->" + freqs[i]);
+//                System.out.println((char) i + "->" + freqs[i]);
                 q.add(new Node((char) i, freqs[i]));
             }
         }
@@ -92,26 +108,24 @@ public class Main {
             Node n0 = q.poll();
             Node n1 = q.poll();
             
-            System.out.println(n0);
-            System.out.println(n1);
+//            System.out.println(n0);
+//            System.out.println(n1);
             
             if (n1 != null) {
                 Node nu = new Node(null, n0.freq + n1.freq);
                 nu.right = n0;
                 nu.left = n1;
                 
-                System.out.println(nu);
+//                System.out.println(nu);
                 
                 q.add(nu);
             } else {
-                System.out.println(n0 + " (root)");
+//                System.out.println(n0 + " (root)");
                 t = new Tree(n0);
             }
         }
-        
         System.out.println("\n***\n");
         
-        System.out.println(t.searchCharacter("11111"));
-        
+        System.out.println(t.searchCode('o'));
     }
 }
