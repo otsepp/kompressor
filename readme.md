@@ -1,6 +1,6 @@
 ## Kompressor
 
-Tiivist‰‰ teksti‰ ja j‰lleen purkaa sit‰.
+Demonstroi tektstin pakkaamista ja purkamista LZW- ja Huffman -algoritmeilla
 
 
 ### Dokumentaatio
@@ -13,3 +13,4 @@ Tiivist‰‰ teksti‰ ja j‰lleen purkaa sit‰.
 
 [Viikko 2](/dokumentaatio/viikkoraportit/viikko2.md)
 
+[Viikko3}(/dokumentaatio/viikkoraportit/viikko3.md)
