@@ -44,7 +44,6 @@ public class HuffmanTree {
             } else {
                 return left;
             }
-            
         } else {
             if (n.getCharacter() == c) {
                 return code.toString();
