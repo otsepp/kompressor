@@ -37,9 +37,11 @@ public class Huffman {
     public String decode() {
         StringBuilder sDecoded = new StringBuilder();
         StringBuilder code = new StringBuilder();
+        
         for (char c : this.sEncoded.toCharArray()) {
             code.append(c);
             Character cFound = tree.searchCharacter(code.toString());
+            
             if (cFound != null) {
                 sDecoded.append(cFound);
                 code = new StringBuilder();
@@ -63,7 +65,7 @@ public class Huffman {
         while (q.size() > 0) {
             HuffmanNode n0 = q.poll(); 
             HuffmanNode n1 = q.poll();  
-            
+
             if (n1 != null) {
                 HuffmanNode nu = new HuffmanNode(null, n0.getFrequency() + n1.getFrequency());
                 nu.setRight(n0);

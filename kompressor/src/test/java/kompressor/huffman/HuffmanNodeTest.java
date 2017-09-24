@@ -19,7 +19,6 @@ public class HuffmanNodeTest {
         assertEquals(1, q.poll().getFrequency());
         assertEquals(2, q.poll().getFrequency());
         assertEquals(3, q.poll().getFrequency());
-        
     }
     
     
