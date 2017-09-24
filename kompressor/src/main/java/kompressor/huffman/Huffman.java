@@ -19,7 +19,7 @@ public class Huffman {
         return this.sEncoded;
     }
     
-    public void setString(String s) {
+    public final void setString(String s) {
         this.s = s;
         this.sEncoded = "";
         this.tree = this.buildTree(this.s);
@@ -51,7 +51,6 @@ public class Huffman {
         return sDecoded.toString();
     }
     
-    //O(n log n)
     private HuffmanTree buildTree(String s) {
         int[] freqs = new int[256];
         for (char c : s.toCharArray()) { 
