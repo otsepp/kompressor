@@ -34,6 +34,7 @@ public class Huffman {
         return this.sEncoded;
     }
     
+    //merkkijono täytyy pakata ensin
     public String decode() {
         StringBuilder sDecoded = new StringBuilder();
         StringBuilder code = new StringBuilder();
@@ -63,15 +64,18 @@ public class Huffman {
         }
         HuffmanTree t = null;
         while (q.size() > 0) {
+            //jonosta poistetaan solmut (lehdet), joiden kirjaimia esiintyy vähiten
             HuffmanNode n0 = q.poll(); 
             HuffmanNode n1 = q.poll();  
 
             if (n1 != null) {
+                //kun löytyy kaksi solmua, ne yhdistetään uudeksi
                 HuffmanNode nu = new HuffmanNode(null, n0.getFrequency() + n1.getFrequency());
                 nu.setRight(n0);
                 nu.setLeft(n1);
                 q.add(nu);  
             } else {
+                //viimeinen solmu loydetään, asetetaan puun juureksi
                 t = new HuffmanTree(n0);
             }
         }

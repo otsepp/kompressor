@@ -13,4 +13,4 @@ Demonstroi tektstin pakkaamista ja purkamista LZW- ja Huffman -algoritmeilla
 
 [Viikko 2](/dokumentaatio/viikkoraportit/viikko2.md)
 
-[Viikko3}(/dokumentaatio/viikkoraportit/viikko3.md)
+[Viikko3](/dokumentaatio/viikkoraportit/viikko3.md)

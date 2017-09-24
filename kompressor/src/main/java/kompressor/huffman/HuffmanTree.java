@@ -34,7 +34,7 @@ public class HuffmanTree {
          return searchNode(root, c, new StringBuilder());
     }
     
-     //CLEAN UP ??
+     //ehkä voi tehdä siistimmin
      private String searchNode(HuffmanNode n, char c, StringBuilder code) {
         if (n == null) {
             return null;
