@@ -1,7 +1,7 @@
 package kompressor.huffman;
 
 public class HuffmanTree {
-    HuffmanNode root;
+    private HuffmanNode root;
     
     public HuffmanTree(HuffmanNode root) {
         this.root = root;
@@ -27,6 +27,10 @@ public class HuffmanTree {
     }
     
      public String searchCode(char c) {
+         //jos vain 1 kirjain koko koodattavassa merkkijonossa, muuten root:n kirjain on null
+         if (root.getCharacter() != null && root.getCharacter() == c) {
+             return "0";
+         }
          return searchNode(root, c, new StringBuilder());
     }
     
