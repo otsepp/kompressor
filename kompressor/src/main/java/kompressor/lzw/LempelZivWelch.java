@@ -18,8 +18,8 @@ public class LempelZivWelch {
     public static List<Integer> encode(String s) {
         Map<String, Integer> dictionary = initialiseEncodingDictionary();
         int nextCode = INIT_DICT_SIZE; 
-        List<Integer> encoded = new ArrayList();
         String prev = "";
+        List<Integer> encoded = new ArrayList();
         
         for (int i = 0; i < s.length(); i++) {
             String current = s.charAt(i) + "";
@@ -42,7 +42,6 @@ public class LempelZivWelch {
         Map<String, Integer> dictionary = initialiseEncodingDictionary();
         int nextCode = INIT_DICT_SIZE;
         String prev = "";
-        
         BigInteger encoded = new BigInteger(new byte[]{0x0});
         int space = 8;
         
@@ -52,12 +51,12 @@ public class LempelZivWelch {
             if (dictionary.containsKey(prev + current)) {
                 prev = prev + current;
             } else {
-                BigInteger add = addToEncoded(encoded, dictionary.get(prev));
-                encoded = add;
-                space = calculateSpace(space);
-                
-                dictionary.put(prev + current, nextCode++);
-                prev = current;
+                 BigInteger add = addToEncoded(encoded, dictionary.get(prev));
+                 encoded = add;
+                 space = calculateSpace(space);
+                 
+                 dictionary.put(prev + current, nextCode++);
+                 prev = current;
             }
         }
         if (!prev.equals("")) {
@@ -65,7 +64,7 @@ public class LempelZivWelch {
              encoded = add;
              space = calculateSpace(space);
         }
-        //poista väärät nollat
+        //poistetaan väärät nollat
         encoded = encoded.shiftLeft(space);
         return encoded.toByteArray();
     }
@@ -73,7 +72,7 @@ public class LempelZivWelch {
     private static int calculateSpace(int space) {
         return (space + CODE_WIDTH) % 8;
     }
-    //lisää 12-bitin kokoinen koodi
+    //lisää 12-bitin kokoisen koodin
     private static BigInteger addToEncoded(BigInteger encoded, int code) {
         byte[] code12 = new byte[2];
         code12[0] =(byte) ((code & 0xF0) >> 4);

@@ -1,31 +1,21 @@
-SHANGHAI (Reuters) - Weeks after Beijing banned fundraising through token launches and ordered some bitcoin exchanges to shut, casting a chill over the cryptocurrency industry, traders say that the market is far from dead.
-
-While several exchanges have announced that they will close by the end of this month, traders have now moved to buy and sell bitcoin directly with each other on peer-to-peer marketplaces and messenger apps. Industry insiders say some overseas-based initial coin offerings (ICOs) are still being marketed.
-
-Although the crackdown has dissuaded large swathes of less-experienced investors from participating in the trade, market participants point to the limits Chinese regulators ultimately face in controlling the industry, where many users are anonymous and difficult to track.
-
-In the short-run, the crackdown has also created an arbitrage opportunity for investors, with the price of bitcoin in China now trading at a discount to overseas exchanges.
-
-“They can’t set rules to stop me from investing in what I want to invest in. They say you are protecting me, but as long as I think this is good, they have no way to intervene,” said a Chinese bitcoin investor named Victor, who declined to give his full name citing current sensitivities.
-
-“I can do over-the-counter trades or I’ll go offshore...My wallet is my wallet. I’ve never registered my identification card.”
-
-The Chinese government on Sept. 4 ordered ICOs to cease and soon after ordered some cryptocurrency exchanges to shut. Over 15 exchanges, including the three largest players OkCoin, Huobi and BTCChina, have since announced that they will close their mainland businesses by the end of September.
-
-While the clampdown caused the bitcoin price in China to tumble as much as 8 percent on the day of the announcement, it has since recovered to 24,101 yuan ($3,615.67) on Chinese exchange Huobi. On U.S. exchange Bitstamp, it BTC=BTSP currently trades at $4,205.
-
-Trading has spiked generally on peer-to-peer marketplaces, according to data website Coindance. On OTC platform LocalBitcoins, China trading volumes more than doubled in the week starting Sept. 16 from the previous week to 74 million yuan. It hit an all-time-high in the week starting Sept. 23, reaching 115 million yuan in trades.
-
-Volumes on Paxful, another smaller marketplace, also jumped to 1.7 million in the week beginning Sept. 23, up from 351,102 in the previous week, Coindance data showed.
-
-Michael Foster, co-founder of localethereum.com, an over-the-counter marketplace for ethereum trading, said mainland China users accounted for a fifth of its 5,000 signups since it opened for registrations on Tuesday.
-
-“The fact that bitcoin is still being traded is an indication that China isn’t looking to eliminate them, but reposition things in a way to have better control over them,” said Marshall Swatt, the founder of New York-based Coinsetter, a bitcoin exchange acquired by larger peer San Francisco-based Kraken in 2016.
-
-Other Chinese cryptocurrency players said traders were also moving away from using Tencent’s WeChat app, to encrypted messenger app Telegram to avoid regulatory scrutiny.
-
-Some said they were still seeing overseas-based ICOs being marketed in China. The Sept. 4 shutdown of ICOs stipulated that Chinese citizens were not allowed to invest in ICOs. Overseas ICOs have been returning money on a voluntary basis.
-
-“The trend of digital currency transactions moving offshore is inevitable,” Zeng Danhua, the co-author of a bitcoin investment guide, told a television program filmed by Chinese financial news outlet Yicai on Wednesday.
-
-“The regulators may have needed to shut the platforms to guard against financial risks, and there may be a bitcoin bubble, but its investment value persists.” 
+"LocationID","Country","Region","CityList","StdBias","DstBias","DstStartPattern","DstEndPattern","MapFile","ThisYearDSTStart","ThisYearDSTEnd","NextYearDSTStart","NextYearDSTEnd","ThisYearUTCStart","ThisYearUTCEnd","NextYearUTCStart","NextYearUTCEnd","StdZoneName","StdZoneAbbrev","DstZoneName","DstZoneAbbrev"
+"AU-TAS","Australia","Tasmania","Hobart","+1000","+1100","0200 1ST-SUN-OCT","0300 1ST-SUN-APR","AU-TAS.jpg","10/07/12 02:00 AM","04/07/13 03:00 AM","10/06/13 02:00 AM","04/06/14 03:00 AM","10/06/12 16:00","04/06/13 16:00","10/05/13 16:00","04/05/14 16:00","Eastern Standard Time","EST","Eastern Daylight Time","EDT"
+"AU-VIC","Australia","Victoria","Melbourne","+1000","+1100","0200 1ST-SUN-OCT","0300 1ST-SUN-APR","AU-VIC.jpg","10/07/12 02:00 AM","04/07/13 03:00 AM","10/06/13 02:00 AM","04/06/14 03:00 AM","10/06/12 16:00","04/06/13 16:00","10/05/13 16:00","04/05/14 16:00","Eastern Standard Time","EST","Eastern Daylight Time","EDT"
+"AU-WA","Australia","Western Australia","Perth","+0800","","","","AU-WA.jpg","","","","","","","","","Western Standard Time","WST","",""
+"AU-WA1","Australia","Western Australia (Exception)","Eucla","+0845","","","","AU-WA1.jpg","","","","","","","","","","","",""
+"AT","Austria","","Vienna, Salzburg","+0100","+0200","0200 LST-SUN-MAR","0300 LST-SUN-OCT","AT.jpg","03/25/12 02:00 AM","10/28/12 03:00 AM","03/31/13 02:00 AM","10/27/13 03:00 AM","03/25/12 01:00","10/28/12 01:00","03/31/13 01:00","10/27/13 01:00","Central European Time","CET","Central European Summer Time","CEST"
+"AZ","Azerbaijan","","Baku","+0400","+0500","0400 LST-SUN-MAR","0500 LST-SUN-OCT","AZ.jpg","03/25/12 04:00 AM","10/28/12 05:00 AM","03/31/13 04:00 AM","10/27/13 05:00 AM","03/25/12 00:00","10/28/12 00:00","03/31/13 00:00","10/27/13 00:00","","","",""
+"BS","Bahamas","","Nassau","-0500","-0400","0200 2ND-SUN-MAR","0200 1ST-SUN-NOV","BS.jpg","03/11/12 02:00 AM","11/04/12 02:00 AM","03/10/13 02:00 AM","11/03/13 02:00 AM","03/11/12 07:00","11/04/12 06:00","03/10/13 07:00","11/03/13 06:00","Eastern Standard Time","EST","Eastern Daylight Time","EDT"
+"BH","Bahrain","","Manama","+0300","","","","BH.jpg","","","","","","","","","","","",""
+"BD","Bangladesh","","Dhaka","+0600","","","","BD.jpg","","","","","","","","","","","",""
+"BB","Barbados","","Bridgetown","-0400","","","","BB.jpg","","","","","","","","","","","",""
+"BY","Belarus","","Minsk","+0300","","","","BY.jpg","","","","","","","","","","","",""
+"BE","Belgium","","Brussels","+0100","+0200","0200 LST-SUN-MAR","0300 LST-SUN-OCT","BE.jpg","03/25/12 02:00 AM","10/28/12 03:00 AM","03/31/13 02:00 AM","10/27/13 03:00 AM","03/25/12 01:00","10/28/12 01:00","03/31/13 01:00","10/27/13 01:00","Central European Time","CET","Central European Summer Time","CEST"
+"BZ","Belize","","Belize City","-0600","","","","BZ.jpg","","","","","","","","","","","",""
+"BJ","Benin","","Cotonou","+0100","","","","BJ.jpg","","","","","","","","","","","",""
+"BM","Bermuda","","Hamilton","-0400","-0300","0200 2ND-SUN-MAR","0200 1ST-SUN-NOV","BM.jpg","03/11/12 02:00 AM","11/04/12 02:00 AM","03/10/13 02:00 AM","11/03/13 02:00 AM","03/11/12 06:00","11/04/12 05:00","03/10/13 06:00","11/03/13 05:00","Atlantic Standard Time","AST","Atlantic Daylight Time","ADT"
+"BT","Bhutan","","Thimphu","+0600","","","","BT.jpg","","","","","","","","","","","",""
+"BO","Bolivia","","La Paz, Santa Cruz, Cochabamba","-0400","","","","BO.jpg","","","","","","","","","","","",""
+"BQ","Bonaire, Sint Eustatius and Saba","","Kralendijk","-0400","","","","BQ.jpg","","","","","","","","","","","",""
+"BA","Bosnia and Herzegovina","","Sarajevo","+0100","+0200","0200 LST-SUN-MAR","0300 LST-SUN-OCT","BA.jpg","03/25/12 02:00 AM","10/28/12 03:00 AM","03/31/13 02:00 AM","10/27/13 03:00 AM","03/25/12 01:00","10/28/12 01:00","03/31/13 01:00","10/27/13 01:00","Central European Time","CET","Central European Summer Time","CEST"
+"BW","Botswana","","Gaborone","+0200","","","","BW.jpg","","","","","","","","","","","",""

@@ -12,25 +12,34 @@ import kompressor.lzw.LempelZivWelch;
 public class Main {
 
     public static void main(String[] args) {
-         try {
-            File f = new File("src/resources/textshort.txt");
+        try {
+            File f = new File("src/resources/textlong.txt");
             FileInputStream in = new FileInputStream(f);
 
             byte[] bytes = new byte[(int)f.length()];
             int c;
             int i = 0;
             while ((c = in.read()) != -1) {
-                bytes[i++] = (byte) Byte.toUnsignedInt((byte) c);
+                bytes[i++] = (byte) c;
             }
-             bytes = LempelZivWelch.encodeBytes(bytes);
-             
-             FileOutputStream out = new FileOutputStream("src/resources/compressed");
-             out.write(bytes);
-             
+            int size1 = bytes.length;
+            System.out.println("Luettiin tekstitiedosto sijainnista " + f.getPath() + ", koko: " + size1 + " tavua");
+            
+            bytes = LempelZivWelch.encodeBytes(bytes);
+            int size2 = bytes.length;
+            
+            f = new File("src/resources/compressed");
+            FileOutputStream out = new FileOutputStream(f);
+            out.write(bytes);
+            
+            System.out.println("Tiedosto pakattiin sijaintiin " + f.getPath() + ", koko: " + size2 + " tavua");
+            System.out.printf("Koko alkuperäisestä: %.2f prosenttia", (double) size2 / size1);
+            
             in.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+            out.close();
+         } catch (Exception e) {
+             e.printStackTrace();
+         }
     }
     
     public static void demonstration() {
