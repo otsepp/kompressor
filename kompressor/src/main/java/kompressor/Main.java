@@ -1,6 +1,9 @@
 
 package kompressor;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.util.List;
 import java.util.Scanner;
 import kompressor.huffman.Huffman;
@@ -9,6 +12,28 @@ import kompressor.lzw.LempelZivWelch;
 public class Main {
 
     public static void main(String[] args) {
+         try {
+            File f = new File("src/resources/textshort.txt");
+            FileInputStream in = new FileInputStream(f);
+
+            byte[] bytes = new byte[(int)f.length()];
+            int c;
+            int i = 0;
+            while ((c = in.read()) != -1) {
+                bytes[i++] = (byte) Byte.toUnsignedInt((byte) c);
+            }
+             bytes = LempelZivWelch.encodeBytes(bytes);
+             
+             FileOutputStream out = new FileOutputStream("src/resources/compressed");
+             out.write(bytes);
+             
+            in.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public static void demonstration() {
         Scanner s = new Scanner(System.in);
         String ans = "";
         
