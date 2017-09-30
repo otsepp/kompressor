@@ -64,7 +64,7 @@ public class LempelZivWelch {
              encoded = add;
              space = calculateSpace(space);
         }
-        //poistetaan väärät nollat
+        //poistetaan turhat nollat
         encoded = encoded.shiftLeft(space);
         return encoded.toByteArray();
     }
@@ -75,7 +75,7 @@ public class LempelZivWelch {
     //lisää 12-bitin kokoisen koodin
     private static BigInteger addToEncoded(BigInteger encoded, int code) {
         byte[] code12 = new byte[2];
-        code12[0] =(byte) ((code & 0xF0) >> 4);
+        code12[0] =(byte) ((code & 0xF0) >> 4); //4 viimeistä bittiä vasemmalta
         code12[1] = (byte) (code << 4);
         encoded = encoded.shiftLeft(12);
         encoded = encoded.or(new BigInteger(code12));
