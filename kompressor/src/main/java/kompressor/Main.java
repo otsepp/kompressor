@@ -25,18 +25,18 @@ public class Main {
             int size1 = bytes.length;
             System.out.println("Luettiin tekstitiedosto sijainnista " + f.getPath() + ", koko: " + size1 + " tavua");
             
-            bytes = LempelZivWelch.encodeBytes(bytes);
-            int size2 = bytes.length;
-            
-            f = new File("src/resources/compressed");
-            FileOutputStream out = new FileOutputStream(f);
-            out.write(bytes);
-            
-            System.out.println("Tiedosto pakattiin sijaintiin " + f.getPath() + ", koko: " + size2 + " tavua");
-            System.out.printf("Koko alkuperäisestä: %.2f prosenttia", (double) size2 / size1);
-            
+//            bytes = LempelZivWelch.encodeBytes(bytes);
+//            int size2 = bytes.length;
+//            
+//            f = new File("src/resources/compressed");
+//            FileOutputStream out = new FileOutputStream(f);
+//            out.write(bytes);
+//            
+//            System.out.println("Tiedosto pakattiin sijaintiin " + f.getPath() + ", koko: " + size2 + " tavua");
+//            System.out.printf("Koko alkuperäisestä: %.2f prosenttia", (double) size2 / size1);
+//            
             in.close();
-            out.close();
+//            out.close();
          } catch (Exception e) {
              e.printStackTrace();
          }

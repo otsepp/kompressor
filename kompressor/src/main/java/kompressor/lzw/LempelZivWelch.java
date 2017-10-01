@@ -38,49 +38,7 @@ public class LempelZivWelch {
         return encoded;
     }
     
-    public static byte[] encodeBytes(byte[] bytes) {
-        Map<String, Integer> dictionary = initialiseEncodingDictionary();
-        int nextCode = INIT_DICT_SIZE;
-        String prev = "";
-        BigInteger encoded = new BigInteger(new byte[]{0x0});
-        int space = 8;
-        
-        for (byte b : bytes) {
-            String current = (char) b + "";
-            
-            if (dictionary.containsKey(prev + current)) {
-                prev = prev + current;
-            } else {
-                 BigInteger add = addToEncoded(encoded, dictionary.get(prev));
-                 encoded = add;
-                 space = calculateSpace(space);
-                 
-                 dictionary.put(prev + current, nextCode++);
-                 prev = current;
-            }
-        }
-        if (!prev.equals("")) {
-             BigInteger add = addToEncoded(encoded, dictionary.get(prev));
-             encoded = add;
-             space = calculateSpace(space);
-        }
-        //poistetaan turhat nollat
-        encoded = encoded.shiftLeft(space);
-        return encoded.toByteArray();
-    }
-    //laskee tyhjän tilan määrä, joka koodaamisen lopussa poistetaan << space -siirrolla
-    private static int calculateSpace(int space) {
-        return (space + CODE_WIDTH) % 8;
-    }
-    //lisää 12-bitin kokoisen koodin
-    private static BigInteger addToEncoded(BigInteger encoded, int code) {
-        byte[] code12 = new byte[2];
-        code12[0] =(byte) ((code & 0xF0) >> 4); //4 viimeistä bittiä vasemmalta
-        code12[1] = (byte) (code << 4);
-        encoded = encoded.shiftLeft(12);
-        encoded = encoded.or(new BigInteger(code12));
-        return encoded;
-    }
+   
     
     public static String decode(List<Integer> encoded) {
         Map<Integer, String> dictionary = initialiseDecodingDictionary();
