@@ -1,54 +1,47 @@
 package kompressor.lzw;
 
-import kompressor.lzw.LempelZivWelch;
-import java.util.ArrayList;
+import java.io.IOException;
 import java.util.Arrays;
-import java.util.List;
 import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
 public class LempelZivWelchTest {
     
-    private String unencoded;
-    private List<Integer> encoded;
+    private byte[] unencoded;
+    private byte[] encoded;
     
     public LempelZivWelchTest() {
     }
-
+    
     @Before
-    public void initialise() {
-        this.unencoded = "TOBEORNOTTOBEORTOBEORNOT";
-        this.encoded = Arrays.asList(84, 79, 66, 69, 79, 82, 78, 79, 84, 256, 258, 260, 265, 259, 261, 263);
+    public void setUp() {
+        this.unencoded = new byte[] { 0x21, 0x20, 0x21, 0x20, 0x2B };   //"! ! +", [33,32,33,32,43]
+        this.encoded = new byte[] { 
+            0x0, (byte) 0x21,   //12 bit code for 33
+            0x0, (byte) 0x20,   
+            0x1, 0x0,               //12 bit code for 256 (new dictionary entry)
+            0x0, (byte) 0x2B
+        };
     }
     
     @Test
-    public void testEncode() {
-        List<Integer> encodedTest = LempelZivWelch.encode(unencoded);
-        assertEquals(encodedTest, encoded);
-    }
-
-    @Test
-    public void testEncodeEmptyString() {
-        assertEquals(LempelZivWelch.encode(""), new ArrayList());
-    }
-    
+     public void testEncode() throws IOException { 
+         byte[] encodedTest = LempelZivWelch.encode(this.unencoded);
+         assertEquals(true, Arrays.equals(this.encoded, encodedTest));
+     }
+     
     @Test
     public void testDecode() {
-        String decodedTest = LempelZivWelch.decode(encoded);
-        assertEquals(decodedTest, unencoded);
+        byte[] decoded = LempelZivWelch.decode(this.encoded);
+        assertEquals(true, Arrays.equals(this.unencoded, decoded));
     }
     
-    @Test
-    public void testDecodeEmptyList() {
-        assertEquals(LempelZivWelch.decode(new ArrayList()), "");
-    }
-    
-    @Test //poikkeustapaus, esitetään https://www.cs.duke.edu/csed/curious/compression/lzw.html
-    public void testDecodeNoDictionaryEntryFound() {
-        String unencodedTest = "abababab";
-        String decodedTest = LempelZivWelch.decode(LempelZivWelch.encode(unencodedTest));
-        assertEquals(decodedTest, unencodedTest);
+    @Test //poikkeustapaus, esitetään https://www.cs.duke.edu/csed/curious/compression/lzw.html kohdassa Uncompression
+    public void testDecodeNoDictionaryEntryFound() throws IOException {
+        byte[] unencodedTest = new byte[] { 0x61, 0x62, 0x61, 0x62, 0x61, 0x62, 0x61 };
+        byte[] decodedTest = LempelZivWelch.decode(LempelZivWelch.encode(unencodedTest));
+        assertEquals(true, Arrays.equals(unencodedTest, decodedTest));
     }
     
 }

@@ -9,12 +9,13 @@ import java.util.List;
 import java.util.Scanner;
 import kompressor.huffman.Huffman;
 import kompressor.lzw.LempelZivWelch;
+import kompressor.lzw.LempelZivWelchDemo;
 
 public class Main {
 
     public static void main(String[] args) {
         try {
-            File f = new File("src/resources/textlong.txt");
+            File f = new File("src/resources/texttest.txt");
             FileInputStream in = new FileInputStream(f);
 
             byte[] bytes1 = new byte[(int)f.length()];
@@ -25,16 +26,16 @@ public class Main {
             }
             System.out.println("Luettiin tekstitiedosto sijainnista " + f.getPath() + ", koko: " + bytes1.length + " tavua");
             
-            byte[] bytes2 = LempelZivWelch.encodeBytes(bytes1);
+            byte[] bytes2 = LempelZivWelch.encode(bytes1);
             f = new File("src/resources/compressed");
             FileOutputStream out = new FileOutputStream(f);
             out.write(bytes2);
             
             System.out.println("Tiedosto pakattiin sijaintiin " + f.getPath() + ", koko: " + bytes2.length + " tavua");
-            System.out.printf("Koko alkuperäisestä: %.2f prosenttia\n", (double) bytes2.length / bytes1.length);
+            System.out.printf("Koko alkuperäisestä: %.2f \n", (double) bytes2.length / bytes1.length);
             
             in = new FileInputStream(f);
-            bytes2 = LempelZivWelch.decodeBytes(bytes2);
+            bytes2 = LempelZivWelch.decode(bytes2);
             
             System.out.println("Purkamistesti: " + Arrays.equals(bytes1, bytes2));
             
@@ -71,11 +72,11 @@ public class Main {
         String input = s.nextLine();
         System.out.println("Merkkijonon pituus on " + input.length());
         
-        List<Integer> encoded = LempelZivWelch.encode(input);
+        List<Integer> encoded = LempelZivWelchDemo.encode(input);
         System.out.println("Saadaan: " + encoded 
                 + "\nPituus tiivistettynä on: " + encoded.size());
         
-        System.out.println("Purkamistesti: " + input.equals(LempelZivWelch.decode(encoded)));
+        System.out.println("Purkamistesti: " + input.equals(LempelZivWelchDemo.decode(encoded)));
     }
   
     public static void huffmanTest(Scanner s) {

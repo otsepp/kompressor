@@ -18,55 +18,7 @@ public class LempelZivWelch {
     private LempelZivWelch() {
     }
     
-    public static List<Integer> encode(String s) {
-        Map<String, Integer> dictionary = initialiseEncodingDictionary();
-        int nextCode = INIT_DICT_SIZE; 
-        String prev = "";
-        List<Integer> encoded = new ArrayList();
-        
-        for (int i = 0; i < s.length(); i++) {
-            String current = s.charAt(i) + "";
-            
-            if (dictionary.containsKey(prev + current)) {
-                prev = prev + current;
-            } else {
-                encoded.add(dictionary.get(prev));
-                dictionary.put(prev + current, nextCode++);
-                prev = current;
-            }
-        }
-        if (!prev.equals("")) {
-            encoded.add(dictionary.get(prev));
-        }
-        return encoded;
-    }
-    
-    public static String decode(List<Integer> encoded) {
-        Map<Integer, String> dictionary = initialiseDecodingDictionary();
-        int nextCode = INIT_DICT_SIZE;
-        StringBuilder decoded = new StringBuilder();
-        String prev = "";
-        
-        for (int code : encoded) {
-            String current;
-            
-            if (dictionary.containsKey(code)) {
-                current = dictionary.get(code);
-            } else {
-                current = prev + prev.charAt(0);
-            }
-            decoded.append(current);
-            
-            if (!prev.equals("")) {
-                String concat = prev + current.charAt(0);
-                dictionary.put(nextCode++, concat);
-            }
-            prev = current;
-        }
-        return decoded.toString();
-    }
-    
-   public static byte[] encodeBytes(byte[] bytes) throws IOException {
+   public static byte[] encode(byte[] bytes) throws IOException {
        ByteArrayOutputStream bs = new ByteArrayOutputStream();
        Map<String, Integer> dictionary = initialiseEncodingDictionary();
        int nextCode = INIT_DICT_SIZE;
@@ -78,34 +30,30 @@ public class LempelZivWelch {
             if (dictionary.containsKey(prev + current)) {
                 prev = prev + current;
             } else {
+                for (byte c12 : create12BitCode(dictionary.get(prev))) {
+                    System.out.println(Integer.toBinaryString(c12));
+                }
+                
                 bs.write(create12BitCode(dictionary.get(prev)));
                 dictionary.put(prev + current, nextCode++);
                 
-                //implement!!!!!!!
                 if (nextCode == MAX_DICT_SIZE) {
-                    System.out.println("encoding dictionary full!!");
-//                    dictionary = initialiseEncodingDictionary();  //riittävä?????
+                     dictionary = initialiseEncodingDictionary(); 
+                    nextCode = INIT_DICT_SIZE;
                 }
                 prev = current;
             }
        }
        if (!prev.equals("")) {
+           for (byte c12 : create12BitCode(dictionary.get(prev))) {
+                    System.out.println(Integer.toBinaryString(c12));
+           }
            bs.write(create12BitCode(dictionary.get(prev)));
         }
        return bs.toByteArray();
    }
-    private static byte[] create12BitCode(int code) {
-        byte[] b = new byte[2];
-        if (Integer.toBinaryString(code).length() > 8) {
-            b[0] = (byte) ((code & 0xF00) >> 8);
-        } else {
-            b[0] = 0x0;
-        }
-        b[1] = (byte) code;
-        return b;
-    }
    
-    public static byte[] decodeBytes(byte[] bytes) {
+    public static byte[] decode(byte[] bytes) {
         ByteArrayOutputStream bs = new ByteArrayOutputStream();
         
         Map<Integer, String> dictionary = initialiseDecodingDictionary();
@@ -122,19 +70,19 @@ public class LempelZivWelch {
             } else {
                 current = prev + prev.charAt(0);
             }
+            
             for (char c : current.toCharArray()) {
                 bs.write(c);
             }
             
             if (!prev.equals("")) {
                 String concat = prev + current.charAt(0);
-                
-                //implement!!!!!!!
-                if (dictionary.size() == MAX_DICT_SIZE) {
-                    System.out.println("decoding dictionary full!!");
-//                    dictionary = initialiseDecodingDictionary();  //riittävä?????
-                }
                 dictionary.put(nextCode++, concat);
+                
+                 if (dictionary.size() == MAX_DICT_SIZE) {
+                    dictionary = initialiseDecodingDictionary(); 
+                    nextCode = INIT_DICT_SIZE;
+                }
             }
             prev = current;
             i+=2;
@@ -142,6 +90,17 @@ public class LempelZivWelch {
         return bs.toByteArray();
     }
 
+    private static byte[] create12BitCode(int code) {
+        byte[] b = new byte[2];
+        if (Integer.toBinaryString(code).length() > 8) {
+            b[0] = (byte) ((code & 0xF00) >> 8);
+        } else {
+            b[0] = 0x0;
+        }
+        b[1] = (byte) code;
+        return b;
+    }
+    
     private static Map<String, Integer> initialiseEncodingDictionary() {
          Map<String, Integer> dictionary = new HashMap();
          for (int i = 0; i < INIT_DICT_SIZE; i++) {
