@@ -4,6 +4,7 @@ package kompressor;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 import kompressor.huffman.Huffman;
@@ -16,27 +17,29 @@ public class Main {
             File f = new File("src/resources/textlong.txt");
             FileInputStream in = new FileInputStream(f);
 
-            byte[] bytes = new byte[(int)f.length()];
+            byte[] bytes1 = new byte[(int)f.length()];
             int c;
             int i = 0;
             while ((c = in.read()) != -1) {
-                bytes[i++] = (byte) c;
+                bytes1[i++] = (byte) c;
             }
-            int size1 = bytes.length;
-            System.out.println("Luettiin tekstitiedosto sijainnista " + f.getPath() + ", koko: " + size1 + " tavua");
+            System.out.println("Luettiin tekstitiedosto sijainnista " + f.getPath() + ", koko: " + bytes1.length + " tavua");
             
-//            bytes = LempelZivWelch.encodeBytes(bytes);
-//            int size2 = bytes.length;
-//            
-//            f = new File("src/resources/compressed");
-//            FileOutputStream out = new FileOutputStream(f);
-//            out.write(bytes);
-//            
-//            System.out.println("Tiedosto pakattiin sijaintiin " + f.getPath() + ", koko: " + size2 + " tavua");
-//            System.out.printf("Koko alkuperäisestä: %.2f prosenttia", (double) size2 / size1);
-//            
+            byte[] bytes2 = LempelZivWelch.encodeBytes(bytes1);
+            f = new File("src/resources/compressed");
+            FileOutputStream out = new FileOutputStream(f);
+            out.write(bytes2);
+            
+            System.out.println("Tiedosto pakattiin sijaintiin " + f.getPath() + ", koko: " + bytes2.length + " tavua");
+            System.out.printf("Koko alkuperäisestä: %.2f prosenttia\n", (double) bytes2.length / bytes1.length);
+            
+            in = new FileInputStream(f);
+            bytes2 = LempelZivWelch.decodeBytes(bytes2);
+            
+            System.out.println("Purkamistesti: " + Arrays.equals(bytes1, bytes2));
+            
             in.close();
-//            out.close();
+            out.close();
          } catch (Exception e) {
              e.printStackTrace();
          }
