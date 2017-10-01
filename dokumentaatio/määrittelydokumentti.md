@@ -1,6 +1,6 @@
 ## Määrittelydokumentti
 
-Aiheena on syötetyn tekstin tiivistäminen Lempel-Ziv-Welch- ja Huffman-algoritmeilla. Ohjelma ei oikeasti pakkaa tietoa tiivistettyyn binäärimuotoon, vaan demonstroi edellämainittujen algoritmien toimintaa.
+Aiheena on syötetyn tekstin tiivistäminen Lempel-Ziv-Welch- ja Huffman-algoritmeilla. 
 
 LZW:n sanakirjat (kaksi erilaista, toinen tiivistämiseen ja toinen purkamiseen) toteutettu hajautustaulujen avulla, koska tällöin insert-operaatio on vakioaikainen ja search-operaatio on myös (keskimäärin).
 Algoritmin aikavaativuus pitäisi tällöin olla o(n).

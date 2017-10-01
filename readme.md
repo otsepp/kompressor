@@ -7,4 +7,4 @@ Nyt LZW:st‰ on tavuja pakkaava ja purkava versio, joka k‰ytt‰‰ 12-bit koodeja.
 
 [M‰‰rittelydokumentti](/dokumentaatio/m‰‰rittelydokumentti.md)
 
-[#### Viikkoraportit](/dokumentaatio/viikkoraportit)
+[Viikkoraportit](/dokumentaatio/viikkoraportit)

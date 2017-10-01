@@ -4,16 +4,13 @@ package kompressor.lzw;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class LempelZivWelch {
     
     private static final int INIT_DICT_SIZE = 256;
     private static final int MAX_DICT_SIZE = 4095;
-    private static final int CODE_WIDTH = 12;
 
     private LempelZivWelch() {
     }
@@ -30,10 +27,6 @@ public class LempelZivWelch {
             if (dictionary.containsKey(prev + current)) {
                 prev = prev + current;
             } else {
-                for (byte c12 : create12BitCode(dictionary.get(prev))) {
-                    System.out.println(Integer.toBinaryString(c12));
-                }
-                
                 bs.write(create12BitCode(dictionary.get(prev)));
                 dictionary.put(prev + current, nextCode++);
                 
@@ -45,9 +38,6 @@ public class LempelZivWelch {
             }
        }
        if (!prev.equals("")) {
-           for (byte c12 : create12BitCode(dictionary.get(prev))) {
-                    System.out.println(Integer.toBinaryString(c12));
-           }
            bs.write(create12BitCode(dictionary.get(prev)));
         }
        return bs.toByteArray();
