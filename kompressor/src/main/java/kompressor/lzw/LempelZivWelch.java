@@ -84,7 +84,7 @@ public class LempelZivWelch {
                 //implement!!!!!!!
                 if (nextCode == MAX_DICT_SIZE) {
                     System.out.println("encoding dictionary full!!");
-//                    dictionary = initialiseEncodingDictionary();
+//                    dictionary = initialiseEncodingDictionary();  //riittävä?????
                 }
                 prev = current;
             }
@@ -132,7 +132,7 @@ public class LempelZivWelch {
                 //implement!!!!!!!
                 if (dictionary.size() == MAX_DICT_SIZE) {
                     System.out.println("decoding dictionary full!!");
-//                    dictionary = initialiseDecodingDictionary();
+//                    dictionary = initialiseDecodingDictionary();  //riittävä?????
                 }
                 dictionary.put(nextCode++, concat);
             }
