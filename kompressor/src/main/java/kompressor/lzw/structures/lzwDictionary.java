@@ -3,7 +3,7 @@ package kompressor.lzw.structures;
 public class lzwDictionary<K, V> {
     private lzwLinkedList<K, V>[] arr;
     private final int N = 4096;   
-    private final int M = 1381; 
+    private final int M = 5471; 
     
     public lzwDictionary() {
         arr = new lzwLinkedList[M];
@@ -29,7 +29,7 @@ public class lzwDictionary<K, V> {
         return this.get(k) != null; 
     }
     
-    public int hashFunction(K k) {
+    private int hashFunction(K k) {
         int code = k.hashCode() % M;
         if (code < 0) {
             return code*(-1);
