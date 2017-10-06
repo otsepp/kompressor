@@ -1,4 +1,4 @@
-package structures;
+package kompressor.lzw.structures;
 
 public class lzwLinkedList<K, V> {
         public Node<K, V> top;
@@ -16,24 +16,13 @@ public class lzwLinkedList<K, V> {
                 n.next.prev = n;
             }
             this.top = n;
-//            Node<K, V> n = this.search(k);
-//            if (n != null) {
-//                n.v = v;
-//            } else {
-//                n = new Node(k, v);
-//                n.next = this.top;
-//                if (n.next != null) {
-//                    n.next.prev = n;
-//                }
-//                this.top = n;
-//            }
         }
         
-        public Node search(K k) {
+        public V search(K k) {
             Node n = this.top;
             while (n != null) { 
                 if (n.k.equals(k)) {
-                    return n;
+                    return (V) n.v;
                 }
                 n = n.next;
             }

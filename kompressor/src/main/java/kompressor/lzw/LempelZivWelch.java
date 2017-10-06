@@ -4,25 +4,25 @@ package kompressor.lzw;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
-import java.util.HashMap;
-import java.util.Map;
+import kompressor.lzw.structures.lzwDictionary;
 
 public class LempelZivWelch {
     
     private static final int INIT_DICT_SIZE = 256;
-    private static final int MAX_DICT_SIZE = 4095;
+    private static final int MAX_DICT_SIZE = 4096;
 
     private LempelZivWelch() {
     }
     
    public static byte[] encode(byte[] bytes) throws IOException {
        ByteArrayOutputStream bs = new ByteArrayOutputStream();
-       Map<String, Integer> dictionary = initialiseEncodingDictionary();
+       lzwDictionary<String, Integer> dictionary = initialiseEncodingDictionary();
        int nextCode = INIT_DICT_SIZE;
        String prev = "";
        
        for (byte b : bytes) {
            String current = (char) b + "";
+           
            
             if (dictionary.containsKey(prev + current)) {
                 prev = prev + current;
@@ -46,7 +46,7 @@ public class LempelZivWelch {
     public static byte[] decode(byte[] bytes) {
         ByteArrayOutputStream bs = new ByteArrayOutputStream();
         
-        Map<Integer, String> dictionary = initialiseDecodingDictionary();
+        lzwDictionary<Integer, String> dictionary = initialiseDecodingDictionary();
         int nextCode = INIT_DICT_SIZE;
         String prev = "";
         
@@ -69,7 +69,7 @@ public class LempelZivWelch {
                 String concat = prev + current.charAt(0);
                 dictionary.put(nextCode++, concat);
                 
-                 if (dictionary.size() == MAX_DICT_SIZE) {
+                 if (nextCode == MAX_DICT_SIZE) {
                     dictionary = initialiseDecodingDictionary(); 
                     nextCode = INIT_DICT_SIZE;
                 }
@@ -91,16 +91,16 @@ public class LempelZivWelch {
         return b;
     }
     
-    private static Map<String, Integer> initialiseEncodingDictionary() {
-         Map<String, Integer> dictionary = new HashMap();
+    private static lzwDictionary<String, Integer> initialiseEncodingDictionary() {
+         lzwDictionary<String, Integer> dictionary = new lzwDictionary();
          for (int i = 0; i < INIT_DICT_SIZE; i++) {
              dictionary.put((char) i + "", i);
          }
         return dictionary;
     }
     
-    private static Map<Integer, String> initialiseDecodingDictionary() {
-        Map<Integer, String> dictionary = new HashMap();
+    private static lzwDictionary<Integer, String> initialiseDecodingDictionary() {
+        lzwDictionary<Integer, String> dictionary = new lzwDictionary();
         for (int i = 0; i < INIT_DICT_SIZE; i++) {
             dictionary.put(i, (char) i + "");
         }

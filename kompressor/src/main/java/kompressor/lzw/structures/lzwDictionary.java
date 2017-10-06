@@ -1,10 +1,11 @@
-package structures;
+package kompressor.lzw.structures;
 
 public class lzwDictionary<K, V> {
     lzwLinkedList<K, V>[] arr;
-    int n = 4096;   //512, 1024, 2048, 4096
-    int m = 4099;  //521, 1031, 2053, 4099
+    int n = 4096;   
+    int m = 1381; 
     int size;
+    
     public lzwDictionary() {
         arr = new lzwLinkedList[m];
         size = 0;
@@ -22,13 +23,20 @@ public class lzwDictionary<K, V> {
     public V get(K k) {
         int i = hashFunction(k);
         if (this.arr[i] != null) {
-            return (V) this.arr[i].search(k).v;
+            return this.arr[i].search(k);
         }
         return null;
     }
     
+    public boolean containsKey(K k) {
+        return this.get(k) != null; 
+    }
+    
     public int hashFunction(K k) {
-        return k.hashCode() % m;
+        int code = k.hashCode() % m;
+        if (code < 0) {
+            return code*(-1);
+        }
+        return code;
     }   
 }
-
