@@ -1,14 +1,12 @@
 package kompressor.lzw.structures;
 
 public class lzwDictionary<K, V> {
-    lzwLinkedList<K, V>[] arr;
-    int n = 4096;   
-    int m = 1381; 
-    int size;
+    private lzwLinkedList<K, V>[] arr;
+    private final int N = 4096;   
+    private final int M = 1381; 
     
     public lzwDictionary() {
-        arr = new lzwLinkedList[m];
-        size = 0;
+        arr = new lzwLinkedList[M];
     }
 
     public void put(K k, V v) {
@@ -18,7 +16,6 @@ public class lzwDictionary<K, V> {
         } else {
             this.arr[i].add(k, v);
         }
-        size++;
     }
     public V get(K k) {
         int i = hashFunction(k);
@@ -33,7 +30,7 @@ public class lzwDictionary<K, V> {
     }
     
     public int hashFunction(K k) {
-        int code = k.hashCode() % m;
+        int code = k.hashCode() % M;
         if (code < 0) {
             return code*(-1);
         }

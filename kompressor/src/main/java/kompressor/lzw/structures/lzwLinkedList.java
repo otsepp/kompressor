@@ -1,7 +1,7 @@
 package kompressor.lzw.structures;
 
 public class lzwLinkedList<K, V> {
-        public Node<K, V> top;
+        private Node<K, V> top;
         
         public lzwLinkedList() {
         }
@@ -43,15 +43,17 @@ public class lzwLinkedList<K, V> {
             return r;
         }
         
-        public class Node<K, V> {
-            public K k;
-            public V v;
-            public Node<K, V> next;
-            public Node<K, V> prev;
-            public Node(K k, V v) {
+        
+        protected class Node<K, V> {
+            private K k;
+            private V v;
+            private Node<K, V> next;
+            private Node<K, V> prev;
+            protected Node(K k, V v) {
                 this.k = k;
                 this.v = v;
             }
+            
             @Override
             public String toString() {
                 return "Key: " + k + ", value: " + v;
