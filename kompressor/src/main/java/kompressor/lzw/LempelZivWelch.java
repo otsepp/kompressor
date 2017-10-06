@@ -31,7 +31,7 @@ public class LempelZivWelch {
                 dictionary.put(prev + current, nextCode++);
                 
                 if (nextCode == MAX_DICT_SIZE) {
-                     dictionary = initialiseEncodingDictionary(); 
+                    dictionary = initialiseEncodingDictionary(); 
                     nextCode = INIT_DICT_SIZE;
                 }
                 prev = current;

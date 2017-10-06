@@ -15,7 +15,7 @@ public class Main {
 
     public static void main(String[] args) {
         try {
-            File f = new File("src/resources/textlong.txt");
+            File f = new File("src/resources/textverylong.txt");
             FileInputStream in = new FileInputStream(f);
 
             byte[] bytes1 = new byte[(int)f.length()];
