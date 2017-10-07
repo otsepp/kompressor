@@ -1,6 +1,6 @@
 # Testaus
 
-### [Pit]()
+### [Pit](https://htmlpreview.github.io/?https://raw.githubusercontent.com/otsepp/kompressor/master/dokumentaatio/pit/kompressor.huffman/index.html)
 
 
 ## LempelZivWelch
