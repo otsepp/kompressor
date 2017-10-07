@@ -1,5 +1,7 @@
 # Testaus
 
+### [Pit](pit.html)
+
 
 ## LempelZivWelch
 Testeiss‰ k‰ytet‰‰n merkkijonoa "! ! +" (tavuina), josta saadaan helposti k‰sin simuloimalla
