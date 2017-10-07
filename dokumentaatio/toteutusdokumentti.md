@@ -14,7 +14,6 @@ Algoritmi palauttaa taulukon tavuja.
 Pakkausalgoritmi pohjautuu seuraavaan pseudokoodiin:
 
 ![lzw-encode-img](kuvat/lzwencode.png)
-
 **lähde: https://www.cs.duke.edu/csed/curious/compression/lzw.html**
 
 
@@ -25,7 +24,6 @@ syötettä luettaessa, mutta erilaisella periaatteella. Taas käytetään ByteArrayOu
 Purkamisalgoritmi pohjautuu seuraavaan pseudokoodiin:
 
 ![lzw-encode-img](kuvat/lzwdecode.png)
-
 **lähde: https://www.cs.duke.edu/csed/curious/compression/lzw.html**
 
 
