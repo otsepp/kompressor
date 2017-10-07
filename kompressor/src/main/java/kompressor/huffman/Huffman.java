@@ -1,7 +1,5 @@
 package kompressor.huffman;
 
-import java.util.PriorityQueue;
-
 public class Huffman {
     private String s;
     private String sEncoded;
@@ -56,7 +54,8 @@ public class Huffman {
         for (char c : s.toCharArray()) { 
             freqs[c]++;
         }
-        PriorityQueue<HuffmanNode> q = new PriorityQueue();
+        HuffmanQueue q = new HuffmanQueue();
+
         for (int i = 0; i < freqs.length; i++) {   
             if (freqs[i] > 0) {
                 q.add(new HuffmanNode((char) i, freqs[i])); 

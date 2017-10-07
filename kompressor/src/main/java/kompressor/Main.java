@@ -14,6 +14,10 @@ import kompressor.lzw.LempelZivWelchDemo;
 public class Main {
 
     public static void main(String[] args) {
+        huffmanTest(new Scanner(System.in));
+    }
+    
+    public static void lzw() {
         try {
             File f = new File("src/resources/textlong.txt");
             FileInputStream in = new FileInputStream(f);
