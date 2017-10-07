@@ -1,7 +1,7 @@
 ## Kompressor
 
-Demonstroi tektstin pakkaamista ja purkamista LZW- ja Huffman -algoritmeilla
-Nyt LZW:st‰ on tavuja pakkaava ja purkava versio, joka k‰ytt‰‰ 12-bit koodeja.
+Pakkaa ja purkaa merkkijonoja LZW- ja Huffman -algoritmeilla
+Huffmanista vain demoversio t‰ll‰ hetkell‰.
 
 ### Dokumentaatio
 
