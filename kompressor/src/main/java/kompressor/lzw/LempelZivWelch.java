@@ -23,7 +23,6 @@ public class LempelZivWelch {
        for (byte b : bytes) {
            String current = (char) b + "";
            
-           
             if (dictionary.containsKey(prev + current)) {
                 prev = prev + current;
             } else {
