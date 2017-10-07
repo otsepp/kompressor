@@ -35,19 +35,4 @@ public class HuffmanNode {
         this.right = n;
     }
     
-//    @Override
-//    public int compareTo(HuffmanNode n) {
-//        if (n.freq > this.freq) {
-//            return -1;
-//        } else if (n.freq < this.freq) {
-//            return 1;
-//        }
-//        return 0;
-//    }
-    
-//    @Override
-//    public String toString() {
-//        return this.c + ", freq: " + this.freq;
-//    }
-    
 }
