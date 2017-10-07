@@ -9,12 +9,15 @@ public class lzwLinkedList<K, V> {
             this.add(k, v);
         }
         
+        //Tällä hetkellä listassa voi olla solmuja, joilla on sama avain, mutta eri arvo. 
+        //LZW ei kuitenkaan lisää samoja avaimia useasti, joten tätä ei huomioida
         public final void add(K k, V v) {
             Node n = new Node(k, v);
             n.next = this.top;
             this.top = n;
         }
         
+        //Etsii listasta sellaisen solmun arvon, jonka avain on k
         public V search(K k) {
             Node n = this.top;
             while (n != null) { 
