@@ -1,6 +1,6 @@
 # Testaus
 
-### [Pit](https://htmlpreview.github.io/?https://github.com/otsepp/kompressor/blob/master/dokumentaatio/pit.html)
+### [Pit]()
 
 
 ## LempelZivWelch
