@@ -1,6 +1,6 @@
 # Testaus
 
-### [Pit](https://htmlpreview.github.io/?https://github.com/otsepp/kompressor/blob/master/dokumentaatio/201710071751/index.html)
+#### [Pit](https://htmlpreview.github.io/?https://github.com/otsepp/kompressor/blob/master/dokumentaatio/201710071751/index.html)
 
 
 ## LempelZivWelch
@@ -12,7 +12,7 @@ T‰m‰ tapahtuu esim. k‰ytetyll‰ merkkijonolla "1212121". T‰m‰ selitet‰‰n https://
 kohdassa Uncompression 
 
 
-### lzwDictionary
+#### lzwDictionary
 Ensimm‰inen testi tekee saman kuin lzw, kun se muodostaa sanakirjan pakkaamista varten,
 ja tarkistaa, ett‰ merkkijonoavaimella lˆydet‰‰n oikea koodi.
 
@@ -21,7 +21,7 @@ arvot ovat samat (String-luokan hashCode()-metodi palauttaa saman arvon merkkijo
 "FB" ja "Ea", jolloin lzw:n hajautufunktion palauttama arvo on sama (jakoj‰‰nnˆsmenetelm‰)
 
 
-### lzwLinkedList
+#### lzwLinkedList
 Kaksi yksinkertaista, itsest‰‰n selv‰‰ testi‰. Syvemm‰t testit vaatisivat luokan
 muokkaamista.
 
@@ -33,7 +33,7 @@ sill‰ ne k‰sittelev‰t vain demoversiota (toivottavasti oikea versio
 ensi viikolla)
 
 
-### HuffmanQueue
+#### HuffmanQueue
 Vain yksi yksinkertainen testi (samasta syyst‰ kuin lzwLinkedList:ss‰)
 
 Jonoon lis‰t‰‰n solmut joiden frekvenssit ovat 33, 51, 12 ,3 ,57. Ne

@@ -12,7 +12,9 @@ Koodit ovat 12-bitin kokoisia, ja ne kootaan yhteen k‰ytt‰en luokkaa ByteArrayOu
 Algoritmi palauttaa taulukon tavuja.
 
 Pakkausalgoritmi pohjautuu seuraavaan pseudokoodiin:
+
 ![lzw-encode-img](kuvat/lzwencode.png)
+
 **l‰hde: https://www.cs.duke.edu/csed/curious/compression/lzw.html**
 
 
@@ -21,7 +23,9 @@ k‰‰nnet‰‰n merkkijonoiksi sanakirjan avulla, mutta nyt koodit ovat avaimia. Sana
 syˆtett‰ luettaessa, mutta erilaisella periaatteella. Taas k‰ytet‰‰n ByteArrayOutputStream.
 
 Purkamisalgoritmi pohjautuu seuraavaan pseudokoodiin:
+
 ![lzw-encode-img](kuvat/lzwdecode.png)
+
 **l‰hde: https://www.cs.duke.edu/csed/curious/compression/lzw.html**
 
 
@@ -62,6 +66,6 @@ T‰m‰ valmiiksi sitten kuin Huffmanista on oikea versio (toivottavasti ensi viiko
 
 
 
-##LZW VS Huffman
+## LZW VS Huffman
 
 --||--
