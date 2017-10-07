@@ -34,11 +34,4 @@ public class lzwDictionaryTest {
         assertEquals(dict.get("Ea") == 2, true);
     }
     
-    public void addNegativeHashCodeTest() {
-        String s = "Start\"";
-        assertEquals(s.hashCode() < 0, true);
-        dict.put(s, 1);
-        assertEquals(dict.get(s) == 1, true);
-    }
-    
 }

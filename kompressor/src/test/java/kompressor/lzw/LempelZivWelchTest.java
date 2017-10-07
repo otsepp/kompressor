@@ -16,7 +16,7 @@ public class LempelZivWelchTest {
     
     @Before
     public void setUp() {
-        this.unencoded = new byte[] { 0x21, 0x20, 0x21, 0x20, 0x2B };   //"! ! +", [33,32,33,32,43]
+        this.unencoded = new byte[] { 0x21, 0x20, 0x21, 0x20, 0x2B };   //"! ! +", [33,32, 256,43]
         this.encoded = new byte[] { 
             0x0, (byte) 0x21,   //12 bit code for 33
             0x0, (byte) 0x20,   
@@ -37,11 +37,11 @@ public class LempelZivWelchTest {
         assertEquals(true, Arrays.equals(this.unencoded, decoded));
     }
     
-    @Test //poikkeustapaus, esitetään https://www.cs.duke.edu/csed/curious/compression/lzw.html kohdassa Uncompression
+    @Test 
     public void testDecodeNoDictionaryEntryFound() throws IOException {
-        byte[] unencodedTest = new byte[] { 0x61, 0x62, 0x61, 0x62, 0x61, 0x62, 0x61 };
-        byte[] decodedTest = LempelZivWelch.decode(LempelZivWelch.encode(unencodedTest));
-        assertEquals(true, Arrays.equals(unencodedTest, decodedTest));
+        byte[] encodedTest = new byte[] { 0x61, 0x62, 0x61, 0x62, 0x61, 0x62, 0x61 };
+        byte[] decodedTest = LempelZivWelch.decode(LempelZivWelch.encode(encodedTest));
+        assertEquals(true, Arrays.equals(encodedTest, decodedTest));
     }
     
 }
