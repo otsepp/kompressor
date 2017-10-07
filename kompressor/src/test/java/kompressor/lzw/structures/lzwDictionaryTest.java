@@ -1,26 +1,44 @@
 package kompressor.lzw.structures;
 
-import java.util.HashMap;
-import java.util.Map;
 import static org.junit.Assert.assertEquals;
+import org.junit.Before;
 import org.junit.Test;
 
 public class lzwDictionaryTest {
+     private lzwDictionary<String, Integer> dict;
     
     public lzwDictionaryTest() {
     }
-
+    
+    @Before
+    public void setUp() {
+        dict = new lzwDictionary();
+    }
+    
     @Test
     public void putAndGetTest() {
-        lzwDictionary<Integer, String> d1 = new lzwDictionary();
-        Map<Integer, String> d2 = new HashMap();
-        
-        for (int i = 0; i < 1000; i++) {
-             d1.put(i, (char) i + "");
-             d2.put(i, (char) i + "");
-             
-             assertEquals(d1.get(i).equals(d2.get(i)), true);
+        for (int i = 0; i < 256; i++) {
+            dict.put((char) i + "", i);
+            assertEquals(dict.get((char) i + "") == i, true);
         }
+    }
+    
+    @Test
+    public void addCollisionTest() {
+        String s1 = "FB";
+        String s2 = "Ea";
+        assertEquals(s1.hashCode() == s2.hashCode(), true);
+        dict.put("FB", 1);
+        dict.put("Ea", 2);
+        assertEquals(dict.get("FB") == 1, true);
+        assertEquals(dict.get("Ea") == 2, true);
+    }
+    
+    public void addNegativeHashCodeTest() {
+        String s = "Start\"";
+        assertEquals(s.hashCode() < 0, true);
+        dict.put(s, 1);
+        assertEquals(dict.get(s) == 1, true);
     }
     
 }

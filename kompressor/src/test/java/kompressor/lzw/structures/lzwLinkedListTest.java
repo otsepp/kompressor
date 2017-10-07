@@ -17,4 +17,10 @@ public class lzwLinkedListTest {
         assertEquals(l1.search("b") == 2, true);
     }
     
+    @Test
+    public void SearchNotFoundTest() {
+        lzwLinkedList<String, Integer> l1 = new lzwLinkedList();
+        assertEquals(l1.search("ei löydy"), null);
+    }
+    
 }

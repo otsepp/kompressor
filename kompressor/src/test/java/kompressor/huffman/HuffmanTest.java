@@ -16,7 +16,7 @@ public class HuffmanTest {
     @Before
     public void setUp() {
         this.unencoded = "ajan aina autoa";
-        this.encoded = "0101101001100101010001100111111111011100";
+        this.encoded = "0111110101100011001010100011101111011010";
         this.h = new Huffman(this.unencoded);
     }
     

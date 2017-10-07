@@ -4,17 +4,23 @@ package kompressor;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 import kompressor.huffman.Huffman;
 import kompressor.lzw.LempelZivWelch;
-import kompressor.lzw.LempelZivWelchDemo;
 
 public class Main {
 
     public static void main(String[] args) {
-        huffmanTest(new Scanner(System.in));
+        System.out.println("FB".hashCode());
+        System.out.println("Ea".hashCode());
+        
+        System.out.println("Start\"".hashCode() % 5471);   //neg
+        
+//        huffman(new Scanner(System.in));
     }
     
     public static void lzw() {
@@ -50,40 +56,7 @@ public class Main {
          }
     }
     
-    public static void demonstration() {
-        Scanner s = new Scanner(System.in);
-        String ans = "";
-        
-        while (!ans.equals("1") && !ans.equals("2")) {
-            System.out.print("Valitse algoritmi:\n"
-                    + "1.: LZW\n" 
-                    + "2.: Huffman\n"
-                    + ">");
-            ans = s.nextLine();
-        }
-        
-        if (ans.equals("1")) {
-            lzwTest(s);
-        } else {
-            huffmanTest(s);
-        }
-    }
-    
-    public static void lzwTest(Scanner s) {
-        System.out.print("\n***Lempel-Ziv-Welch***\n"
-            + "Syötä merkkijono: \n>");
-        
-        String input = s.nextLine();
-        System.out.println("Merkkijonon pituus on " + input.length());
-        
-        List<Integer> encoded = LempelZivWelchDemo.encode(input);
-        System.out.println("Saadaan: " + encoded 
-                + "\nPituus tiivistettynä on: " + encoded.size());
-        
-        System.out.println("Purkamistesti: " + input.equals(LempelZivWelchDemo.decode(encoded)));
-    }
-  
-    public static void huffmanTest(Scanner s) {
+    public static void huffman(Scanner s) {
         System.out.print("\n***Huffman***\n"
                 + "Syötä merkkijono: \n>");
         

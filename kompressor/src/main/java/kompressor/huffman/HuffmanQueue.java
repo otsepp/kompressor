@@ -30,7 +30,7 @@ public class HuffmanQueue {
        if (heapSize == 0)  return null;
        HuffmanNode max = a[0];
        a[0] = a[heapSize - 1];
-       decreaseSize();
+       a[(heapSize--) - 1] = null;
        heapify(0);
        return max;
    }
@@ -56,11 +56,6 @@ public class HuffmanQueue {
        HuffmanNode na = a[i];
        a[i] = a[j];
        a[j] = na;
-   }
-   
-   private void decreaseSize() {
-       a[heapSize - 1] = null;
-       heapSize--;
    }
    
    private int parent(int i) {

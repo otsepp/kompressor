@@ -29,21 +29,6 @@ public class lzwLinkedList<K, V> {
             return null;
         }
         
-        @Override
-        public String toString() {
-            Node n = this.top;
-            String r = "";
-            while (n != null) {
-                r = r + n.toString();
-                if (n.next != null) {
-                    r = r + "\n";
-                }
-                n = n.next;
-            }
-            return r;
-        }
-        
-        
         protected class Node<K, V> {
             private K k;
             private V v;
@@ -52,11 +37,6 @@ public class lzwLinkedList<K, V> {
             protected Node(K k, V v) {
                 this.k = k;
                 this.v = v;
-            }
-            
-            @Override
-            public String toString() {
-                return "Key: " + k + ", value: " + v;
             }
         }
     }
