@@ -12,9 +12,6 @@ public class lzwLinkedList<K, V> {
         public final void add(K k, V v) {
             Node n = new Node(k, v);
             n.next = this.top;
-            if (n.next != null) {
-                n.next.prev = n;
-            }
             this.top = n;
         }
         
@@ -33,7 +30,6 @@ public class lzwLinkedList<K, V> {
             private K k;
             private V v;
             private Node<K, V> next;
-            private Node<K, V> prev;
             protected Node(K k, V v) {
                 this.k = k;
                 this.v = v;

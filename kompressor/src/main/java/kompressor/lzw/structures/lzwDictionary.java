@@ -2,8 +2,7 @@ package kompressor.lzw.structures;
 
 public class lzwDictionary<K, V> {
     private lzwLinkedList<K, V>[] arr;
-    private final int N = 4096;   
-    private final int M = 5471; 
+    private final int M = 5471; //Talletetaan max. 4096 avainta, tällä M saavutetaan täyttösuhde 0.75
     
     public lzwDictionary() {
         arr = new lzwLinkedList[M];

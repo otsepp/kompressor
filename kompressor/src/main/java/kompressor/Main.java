@@ -15,11 +15,7 @@ import kompressor.lzw.LempelZivWelch;
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println("FB".hashCode());
-        System.out.println("Ea".hashCode());
-        
-        System.out.println("Start\"".hashCode() % 5471);   //neg
-        
+        lzw();
 //        huffman(new Scanner(System.in));
     }
     
