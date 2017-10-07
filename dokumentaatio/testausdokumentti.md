@@ -1,7 +1,7 @@
-*Testaus
+#Testaus
 
 
-**LempelZivWelch
+##LempelZivWelch
 Testeiss‰ k‰ytet‰‰n merkkijonoa "! ! +" (tavuina), josta saadaan helposti k‰sin simuloimalla
 koodit 33, 32, 256 ja 43. N‰iden 12-bittiset versiot laitetaan byte[] taulukkoon.
 
@@ -10,7 +10,7 @@ T‰m‰ tapahtuu esim. k‰ytetyll‰ merkkijonolla "1212121". T‰m‰ selitet‰‰n https://
 kohdassa Uncompression 
 
 
-***lzwDictionary
+###lzwDictionary
 Ensimm‰inen testi tekee saman kuin lzw, kun se muodostaa sanakirjan pakkaamista varten,
 ja tarkistaa, ett‰ merkkijonoavaimella lˆydet‰‰n oikea koodi.
 
@@ -19,19 +19,19 @@ arvot ovat samat (String-luokan hashCode()-metodi palauttaa saman arvon merkkijo
 "FB" ja "Ea", jolloin lzw:n hajautufunktion palauttama arvo on sama (jakoj‰‰nnˆsmenetelm‰)
 
 
-***lzwLinkedList
+###lzwLinkedList
 Kaksi yksinkertaista, itsest‰‰n selv‰‰ testi‰. Syvemm‰t testit vaatisivat luokan
 muokkaamista.
 
 
 
-**Huffman
+##Huffman
 Huffman- ja HuffmanTree -testeist‰ ei ole t‰ss‰ viel‰,
 sill‰ ne k‰sittelev‰t vain demoversiota (toivottavasti oikea versio
 ensi viikolla)
 
 
-***HuffmanQueue
+###HuffmanQueue
 Vain yksi yksinkertainen testi (samasta syyst‰ kuin lzwLinkedList:ss‰)
 
 Jonoon lis‰t‰‰n solmut joiden frekvenssit ovat 33, 51, 12 ,3 ,57. Ne
