@@ -17,7 +17,6 @@ public class lzwLinkedList<K, V> {
             this.top = n;
         }
         
-        //Etsii listasta sellaisen solmun arvon, jonka avain on k
         public V search(K k) {
             Node n = this.top;
             while (n != null) { 
