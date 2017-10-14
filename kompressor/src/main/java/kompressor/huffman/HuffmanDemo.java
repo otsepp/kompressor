@@ -3,7 +3,7 @@ package kompressor.huffman;
 public class HuffmanDemo {
     private String s;
     private String sEncoded;
-    private HuffmanTree tree;
+    private HuffmanTreeDemo tree;
     
     public HuffmanDemo(String s) {
         this.setString(s);
@@ -49,7 +49,7 @@ public class HuffmanDemo {
         return sDecoded.toString();
     }
     
-    private HuffmanTree buildTree(String s) {
+    private HuffmanTreeDemo buildTree(String s) {
         int[] freqs = new int[256];
         for (char c : s.toCharArray()) { 
             freqs[c]++;
@@ -61,7 +61,7 @@ public class HuffmanDemo {
                 q.add(new HuffmanNode((char) i, freqs[i])); 
             }
         }
-        HuffmanTree t = null;
+        HuffmanTreeDemo t = null;
         while (q.size() > 0) {
             //jonosta poistetaan solmut (lehdet), joiden kirjaimia esiintyy vähiten
             HuffmanNode n0 = q.poll(); 
@@ -75,7 +75,7 @@ public class HuffmanDemo {
                 q.add(nu);  
             } else {
                 //viimeinen solmu loydetään, asetetaan puun juureksi
-                t = new HuffmanTree(n0);
+                t = new HuffmanTreeDemo(n0);
             }
         }
         return t;

@@ -2,11 +2,12 @@
 package kompressor.huffman;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 
 public class ByteArrayWriter {
-    ByteArrayOutputStream bs;
-    byte b;
-    int space;
+    private ByteArrayOutputStream bs;
+    private byte b;
+    private int space;
 
     public ByteArrayWriter() {
         bs = new ByteArrayOutputStream();
@@ -14,12 +15,19 @@ public class ByteArrayWriter {
         space = 8;
     }
     
-    public void writeZero() {
+//    public void writeBit(int i) {
+//        if (i == 0 || i == 1) {
+//            b = (byte)(b | i << --space);
+//            checkSpace();
+//        }
+//    }
+    
+    public void writeZeroBit() {
         space--;
         checkSpace();
     }
     
-    public void writeOne() {
+    public void writeOneBit() {
         b = (byte) (b | 0x01 << --space);
         checkSpace();
     }

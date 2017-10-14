@@ -82,7 +82,7 @@ public class LempelZivWelch {
     private static byte[] create12BitCode(int code) {
         byte[] b = new byte[2];
         if (Integer.toBinaryString(code).length() > 8) {
-            b[0] = (byte) ((code & 0xF00) >> 8);
+            b[0] = (byte) ((code & 0xF00) >>> 8);
         } else {
             b[0] = 0x0;
         }

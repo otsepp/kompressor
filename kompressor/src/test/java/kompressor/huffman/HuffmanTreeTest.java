@@ -5,7 +5,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class HuffmanTreeTest {
-    private HuffmanTree tree;
+    private HuffmanTreeDemo tree;
     
     public HuffmanTreeTest() {
     }
@@ -21,7 +21,7 @@ public class HuffmanTreeTest {
         
         root.setLeft(left);
 
-        this.tree = new HuffmanTree(root);
+        this.tree = new HuffmanTreeDemo(root);
     }
     
     @Test 
@@ -46,7 +46,7 @@ public class HuffmanTreeTest {
     
     @Test
     public void searchCodeTestOneChar() {
-        this.tree = new HuffmanTree(new HuffmanNode('a', 1));
+        this.tree = new HuffmanTreeDemo(new HuffmanNode('a', 1));
         assertEquals("0", this.tree.searchCode('a'));
     }
     

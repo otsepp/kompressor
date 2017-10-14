@@ -7,8 +7,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Scanner;
+import kompressor.huffman.ByteArrayWriter;
 import kompressor.huffman.Huffman;
 import kompressor.huffman.HuffmanDemo;
+import kompressor.huffman.HuffmanTree;
 import kompressor.lzw.LempelZivWelch;
 
 public class Main {
@@ -34,8 +36,13 @@ public class Main {
 //        }
 
         String s = "cbboooiiiieeeee";
-        Huffman.encode(s.getBytes());
+        for (byte b : Huffman.encode(s.getBytes())) {
+            System.out.println(b);
+        }
         
+//        for (byte b : code.toByteArray()) {
+//            System.out.println(Integer.toBinaryString(b));
+//        }
         
 //        lzw();
 //        huffman(new Scanner(System.in));

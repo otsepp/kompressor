@@ -7,38 +7,46 @@ public class Huffman {
     private Huffman() {
     }
     
-    public static byte[] encode(byte[] b) throws IOException {
+    public static byte[] encode(byte[] bytes) throws IOException {
         ByteArrayOutputStream bs = new ByteArrayOutputStream();
-        HuffmanTree t = buildTree(b);
-        ByteArrayWriter bwr = createHeader(t.getRoot(), new ByteArrayWriter());
-        
-//        StringBuilder code = new StringBuilder();
-//        for (char c : this.s.toCharArray()) {
-//            code.append(this.tree.searchCode(c));
-//        }
-//        this.sEncoded = code.toString();
-//        return this.sEncoded;
-        return null;
+        HuffmanTree t = buildTree(bytes);
+//        ByteArrayWriter bwr = createHeader(t.getRoot(), new ByteArrayWriter());
+        ByteArrayWriter bwr = new ByteArrayWriter();
+        for (byte b : bytes) {
+            for (char c : t.searchCode((char) b).toCharArray()) {
+                if (c == '0') {
+                    bwr.writeZeroBit();
+                } else {
+                    bwr.writeOneBit();
+                }
+            }
+        }
+        return bwr.toByteArray();
     }
     
     private static ByteArrayWriter createHeader(HuffmanNode n, ByteArrayWriter bwr) throws IOException  {
         if (n.getCharacter() != null) {
-            bwr.writeOne();
+            bwr.writeOneBit();
             bwr.writeCharacter(n.getCharacter());
             return bwr;
         }
-        bwr.writeZero();
+        bwr.writeZeroBit();
         bwr = createHeader(n.getLeft(), bwr);
         bwr = createHeader(n.getRight(), bwr);
         return bwr;
     }
     
-    private static HuffmanTree buildTree(byte[] b) {
+     public static byte[] decode(byte[] b) {
+        
+        return null;
+    }
+    
+    private static HuffmanTree buildTree(byte[] bytes) {
         int[] freqs = new int[256];
         
         //talletetaan merkkien esiintymismäärät
-        for (byte bL : b) {
-            freqs[bL]++;
+        for (byte b : bytes) {
+            freqs[b]++;
         }
         
         HuffmanQueue q = new HuffmanQueue();
@@ -68,13 +76,5 @@ public class Huffman {
         }
         return t;
     }
-    
-    
-    public static byte[] decode(byte[] b) {
-        
-        return null;
-    }
-    
-    
     
 }
