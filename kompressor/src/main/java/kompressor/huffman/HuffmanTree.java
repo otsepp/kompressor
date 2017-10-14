@@ -7,6 +7,10 @@ public class HuffmanTree {
         this.root = root;
     }
     
+    public HuffmanNode getRoot() {
+        return this.root;
+    }
+    
     public Character searchCharacter(String code) {
         HuffmanNode n = root;
         if (n.getCharacter() != null) {

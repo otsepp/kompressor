@@ -10,5 +10,4 @@ Huffman-algoritmi k‰ytt‰‰ puurakennetta ja prioritettijonoa, jolloin voidaan saa
 
 ##### L‰hteet
 https://www.cs.duke.edu/csed/curious/compression/lzw.html
-http://web.mit.edu/6.02/www/s2012/handouts/3.pdf
 http://www.soc.napier.ac.uk/~bill/pdf/ADCO_C03.PDF

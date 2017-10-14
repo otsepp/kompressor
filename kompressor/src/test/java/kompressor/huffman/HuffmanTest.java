@@ -8,7 +8,7 @@ import org.junit.Before;
 public class HuffmanTest {
     private String unencoded;
     private String encoded;
-    private Huffman h;
+    private HuffmanDemo h;
     
     public HuffmanTest() {
     }
@@ -17,7 +17,7 @@ public class HuffmanTest {
     public void setUp() {
         this.unencoded = "ajan aina autoa";
         this.encoded = "0111110101100011001010100011101111011010";
-        this.h = new Huffman(this.unencoded);
+        this.h = new HuffmanDemo(this.unencoded);
     }
     
     @Test

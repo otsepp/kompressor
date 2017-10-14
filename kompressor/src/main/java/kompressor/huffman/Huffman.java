@@ -1,66 +1,54 @@
 package kompressor.huffman;
 
-public class Huffman {
-    private String s;
-    private String sEncoded;
-    private HuffmanTree tree;
-    
-    public Huffman(String s) {
-        this.setString(s);
-    }
-    
-    public String getString() {
-        return this.s;
-    }
-    
-    public String getEncodedString() {
-        return this.sEncoded;
-    }
-    
-    public final void setString(String s) {
-        this.s = s;
-        this.sEncoded = "";
-        this.tree = this.buildTree(this.s);
-    }
-    
-    public String encode() {
-        StringBuilder code = new StringBuilder();
-        for (char c : this.s.toCharArray()) {
-            code.append(this.tree.searchCode(c));
-        }
-        this.sEncoded = code.toString();
-        return this.sEncoded;
-    }
-    
-    //merkkijono täytyy pakata ensin
-    public String decode() {
-        StringBuilder sDecoded = new StringBuilder();
-        StringBuilder code = new StringBuilder();
-        
-        for (char c : this.sEncoded.toCharArray()) {
-            code.append(c);
-            Character cFound = tree.searchCharacter(code.toString());
-            
-            if (cFound != null) {
-                sDecoded.append(cFound);
-                code = new StringBuilder();
-            } 
-        }
-        return sDecoded.toString();
-    }
-    
-    private HuffmanTree buildTree(String s) {
-        int[] freqs = new int[256];
-        for (char c : s.toCharArray()) { 
-            freqs[c]++;
-        }
-        HuffmanQueue q = new HuffmanQueue();
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 
+public class Huffman {
+    private Huffman() {
+    }
+    
+    public static byte[] encode(byte[] b) throws IOException {
+        ByteArrayOutputStream bs = new ByteArrayOutputStream();
+        HuffmanTree t = buildTree(b);
+        ByteArrayWriter bwr = createHeader(t.getRoot(), new ByteArrayWriter());
+        
+//        StringBuilder code = new StringBuilder();
+//        for (char c : this.s.toCharArray()) {
+//            code.append(this.tree.searchCode(c));
+//        }
+//        this.sEncoded = code.toString();
+//        return this.sEncoded;
+        return null;
+    }
+    
+    private static ByteArrayWriter createHeader(HuffmanNode n, ByteArrayWriter bwr) throws IOException  {
+        if (n.getCharacter() != null) {
+            bwr.writeOne();
+            bwr.writeCharacter(n.getCharacter());
+            return bwr;
+        }
+        bwr.writeZero();
+        bwr = createHeader(n.getLeft(), bwr);
+        bwr = createHeader(n.getRight(), bwr);
+        return bwr;
+    }
+    
+    private static HuffmanTree buildTree(byte[] b) {
+        int[] freqs = new int[256];
+        
+        //talletetaan merkkien esiintymismäärät
+        for (byte bL : b) {
+            freqs[bL]++;
+        }
+        
+        HuffmanQueue q = new HuffmanQueue();
+        //laitetaan jonoon kaikki esiintyneet solmut
         for (int i = 0; i < freqs.length; i++) {   
             if (freqs[i] > 0) {
                 q.add(new HuffmanNode((char) i, freqs[i])); 
             }
         }
+        
         HuffmanTree t = null;
         while (q.size() > 0) {
             //jonosta poistetaan solmut (lehdet), joiden kirjaimia esiintyy vähiten
@@ -80,5 +68,13 @@ public class Huffman {
         }
         return t;
     }
+    
+    
+    public static byte[] decode(byte[] b) {
+        
+        return null;
+    }
+    
+    
     
 }

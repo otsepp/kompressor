@@ -4,18 +4,40 @@ package kompressor;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.util.ArrayList;
+import java.io.IOException;
 import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
 import java.util.Scanner;
 import kompressor.huffman.Huffman;
+import kompressor.huffman.HuffmanDemo;
 import kompressor.lzw.LempelZivWelch;
 
 public class Main {
 
-    public static void main(String[] args) {
-        lzw();
+    public static void main(String[] args) throws IOException {
+          //JUNIT TEST
+//        ByteArrayWriter bwr = new ByteArrayWriter();
+//        bwr.writeZero();
+//        bwr.writeOne();
+//        bwr.writeCharacter('e');
+//        bwr.writeOne();
+//        bwr.writeCharacter('i');
+//        bwr.writeZero();
+//        bwr.writeZero();
+//        bwr.writeOne();
+//        bwr.writeCharacter('b');
+//        bwr.writeOne();
+//        bwr.writeCharacter('c');
+//        bwr.writeOne();
+//        bwr.writeCharacter('o');
+//        for (byte b : bwr.toByteArray()) {
+//            System.out.println(b);
+//        }
+
+        String s = "cbboooiiiieeeee";
+        Huffman.encode(s.getBytes());
+        
+        
+//        lzw();
 //        huffman(new Scanner(System.in));
     }
     
@@ -59,7 +81,7 @@ public class Main {
         String input = s.nextLine();
         System.out.println("Merkkijonon pituus on " + input.length());
         
-        Huffman h = new Huffman(input);
+        HuffmanDemo h = new HuffmanDemo(input);
         String encoded = h.encode();
         System.out.println("Saadaan: \n" + encoded
                 + "\nPituus tiivistettynä: "+ encoded.length() + " \"bittiä\"");
