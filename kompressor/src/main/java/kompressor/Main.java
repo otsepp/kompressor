@@ -7,15 +7,16 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Scanner;
-import kompressor.huffman.ByteArrayWriter;
 import kompressor.huffman.Huffman;
-import kompressor.huffman.HuffmanDemo;
-import kompressor.huffman.HuffmanTree;
+import kompressor.huffman.demo.HuffmanDemo;
 import kompressor.lzw.LempelZivWelch;
 
 public class Main {
 
     public static void main(String[] args) throws IOException {
+        //JUNIT!!!
+//        ByteArrayReader br = new ByteArrayReader(new byte[]{0x2C, (byte) 0xB6, (byte) 0x92, (byte) 0xC5, (byte) 0x63, (byte) 0xB7, (byte) 0x80}); 
+        
           //JUNIT TEST
 //        ByteArrayWriter bwr = new ByteArrayWriter();
 //        bwr.writeZero();
@@ -35,17 +36,10 @@ public class Main {
 //            System.out.println(b);
 //        }
 
+
         String s = "cbboooiiiieeeee";
-        for (byte b : Huffman.encode(s.getBytes())) {
-            System.out.println(b);
-        }
-        
-//        for (byte b : code.toByteArray()) {
-//            System.out.println(Integer.toBinaryString(b));
-//        }
-        
-//        lzw();
-//        huffman(new Scanner(System.in));
+        byte[] encoded = Huffman.encode(s.getBytes());
+        byte[] decoded = Huffman.decode(encoded);
     }
     
     public static void lzw() {

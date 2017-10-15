@@ -1,7 +1,10 @@
 package kompressor.huffman;
 
+import kompressor.huffman.structures.HuffmanNode;
+import kompressor.huffman.structures.HuffmanTree;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import kompressor.huffman.TreeBuilder.TreeBuilderReturnObject;
 
 public class Huffman {
     private Huffman() {
@@ -9,8 +12,11 @@ public class Huffman {
     
     public static byte[] encode(byte[] bytes) throws IOException {
         ByteArrayOutputStream bs = new ByteArrayOutputStream();
-        HuffmanTree t = buildTree(bytes);
-//        ByteArrayWriter bwr = createHeader(t.getRoot(), new ByteArrayWriter());
+//        HuffmanTree t = buildTree(bytes);
+        HuffmanTree t = TreeBuilder.createTreeFromUnencodedBytes(bytes);
+        
+        bs.write(createHeader(t.getRoot(), new ByteArrayWriter()).toByteArray());
+        
         ByteArrayWriter bwr = new ByteArrayWriter();
         for (byte b : bytes) {
             for (char c : t.searchCode((char) b).toCharArray()) {
@@ -21,10 +27,34 @@ public class Huffman {
                 }
             }
         }
-        return bwr.toByteArray();
+        bs.write(bwr.toByteArray());
+        return bs.toByteArray();
     }
     
-    private static ByteArrayWriter createHeader(HuffmanNode n, ByteArrayWriter bwr) throws IOException  {
+     public static byte[] decode(byte[] bytes) {
+        TreeBuilderReturnObject tbr = TreeBuilder.createTreeFromEncodedBytes(bytes);
+        HuffmanTree t = tbr.getTree();
+        byte[] encoded = tbr.getLeftoverBytes();
+        
+        
+        
+        return null;
+//         StringBuilder sDecoded = new StringBuilder();
+//         StringBuilder code = new StringBuilder();
+//
+//         for (char c : this.sEncoded.toCharArray()) {
+//             code.append(c);
+//             Character cFound = tree.searchCharacter(code.toString());
+//
+//             if (cFound != null) {
+//                 sDecoded.append(cFound);
+//                 code = new StringBuilder();
+//             }
+//         }
+//         return sDecoded.toString();
+    }
+     
+     private static ByteArrayWriter createHeader(HuffmanNode n, ByteArrayWriter bwr) throws IOException  {
         if (n.getCharacter() != null) {
             bwr.writeOneBit();
             bwr.writeCharacter(n.getCharacter());
@@ -35,46 +65,5 @@ public class Huffman {
         bwr = createHeader(n.getRight(), bwr);
         return bwr;
     }
-    
-     public static byte[] decode(byte[] b) {
-        
-        return null;
-    }
-    
-    private static HuffmanTree buildTree(byte[] bytes) {
-        int[] freqs = new int[256];
-        
-        //talletetaan merkkien esiintymismäärät
-        for (byte b : bytes) {
-            freqs[b]++;
-        }
-        
-        HuffmanQueue q = new HuffmanQueue();
-        //laitetaan jonoon kaikki esiintyneet solmut
-        for (int i = 0; i < freqs.length; i++) {   
-            if (freqs[i] > 0) {
-                q.add(new HuffmanNode((char) i, freqs[i])); 
-            }
-        }
-        
-        HuffmanTree t = null;
-        while (q.size() > 0) {
-            //jonosta poistetaan solmut (lehdet), joiden kirjaimia esiintyy vähiten
-            HuffmanNode n0 = q.poll(); 
-            HuffmanNode n1 = q.poll();  
-
-            if (n1 != null) {
-                //kun löytyy kaksi solmua, ne yhdistetään uudeksi
-                HuffmanNode nu = new HuffmanNode(null, n0.getFrequency() + n1.getFrequency());
-                nu.setRight(n0);
-                nu.setLeft(n1);
-                q.add(nu);  
-            } else {
-                //viimeinen solmu loydetään, asetetaan puun juureksi
-                t = new HuffmanTree(n0);
-            }
-        }
-        return t;
-    }
-    
+     
 }

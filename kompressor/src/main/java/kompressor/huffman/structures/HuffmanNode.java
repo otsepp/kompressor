@@ -1,4 +1,4 @@
-package kompressor.huffman;
+package kompressor.huffman.structures;
 
 public class HuffmanNode {
     private Character c;

@@ -1,4 +1,8 @@
-package kompressor.huffman;
+package kompressor.huffman.demo;
+
+import kompressor.huffman.demo.HuffmanTreeDemo;
+import kompressor.huffman.structures.HuffmanQueue;
+import kompressor.huffman.structures.HuffmanNode;
 
 public class HuffmanDemo {
     private String s;

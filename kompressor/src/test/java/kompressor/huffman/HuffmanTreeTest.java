@@ -1,5 +1,7 @@
 package kompressor.huffman;
 
+import kompressor.huffman.demo.HuffmanTreeDemo;
+import kompressor.huffman.structures.HuffmanNode;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;

@@ -1,5 +1,7 @@
 package kompressor.huffman;
 
+import kompressor.huffman.structures.HuffmanQueue;
+import kompressor.huffman.structures.HuffmanNode;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 

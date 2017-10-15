@@ -1,5 +1,7 @@
 
-package kompressor.huffman;
+package kompressor.huffman.structures;
+
+import kompressor.huffman.structures.HuffmanNode;
 
 public class HuffmanQueue {
     private HuffmanNode[] a;

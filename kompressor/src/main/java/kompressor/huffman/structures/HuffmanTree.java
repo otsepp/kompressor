@@ -1,5 +1,5 @@
 
-package kompressor.huffman;
+package kompressor.huffman.structures;
 
 public class HuffmanTree {
     

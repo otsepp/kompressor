@@ -1,4 +1,6 @@
-package kompressor.huffman;
+package kompressor.huffman.demo;
+
+import kompressor.huffman.structures.HuffmanNode;
 
 public class HuffmanTreeDemo {
     private HuffmanNode root;
