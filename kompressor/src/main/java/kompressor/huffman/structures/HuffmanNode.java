@@ -11,6 +11,10 @@ public class HuffmanNode {
         this.freq = freq;
     }
     
+    public HuffmanNode(Character c) {
+        this.c = c;
+    }
+    
     public Character getCharacter() {
         return this.c;
     }
@@ -33,6 +37,11 @@ public class HuffmanNode {
     
     public void setRight(HuffmanNode n) {
         this.right = n;
+    }
+    
+    @Override
+    public String toString() {
+        return this.c + "";
     }
     
 }

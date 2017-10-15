@@ -1,10 +1,12 @@
 
 package kompressor.huffman;
 
+import java.io.ByteArrayOutputStream;
+
 public class ByteArrayReader {
-    byte[] bytes;
-    int index;
-    int readBits;
+    private byte[] bytes;
+    private int index;
+    private int readBits;
     
     public ByteArrayReader(byte[] bytes) {
         this.bytes = bytes;
@@ -33,6 +35,14 @@ public class ByteArrayReader {
           c = (byte) (c | readBit());
         }
         return (char) c;
+    }
+  
+    public byte[] getLeftoverBytes() {
+        ByteArrayOutputStream bs = new ByteArrayOutputStream();
+        for (int i = (index + 1); i < bytes.length; i++) {
+            bs.write(bytes[i]);
+        }
+        return bs.toByteArray();
     }
     
 }

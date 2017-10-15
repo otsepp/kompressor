@@ -4,7 +4,6 @@ import kompressor.huffman.structures.HuffmanNode;
 import kompressor.huffman.structures.HuffmanTree;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import kompressor.huffman.TreeBuilder.TreeBuilderReturnObject;
 
 public class Huffman {
     private Huffman() {
@@ -12,10 +11,9 @@ public class Huffman {
     
     public static byte[] encode(byte[] bytes) throws IOException {
         ByteArrayOutputStream bs = new ByteArrayOutputStream();
-//        HuffmanTree t = buildTree(bytes);
         HuffmanTree t = TreeBuilder.createTreeFromUnencodedBytes(bytes);
-        
-        bs.write(createHeader(t.getRoot(), new ByteArrayWriter()).toByteArray());
+
+        bs.write(createHeader(t.getRoot(), new ByteArrayWriter()).toByteArray(false));
         
         ByteArrayWriter bwr = new ByteArrayWriter();
         for (byte b : bytes) {
@@ -27,16 +25,15 @@ public class Huffman {
                 }
             }
         }
-        bs.write(bwr.toByteArray());
+        bs.write(bwr.toByteArray(true));
         return bs.toByteArray();
     }
     
      public static byte[] decode(byte[] bytes) {
         TreeBuilderReturnObject tbr = TreeBuilder.createTreeFromEncodedBytes(bytes);
-        HuffmanTree t = tbr.getTree();
-        byte[] encoded = tbr.getLeftoverBytes();
-        
-        
+ 
+//        HuffmanTree t = tbr.getTree();
+//        byte[] encoded = tbr.getLeftoverBytes();
         
         return null;
 //         StringBuilder sDecoded = new StringBuilder();

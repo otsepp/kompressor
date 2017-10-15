@@ -9,18 +9,6 @@ public class TreeBuilder {
     private TreeBuilder() {
     }
     
-    public static TreeBuilderReturnObject createTreeFromEncodedBytes(byte[] bytes) {
-        ByteArrayReader br = new ByteArrayReader(bytes);
-        HuffmanTree t = null;
-        
-        if (br.readBits == 1) {
-            
-        } else if (br.readBits == 0) {
-            
-        }
-        return null;
-    }
-    
     public static HuffmanTree createTreeFromUnencodedBytes(byte[] bytes) {
          int[] freqs = new int[256];
         //talletetaan merkkien esiintymismäärät
@@ -53,19 +41,31 @@ public class TreeBuilder {
         return t;
     }
     
-    public class TreeBuilderReturnObject {
-        private HuffmanTree tree;
-        private byte[] leftoverBytes;
-        TreeBuilderReturnObject(HuffmanTree tree, byte[] leftoverBytes) {
-            this.tree = tree;
-            this.leftoverBytes = leftoverBytes;
-        }
-        public HuffmanTree getTree() {
-            return this.tree;
-        }
-        public byte[] getLeftoverBytes() {
-            return this.leftoverBytes;
-        }
+    public static TreeBuilderReturnObject createTreeFromEncodedBytes(byte[] bytes) {
+        ByteArrayReader br = new ByteArrayReader(bytes);
+        HuffmanTree t = null;
+        
+        if (br.readBit() == 1) {
+            t = new HuffmanTree(new HuffmanNode(br.readCharacter()));
+            return new TreeBuilderReturnObject(t, br.getLeftoverBytes());
+        } 
+        
+        HuffmanNode root = buildNode(new HuffmanNode(null), br);
+        t = new HuffmanTree(root);
+        
+        return new TreeBuilderReturnObject(t, br.getLeftoverBytes());
+    }
+    
+   private static HuffmanNode buildNode(HuffmanNode n, ByteArrayReader br) {
+        //vasen
+        if (br.readBit() == 1) n.setLeft(new HuffmanNode(br.readCharacter()));
+        else n.setLeft(buildNode(new HuffmanNode(null), br));
+        
+        //oikea
+        if (br.readBit() == 1) n.setRight(new HuffmanNode(br.readCharacter()));
+        else n.setRight(buildNode(new HuffmanNode(null), br));
+        
+        return n;
     }
     
 }

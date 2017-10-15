@@ -38,6 +38,8 @@ public class Main {
 
 
         String s = "cbboooiiiieeeee";
+//        String s = "aaa";
+
         byte[] encoded = Huffman.encode(s.getBytes());
         byte[] decoded = Huffman.decode(encoded);
     }

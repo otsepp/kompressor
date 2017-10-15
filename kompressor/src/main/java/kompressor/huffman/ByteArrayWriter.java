@@ -2,7 +2,6 @@
 package kompressor.huffman;
 
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 
 public class ByteArrayWriter {
     private ByteArrayOutputStream bs;
@@ -15,24 +14,20 @@ public class ByteArrayWriter {
         space = 8;
     }
     
-//    public void writeBit(int i) {
-//        if (i == 0 || i == 1) {
-//            b = (byte)(b | i << --space);
-//            checkSpace();
-//        }
-//    }
-    
     public void writeZeroBit() {
+        checkLatestByte();
         space--;
         checkSpace();
     }
     
     public void writeOneBit() {
+        checkLatestByte();
         b = (byte) (b | 0x01 << --space);
         checkSpace();
     }
 
     public void writeCharacter(char c) {
+        checkLatestByte();
         b = (byte)(b | (c >>> 8 - space));
         bs.write(b);
         
@@ -43,17 +38,21 @@ public class ByteArrayWriter {
         }
     }
 
-    public byte[] toByteArray() {
-        if (b != 0x00) {
-            bs.write(b);
-        }
+    public byte[] toByteArray(boolean writeEOF) {
+        bs.write(b);
+        if (writeEOF) bs.write((byte)(8 - space));    //EOF, kuinka monta bittiä luetaan "viimeisestä" tavusta
         return bs.toByteArray();
     }
 
+    private void checkLatestByte() {
+        if (space == 8) {
+            b = 0x00;
+        }
+    }
+    
     private void checkSpace() {
         if (space == 0) {
             bs.write(b);
-            b = 0x00;
             space = 8;
         }
     }
