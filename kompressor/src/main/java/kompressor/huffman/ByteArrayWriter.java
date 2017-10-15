@@ -15,36 +15,21 @@ public class ByteArrayWriter {
         space = 8;
     }
     
-    
     public void writeBit(int i) {
-        checkLatestByte();
-        b = (byte) (b | i << --space);
         checkSpace();
-//        if (i == 0) writeZeroBit();
-//        else if (i == 1) writeOneBit();
+        b = (byte) (b | i << --space);
     }
-    
-//    public void writeZeroBit() {
-//        checkLatestByte();
-//        space--;
-//        checkSpace();
-//    }
-//    
-//    public void writeOneBit() {
-//        checkLatestByte();
-//        b = (byte) (b | 0x01 << --space);
-//        checkSpace();
-//    }
 
     public void writeCharacter(char c) {
-        checkLatestByte();
+        checkSpace();
+        
         b = (byte)(b | (c >>> 8 - space));
-        bs.write(b);
         
         if (space < 8) {
+            bs.write(b);
             b = (byte)(c << space);
         } else {
-            b = 0x00;
+            space = 0;
         }
     }
 
@@ -54,16 +39,12 @@ public class ByteArrayWriter {
         return bs.toByteArray();
     }
 
-    private void checkLatestByte() {
-        if (space == 8) {
-            b = 0x00;
-        }
-    }
-    
     private void checkSpace() {
         if (space == 0) {
             bs.write(b);
             space = 8;
+            b = 0x00;
         }
     }
+    
 }

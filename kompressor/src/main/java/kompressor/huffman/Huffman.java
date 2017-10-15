@@ -33,10 +33,6 @@ public class Huffman {
         HuffmanTree t = tbr.getTree();
         byte[] encoded = tbr.getLeftoverBytes();
         
-//        for (byte b : encoded) {
-//            System.out.println(Integer.toBinaryString(Byte.toUnsignedInt(b)));
-//        }
-        
         ByteArrayReader br = new ByteArrayReader(encoded, encoded[encoded.length - 1]);
         ByteArrayWriter bwr = new ByteArrayWriter();
         List<Integer> code = new ArrayList();
@@ -51,33 +47,16 @@ public class Huffman {
                 code = new ArrayList();
             }
         }
-       
-        
         return bwr.toByteArray(false);
-//         StringBuilder sDecoded = new StringBuilder();
-//         StringBuilder code = new StringBuilder();
-//
-//         for (char c : this.sEncoded.toCharArray()) {
-//             code.append(c);
-//             Character cFound = tree.searchCharacter(code.toString());
-//
-//             if (cFound != null) {
-//                 sDecoded.append(cFound);
-//                 code = new StringBuilder();
-//             }
-//         }
-//         return sDecoded.toString();
     }
      
      private static ByteArrayWriter createHeader(HuffmanNode n, ByteArrayWriter bwr) throws IOException  {
         if (n.getCharacter() != null) {
             bwr.writeBit(1);
-//            bwr.writeOneBit();
             bwr.writeCharacter(n.getCharacter());
             return bwr;
         }
         bwr.writeBit(0);
-//        bwr.writeZeroBit();
         bwr = createHeader(n.getLeft(), bwr);
         bwr = createHeader(n.getRight(), bwr);
         return bwr;
