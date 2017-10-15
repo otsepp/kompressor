@@ -14,9 +14,10 @@ import kompressor.lzw.LempelZivWelch;
 public class Main {
 
     public static void main(String[] args) throws IOException {
-        //JUNIT!!!
-//        ByteArrayReader br = new ByteArrayReader(new byte[]{0x2C, (byte) 0xB6, (byte) 0x92, (byte) 0xC5, (byte) 0x63, (byte) 0xB7, (byte) 0x80}); 
         
+        //JUNIT!!!        
+            
+//        ByteArrayReader br = new ByteArrayReader(new byte[]{0x2C, (byte) 0xB6, (byte) 0x92, (byte) 0xC5, (byte) 0x63, (byte) 0xB7, (byte) 0x80}); 
           //JUNIT TEST
 //        ByteArrayWriter bwr = new ByteArrayWriter();
 //        bwr.writeZero();
@@ -35,13 +36,19 @@ public class Main {
 //        for (byte b : bwr.toByteArray()) {
 //            System.out.println(b);
 //        }
-
+        
 
         String s = "cbboooiiiieeeee";
 //        String s = "aaa";
 
         byte[] encoded = Huffman.encode(s.getBytes());
         byte[] decoded = Huffman.decode(encoded);
+        
+        System.out.println(s);
+        System.out.println(new String(decoded));
+        
+        System.out.println("purkamistesti: " + s.equals(new String(decoded)));
+
     }
     
     public static void lzw() {

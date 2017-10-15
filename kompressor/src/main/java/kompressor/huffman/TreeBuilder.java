@@ -41,7 +41,7 @@ public class TreeBuilder {
         return t;
     }
     
-    public static TreeBuilderReturnObject createTreeFromEncodedBytes(byte[] bytes) {
+    public static TreeBuilderReturnObject createTreeFromHeader(byte[] bytes) {
         ByteArrayReader br = new ByteArrayReader(bytes);
         HuffmanTree t = null;
         

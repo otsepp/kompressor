@@ -7,15 +7,26 @@ public class ByteArrayReader {
     private byte[] bytes;
     private int index;
     private int readBits;
+    private int eofIndex;
+    private final int errorInt = 0xFF;
     
     public ByteArrayReader(byte[] bytes) {
         this.bytes = bytes;
         index = 0;
         readBits = 0;
+        eofIndex = 8;
+    }
+    
+     public ByteArrayReader(byte[] bytes, int eofIndex) {
+        this.bytes = bytes;
+        index = 0;
+        readBits = 0;
+        this.eofIndex = eofIndex;
     }
     
     public int readBit() {
-        if (index == bytes.length) return 0xFF;
+        if (index == bytes.length) return errorInt;
+        if (index == this.bytes.length - 2 && readBits == eofIndex) return errorInt;
         
         int b = ((bytes[index] & 0x80) >>> 7);
         
@@ -43,6 +54,10 @@ public class ByteArrayReader {
             bs.write(bytes[i]);
         }
         return bs.toByteArray();
+    }
+    
+    public int getErrorInt() {
+        return this.errorInt;
     }
     
 }
