@@ -1,7 +1,6 @@
 ## Kompressor
 
 Pakkaa ja purkaa merkkijonoja LZW- ja Huffman -algoritmeilla
-Huffmanista vain demoversio tällä hetkellä.
 
 ### Dokumentaatio
 
