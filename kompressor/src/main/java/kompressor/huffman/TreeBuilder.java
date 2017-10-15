@@ -57,11 +57,9 @@ public class TreeBuilder {
     }
     
    private static HuffmanNode buildNode(HuffmanNode n, ByteArrayReader br) {
-        //vasen
         if (br.readBit() == 1) n.setLeft(new HuffmanNode(br.readCharacter()));
         else n.setLeft(buildNode(new HuffmanNode(null), br));
         
-        //oikea
         if (br.readBit() == 1) n.setRight(new HuffmanNode(br.readCharacter()));
         else n.setRight(buildNode(new HuffmanNode(null), br));
         
