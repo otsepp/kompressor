@@ -8,7 +8,7 @@ public class ByteArrayReader {
     private int index;
     private int readBits;
     private int eofIndex;
-    private final int errorInt = 0xFF;
+    private final int ERROR_INT = 0xFF;
     
     public ByteArrayReader(byte[] bytes) {
         this.bytes = bytes;
@@ -25,8 +25,8 @@ public class ByteArrayReader {
     }
     
     public int readBit() {
-        if (index == bytes.length) return errorInt;
-        if (index == this.bytes.length - 2 && readBits == eofIndex) return errorInt;
+        if (index == bytes.length) return ERROR_INT;
+        if (index == this.bytes.length - 2 && readBits == eofIndex) return ERROR_INT;
         
         int b = ((bytes[index] & 0x80) >>> 7);
         
@@ -57,7 +57,7 @@ public class ByteArrayReader {
     }
     
     public int getErrorInt() {
-        return this.errorInt;
+        return this.ERROR_INT;
     }
     
 }

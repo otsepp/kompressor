@@ -2,7 +2,6 @@
 package kompressor.huffman;
 
 import java.io.ByteArrayOutputStream;
-import java.util.List;
 
 public class ByteArrayWriter {
     private ByteArrayOutputStream bs;

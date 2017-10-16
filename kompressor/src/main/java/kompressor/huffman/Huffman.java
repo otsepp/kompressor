@@ -4,8 +4,7 @@ import kompressor.huffman.structures.HuffmanNode;
 import kompressor.huffman.structures.HuffmanTree;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import kompressor.huffman.structures.IntList;
 
 public class Huffman {
     private Huffman() {
@@ -35,7 +34,7 @@ public class Huffman {
         
         ByteArrayReader br = new ByteArrayReader(encoded, encoded[encoded.length - 1]);
         ByteArrayWriter bwr = new ByteArrayWriter();
-        List<Integer> code = new ArrayList();
+        IntList code = new IntList();
         
         int b;
         while ((b = br.readBit()) != br.getErrorInt()) {
@@ -44,7 +43,7 @@ public class Huffman {
             
             if (cFound != null) {
                 bwr.writeCharacter(cFound);
-                code = new ArrayList();
+                code = new IntList();
             }
         }
         return bwr.toByteArray(false);

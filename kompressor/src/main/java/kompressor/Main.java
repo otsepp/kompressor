@@ -9,17 +9,34 @@ import java.util.Arrays;
 import java.util.Scanner;
 import kompressor.huffman.Huffman;
 import kompressor.huffman.demo.HuffmanDemo;
+import kompressor.huffman.structures.IntList;
 import kompressor.lzw.LempelZivWelch;
 
 public class Main {
 
     public static void main(String[] args) throws IOException {
-        huffman();
+//        IntList list = new IntList();
+//        list.add(1);
+//        list.add(0);
+//        list.add(0);
+//        list.add(1);
+//        
+//        IntList listNew = new IntList(list);
+//        
+//        listNew.add(1);
+//        listNew.add(1);
+//        
+//        for (int i : listNew) {
+//            System.out.println(i);
+//        }
         
+
 //        String s = "cbboooiiiieeeee";
 //        byte[] encoded = Huffman.encode(s.getBytes());
 //        byte[] decoded = Huffman.decode(encoded);
 //        System.out.println("purkamistesti: " + s.equals(new String(decoded)));
+
+        huffman();
 
     }
     

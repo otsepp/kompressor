@@ -1,9 +1,6 @@
 
 package kompressor.huffman.structures;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class HuffmanTree {
     
     private HuffmanNode root;
@@ -16,8 +13,8 @@ public class HuffmanTree {
         return this.root;
     }
     
-    public List<Integer> searchCode(char c) {
-        List<Integer> code = new ArrayList();
+    public IntList searchCode(char c) {
+        IntList code = new IntList();
          if (root.getCharacter() != null && root.getCharacter() == c) {
              code.add(0);
              return code;
@@ -25,10 +22,10 @@ public class HuffmanTree {
         return searchNode(root, c, code);
     }
     
-     private List<Integer> searchNode(HuffmanNode n, char c, List<Integer> code) {
+     private IntList searchNode(HuffmanNode n, char c, IntList code) {
          if (n.getCharacter() == null) {
-             List<Integer> left = new ArrayList(code);
-             List<Integer> right = new ArrayList(code);
+             IntList left = new IntList(code);
+             IntList right  = new IntList(code);
              
              left.add(1);
              right.add(0);
@@ -45,7 +42,7 @@ public class HuffmanTree {
          }
      }
      
-      public Character searchCharacter(List<Integer> code) {
+      public Character searchCharacter(IntList code) {
           HuffmanNode n = root;
           if (n.getCharacter() != null) return n.getCharacter();
           
