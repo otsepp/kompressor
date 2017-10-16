@@ -1,5 +1,7 @@
 package kompressor.huffman;
 
+import kompressor.huffman.bytearray.ByteArrayWriter;
+import kompressor.huffman.bytearray.ByteArrayReader;
 import kompressor.huffman.structures.HuffmanNode;
 import kompressor.huffman.structures.HuffmanTree;
 import java.io.ByteArrayOutputStream;

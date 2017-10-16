@@ -1,5 +1,6 @@
 package kompressor.huffman;
 
+import kompressor.huffman.bytearray.ByteArrayReader;
 import kompressor.huffman.structures.HuffmanNode;
 import kompressor.huffman.structures.HuffmanQueue;
 import kompressor.huffman.structures.HuffmanTree;

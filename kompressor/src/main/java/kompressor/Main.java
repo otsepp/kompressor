@@ -7,40 +7,23 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Arrays;
 import kompressor.huffman.Huffman;
+import kompressor.huffman.bytearray.ByteArrayReader;
 import kompressor.lzw.LempelZivWelch;
 
 public class Main {
 
     public static void main(String[] args) throws IOException {
-//        IntList list = new IntList();
-//        list.add(1);
-//        list.add(0);
-//        list.add(0);
-//        list.add(1);
-//        
-//        IntList listNew = new IntList(list);
-//        
-//        listNew.add(1);
-//        listNew.add(1);
-//        
-//        for (int i : listNew) {
-//            System.out.println(i);
-//        }
+        ByteArrayReader br = new ByteArrayReader(new byte[]{0x61});
+        System.out.println(br.readCharacter());
+        System.out.println((int) br.readCharacter());
         
-
-//        String s = "cbboooiiiieeeee";
-//        byte[] encoded = Huffman.encode(s.getBytes());
-//        byte[] decoded = Huffman.decode(encoded);
-//        System.out.println("purkamistesti: " + s.equals(new String(decoded)));
-
-//        huffman();
-        lzw();
+        huffman();
     }
     
     //nopeasti tehty copy paste metodi
     public static void huffman() {
          try {
-            File f = new File("src/resources/vermeer.jpg");
+            File f = new File("src/resources/textverylong.txt");
             FileInputStream in = new FileInputStream(f);
 
             byte[] bytes1 = new byte[(int)f.length()];

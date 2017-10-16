@@ -1,5 +1,5 @@
 
-package kompressor.huffman;
+package kompressor.huffman.bytearray;
 
 import java.io.ByteArrayOutputStream;
 
