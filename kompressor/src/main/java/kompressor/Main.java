@@ -6,10 +6,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.Scanner;
 import kompressor.huffman.Huffman;
-import kompressor.huffman.demo.HuffmanDemo;
-import kompressor.huffman.structures.IntList;
 import kompressor.lzw.LempelZivWelch;
 
 public class Main {
@@ -37,7 +34,6 @@ public class Main {
 //        System.out.println("purkamistesti: " + s.equals(new String(decoded)));
 
         huffman();
-
     }
     
     //nopeasti tehty copy paste metodi
@@ -105,21 +101,6 @@ public class Main {
          } catch (Exception e) {
              e.printStackTrace();
          }
-    }
-    
-    public static void huffman(Scanner s) {
-        System.out.print("\n***Huffman***\n"
-                + "Syötä merkkijono: \n>");
-        
-        String input = s.nextLine();
-        System.out.println("Merkkijonon pituus on " + input.length());
-        
-        HuffmanDemo h = new HuffmanDemo(input);
-        String encoded = h.encode();
-        System.out.println("Saadaan: \n" + encoded
-                + "\nPituus tiivistettynä: "+ encoded.length() + " \"bittiä\"");
-        
-        System.out.println("Purkamistesti: " + input.equals(h.decode()));
     }
     
 }
