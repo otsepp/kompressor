@@ -40,7 +40,7 @@ public class Main {
     //nopeasti tehty copy paste metodi
     public static void huffman() {
          try {
-            File f = new File("src/resources/textshort.txt");
+            File f = new File("src/resources/vermeer.jpg");
             FileInputStream in = new FileInputStream(f);
 
             byte[] bytes1 = new byte[(int)f.length()];
@@ -73,7 +73,7 @@ public class Main {
     
     public static void lzw() {
         try {
-            File f = new File("src/resources/run.gif");
+            File f = new File("src/resources/vermeer.jpg");
             FileInputStream in = new FileInputStream(f);
 
             byte[] bytes1 = new byte[(int)f.length()];
