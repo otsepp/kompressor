@@ -15,13 +15,14 @@ public class LempelZivWelch {
     }
     
    public static byte[] encode(byte[] bytes) throws IOException {
+       if (bytes.length == 0) return bytes;
        ByteArrayOutputStream bs = new ByteArrayOutputStream();
        lzwDictionary<String, Integer> dictionary = initialiseEncodingDictionary();
        int nextCode = INIT_DICT_SIZE;
        String prev = "";
        
        for (byte b : bytes) {
-           String current = (char) b + "";
+           String current = (char) (Byte.toUnsignedInt(b)) + "";
            
             if (dictionary.containsKey(prev + current)) {
                 prev = prev + current;
@@ -43,6 +44,7 @@ public class LempelZivWelch {
    }
    
     public static byte[] decode(byte[] bytes) {
+        if (bytes.length == 0) return bytes;
         ByteArrayOutputStream bs = new ByteArrayOutputStream();
         
         lzwDictionary<Integer, String> dictionary = initialiseDecodingDictionary();

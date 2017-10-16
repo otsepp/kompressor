@@ -33,13 +33,14 @@ public class Main {
 //        byte[] decoded = Huffman.decode(encoded);
 //        System.out.println("purkamistesti: " + s.equals(new String(decoded)));
 
-        huffman();
+//        huffman();
+        lzw();
     }
     
     //nopeasti tehty copy paste metodi
     public static void huffman() {
          try {
-            File f = new File("src/resources/textverylong.txt");
+            File f = new File("src/resources/textshort.txt");
             FileInputStream in = new FileInputStream(f);
 
             byte[] bytes1 = new byte[(int)f.length()];
@@ -72,7 +73,7 @@ public class Main {
     
     public static void lzw() {
         try {
-            File f = new File("src/resources/textlong.txt");
+            File f = new File("src/resources/run.gif");
             FileInputStream in = new FileInputStream(f);
 
             byte[] bytes1 = new byte[(int)f.length()];

@@ -10,10 +10,10 @@ public class TreeBuilder {
     }
     
     public static HuffmanTree createTreeFromUnencodedBytes(byte[] bytes) {
-         int[] freqs = new int[256];
+        int[] freqs = new int[256];
         //talletetaan merkkien esiintymismäärät
         for (byte b : bytes) {
-            freqs[b]++;
+            freqs[Byte.toUnsignedInt(b)]++;
         }
         HuffmanQueue q = new HuffmanQueue();
         //laitetaan jonoon kaikki esiintyneet solmut

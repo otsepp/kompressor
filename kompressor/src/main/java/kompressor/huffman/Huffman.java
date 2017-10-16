@@ -11,7 +11,10 @@ public class Huffman {
     }
     
     public static byte[] encode(byte[] bytes) throws IOException {
+        if (bytes.length == 0) return bytes;
+        
         ByteArrayOutputStream bs = new ByteArrayOutputStream();
+        
         HuffmanTree t = TreeBuilder.createTreeFromUnencodedBytes(bytes);
         
         bs.write(createHeader(t.getRoot(), new ByteArrayWriter()).toByteArray(false));
@@ -19,7 +22,8 @@ public class Huffman {
         ByteArrayWriter bwr = new ByteArrayWriter();
         
         for (byte b : bytes) {
-            for (int i : t.searchCode((char) b)) {
+            char c = (char) Byte.toUnsignedInt(b);
+            for (int i : t.searchCode(c)) {
                 bwr.writeBit(i);
             }
         }
@@ -28,6 +32,8 @@ public class Huffman {
     }
     
      public static byte[] decode(byte[] bytes) {
+         if (bytes.length == 0) return bytes;
+         
         TreeBuilderReturnObject tbr = TreeBuilder.createTreeFromHeader(bytes);
         HuffmanTree t = tbr.getTree();
         byte[] encoded = tbr.getLeftoverBytes();

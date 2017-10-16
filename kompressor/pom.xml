@@ -45,7 +45,7 @@
                     <targetClasses>
                         <param>kompressor.lzw.*</param>
                         <param>kompressor.lzw.structures.*</param>
-                        <param>kompressor.huffman.*</param>
+                        <param>kompressor.huffman.structures.*</param>
                     </targetClasses>
                 </configuration>
             </plugin>
