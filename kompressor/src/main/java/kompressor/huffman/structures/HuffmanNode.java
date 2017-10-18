@@ -39,9 +39,4 @@ public class HuffmanNode {
         this.right = n;
     }
     
-    @Override
-    public String toString() {
-        return this.c + "";
-    }
-    
 }
