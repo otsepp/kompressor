@@ -14,7 +14,7 @@ kohdassa Uncompression
 
 #### lzwDictionary
 Ensimmäinen testi tekee saman kuin lzw, kun se muodostaa sanakirjan pakkaamista varten,
-ja tarkistaa, että merkkijonoavaimella löydetään oikea koodi.
+ja tarkistaa, että merkkijonoavaimella löydetään oikea koodi. 
 
 Tämän lisäksi testataan, että oikea arvo löydetään avaimille, joiden hajautufunktioiden
 arvot ovat samat (String-luokan hashCode()-metodi palauttaa saman arvon merkkijonoille

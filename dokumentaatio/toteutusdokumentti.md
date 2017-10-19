@@ -7,7 +7,7 @@
 **Pakkausalgoritmi** saa syötteenä taulukon tavuja, jotka kuvaavat ASCII-merkistön symboleita.
 Luettuja symboleita yhdistetään merkkijonoiksi, jotka lisätään ns. sanakirjaan, joka sisältää
 merkkijono-koodi -pareja. Hajautustaululla toteutettu sanakirja sisältää alussa kaikki 256 ASCII-symbolia, 
-ja kun sen maksimikoko (4096) saavutetaan, se resetoidaan takaisin tuohon alkutilaan.
+ja kun sen maksimikoko (4096) saavutetaan, se resetoidaan takaisin alkutilaan.
 Koodit ovat 12-bitin kokoisia, ja ne kootaan yhteen käyttäen luokkaa ByteArrayOutputStream.
 Algoritmi palauttaa taulukon tavuja.
 
@@ -59,7 +59,8 @@ Eli myös purkamisalgoritmin aikavaativuus on keskimäärin O(n), ja tilavaativuus 
 
 ### Paranneltavaa
 
-Toteutuksen pahin puute on 12 bittiset koodit. Olisi tietenkin tehokkaampaa jos käytettäisiin ns. variable-length -koodeja. Lisäksi, koodeja ei kirjoiteta tiivisti eli jokaiseen kuuluu 8 turhaa nollabittiä.
+Toteutuksen pahin puute on 12 bittiset koodit. Olisi tietenkin tehokkaampaa jos käytettäisiin ns. variable-length -koodeja.
+Lisäksi, koodeja ei kirjoiteta tiivisti eli jokaiseen kuuluu 8 turhaa nollabittiä.
 
 
 

@@ -1,8 +1,8 @@
 package kompressor.lzw.structures;
 
+import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
-import org.junit.Test;
 
 public class lzwLinkedListTest {
     
@@ -10,18 +10,18 @@ public class lzwLinkedListTest {
     }
 
     @Test
-    public void addAndSearchTest() {
-        lzwLinkedList<String, Integer> l1 = new lzwLinkedList();
-        l1.add("a", 1);
-        l1.add("b", 2);
-        assertEquals(1, l1.search("a").intValue());
-        assertEquals(2, l1.search("b").intValue());
+    public void testAddAndSearch() {
+        lzwLinkedList<String, Integer> list = new lzwLinkedList();
+        list.add("a", 1);
+        list.add("b", 2);
+        assertEquals(1, list.search("a").intValue());
+        assertEquals(2, list.search("b").intValue());
     }
     
     @Test
-    public void SearchNotFoundTest() {
-        lzwLinkedList<String, Integer> l1 = new lzwLinkedList();
-        assertNull(l1.search("ei löydy"));
+    public void testSearchNotFound() {
+        lzwLinkedList<String, Integer> list = new lzwLinkedList();
+        assertNull(list.search("ei löydy"));
     }
     
 }

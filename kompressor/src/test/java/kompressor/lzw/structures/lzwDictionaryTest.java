@@ -1,8 +1,8 @@
 package kompressor.lzw.structures;
 
-import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 public class lzwDictionaryTest {
      private lzwDictionary<String, Integer> dict;
@@ -16,15 +16,15 @@ public class lzwDictionaryTest {
     }
     
     @Test
-    public void putAndGetTest() {
-        for (int i = 0; i < 256; i++) {
+    public void testPutAndGet() {
+        for (int i = 0; i < 4096; i++) {
             dict.put((char) i + "", i);
             assertEquals(i, dict.get((char) i + "").intValue());
         }
     }
     
     @Test
-    public void addCollisionTest() {
+    public void testAddCollision() {
         String s1 = "FB";
         String s2 = "Ea";
         dict.put("FB", 1);

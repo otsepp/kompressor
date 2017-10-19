@@ -2,6 +2,7 @@ package kompressor.lzw.structures;
 
 public class lzwLinkedList<K, V> {
         private Node<K, V> top;
+        private int size;
         
         public lzwLinkedList() {
         }
@@ -13,16 +14,15 @@ public class lzwLinkedList<K, V> {
         //LZW ei kuitenkaan lisää samoja avaimia useasti, joten tätä ei huomioida
         public final void add(K k, V v) {
             Node n = new Node(k, v);
-            n.next = this.top;
-            this.top = n;
+            n.next = top;
+            top = n;
         }
         
         public V search(K k) {
-            Node n = this.top;
+            Node n = top;
             while (n != null) { 
-                if (n.k.equals(k)) {
-                    return (V) n.v;
-                }
+                if (n.k.equals(k)) return (V) n.v;
+                
                 n = n.next;
             }
             return null;
