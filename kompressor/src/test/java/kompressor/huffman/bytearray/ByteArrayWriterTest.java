@@ -21,8 +21,8 @@ public class ByteArrayWriterTest {
             bwr.writeBit(1);
         }
         byte[] b = bwr.toByteArray(false);
-        assertEquals(b[0], (byte) 0xFF);
-        assertEquals(b[1], (byte) 0x80);
+        assertEquals((byte) 0xFF, b[0]);
+        assertEquals((byte) 0x80, b[1]);
     }
 
     @Test
@@ -31,23 +31,23 @@ public class ByteArrayWriterTest {
         bwr.writeBit(0);
         bwr.writeCharacter('c');
         byte[] b = bwr.toByteArray(false);
-        assertEquals(b[0], (int) 'a');
-        assertEquals(b[1], ((int) 'c') >>> 1);
-        assertEquals(b[2], (byte) 0x80);
+        assertEquals((int) 'a', b[0]);
+        assertEquals(((int) 'c') >>> 1, b[1]);
+        assertEquals((byte) 0x80, b[2]);
     }  
 
     @Test
     public void testToByteArrayOneByte() {
         bwr.writeBit(1);
         byte[] b = bwr.toByteArray(false);
-        assertEquals(b.length, 1);
+        assertEquals(1, b.length);
     }
     @Test
     public void testToByteArrayMultipleBytes() {
         bwr.writeBit(0);
         bwr.writeCharacter('a');
         byte[] b = bwr.toByteArray(false);
-        assertEquals(b.length, 2);
+        assertEquals(2, b.length);
     }
     
     @Test
@@ -57,8 +57,8 @@ public class ByteArrayWriterTest {
         bwr.writeBit(0);
         bwr.writeBit(1);
         byte[] b = bwr.toByteArray(true);
-        assertEquals(b.length, 2);
-        assertEquals(b[0], (byte) 0x10);
-        assertEquals(b[1], 4);
+        assertEquals(2, b.length);
+        assertEquals((byte) 0x10, b[0]);
+        assertEquals(4, b[1]);
     }
 }

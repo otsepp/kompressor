@@ -16,22 +16,12 @@ import kompressor.lzw.LempelZivWelch;
 public class Main {
 
     public static void main(String[] args) throws IOException {
-        byte[] bytes = new byte[]{
-            (byte) 'c',
-            (byte) 'b', (byte) 'b',
-            (byte) 'o', (byte) 'o', (byte) 'o',
-            (byte) 'i', (byte) 'i', (byte) 'i', (byte) 'i',
-            (byte) 'e', (byte) 'e', (byte) 'e', (byte) 'e', (byte) 'e',};
+            String s = "cbboooiiiieeeee";
             
-        HuffmanTree t = TreeBuilder.createTreeFromUnencodedBytes(bytes);
-        
-        byte[] h = Huffman.createHeader(t.getRoot(), new ByteArrayWriter()).toByteArray(false);
-        for (byte b : h) {
-            System.out.println(Integer.toHexString(Byte.toUnsignedInt(b)));
-        } 
-        
-        t = TreeBuilder.createTreeFromHeader(h).getTree();
-        
+            for (byte b : Huffman.encode(s.getBytes())) {
+                System.out.println("*" + Integer.toHexString(Byte.toUnsignedInt(b)));
+            }
+            
 //        huffman();
     }
     

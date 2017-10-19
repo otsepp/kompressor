@@ -27,18 +27,18 @@ public class HuffmanQueueTest {
 
     @Test
     public void testPoll() {
-        assertEquals(q.poll().getCharacter() == 'c', true);
-        assertEquals(q.poll().getCharacter() == 'b', true);
-        assertEquals(q.poll().getCharacter() == 'e', true);
-        assertEquals(q.poll().getCharacter() == 'i', true);
-        assertEquals(q.poll().getCharacter() == 'o', true);
-        assertEquals(q.poll(), null);
+        assertEquals('c', q.poll().getCharacter().charValue());
+        assertEquals('b', q.poll().getCharacter().charValue());
+        assertEquals('e', q.poll().getCharacter().charValue());
+        assertEquals('i', q.poll().getCharacter().charValue());
+        assertEquals('o', q.poll().getCharacter().charValue());
+        assertEquals(null, q.poll());
     }
     
     @Test 
     public void testAdd() {
         q.add(new HuffmanNode('i', 1));
-        assertEquals(q.poll().getCharacter() == 'i', true);
+        assertEquals('i', q.poll().getCharacter().charValue());
     }
     
 }

@@ -57,7 +57,7 @@ public class Huffman {
         return bwr.toByteArray(false);
     }
      
-     public static ByteArrayWriter createHeader(HuffmanNode n, ByteArrayWriter bwr) throws IOException  {
+     private static ByteArrayWriter createHeader(HuffmanNode n, ByteArrayWriter bwr) throws IOException  {
         if (n.getCharacter() != null) {
             bwr.writeBit(1);
             bwr.writeCharacter(n.getCharacter());

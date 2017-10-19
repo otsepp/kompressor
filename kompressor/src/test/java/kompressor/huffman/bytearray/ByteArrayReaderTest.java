@@ -14,29 +14,29 @@ public class ByteArrayReaderTest {
         for (int i = 0; i < 15; i++) {
             assertEquals(br.readBit(), 1);
         }
-        assertEquals(br.readBit(), 0);
-        assertEquals(br.readBit(), br.getErrorInt());
+        assertEquals(0, br.readBit());
+        assertEquals(br.getErrorInt(), br.readBit());
     }
 
     @Test
     public void testReadCharacter() {
         ByteArrayReader br = new ByteArrayReader(new byte[]{97, 98});
-        assertEquals(br.readCharacter(), 'a');
-        assertEquals(br.readCharacter(), 'b');
+        assertEquals('a', br.readCharacter());
+        assertEquals('b', br.readCharacter());
     }
 
     @Test
     public void testGetLeftoverBytes() {
         ByteArrayReader br = new ByteArrayReader(new byte[]{0x00, 0x01});
-        assertEquals(br.getLeftoverBytes()[0], 0x01);
+        assertEquals(0x01, br.getLeftoverBytes()[0]);
     }
 
     @Test
     public void testEofIndex() {
         ByteArrayReader br = new ByteArrayReader(new byte[]{0x00, 0x00}, 2);
-        assertEquals(br.readBit(), 0);
-        assertEquals(br.readBit(), 0);
-        assertEquals(br.readBit(), br.getErrorInt());
+        assertEquals(0, br.readBit());
+        assertEquals(0, br.readBit());
+        assertEquals(br.getErrorInt(), br.readBit());
     }
     
 }

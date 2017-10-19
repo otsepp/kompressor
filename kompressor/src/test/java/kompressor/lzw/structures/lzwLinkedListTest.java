@@ -1,6 +1,7 @@
 package kompressor.lzw.structures;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 import org.junit.Test;
 
 public class lzwLinkedListTest {
@@ -13,14 +14,14 @@ public class lzwLinkedListTest {
         lzwLinkedList<String, Integer> l1 = new lzwLinkedList();
         l1.add("a", 1);
         l1.add("b", 2);
-        assertEquals(l1.search("a") == 1, true);
-        assertEquals(l1.search("b") == 2, true);
+        assertEquals(1, l1.search("a").intValue());
+        assertEquals(2, l1.search("b").intValue());
     }
     
     @Test
     public void SearchNotFoundTest() {
         lzwLinkedList<String, Integer> l1 = new lzwLinkedList();
-        assertEquals(l1.search("ei löydy"), null);
+        assertNull(l1.search("ei löydy"));
     }
     
 }

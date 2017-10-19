@@ -11,8 +11,6 @@ public class TreeBuilderTest {
     
     public TreeBuilderTest() {
     }
-
-    
     
     @Test
     public void testCreateTreeFromUnencodedBytes() {

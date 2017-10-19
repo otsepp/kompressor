@@ -42,11 +42,6 @@
                 <artifactId>pitest-maven</artifactId>
                 <version>1.1.8</version>
                 <configuration>
-                    <targetClasses>
-                        <param>kompressor.lzw.*</param>
-                        <param>kompressor.lzw.structures.*</param>
-                        <param>kompressor.huffman.structures.*</param>
-                    </targetClasses>
                 </configuration>
             </plugin>
         </plugins>

@@ -36,54 +36,54 @@ public class HuffmanTreeTest {
         IntList list = new IntList();
         list.add(1);
         list.add(1);
-        assertEquals(tree.searchCharacter(list) == 'e', true);
+        assertEquals('e', tree.searchCharacter(list).charValue());
         
         list = new IntList();
         list.add(1);
         list.add(0);
-        assertEquals(tree.searchCharacter(list) == 'i', true);
+        assertEquals('i', tree.searchCharacter(list).charValue());
 
         list = new IntList();
         list.add(0);
         list.add(0);
-        assertEquals(tree.searchCharacter(list) == 'o', true);
+        assertEquals('o', tree.searchCharacter(list).charValue());
         
         list = new IntList();
         list.add(0);
         list.add(1);
         list.add(1);
-        assertEquals(tree.searchCharacter(list) == 'b', true);
+        assertEquals('b', tree.searchCharacter(list).charValue());
         
         list = new IntList();
         list.add(0);
         list.add(1);
         list.add(0);
-        assertEquals(tree.searchCharacter(list) == 'c', true);
+        assertEquals('c', tree.searchCharacter(list).charValue());
     }
     
     @Test
     public void testSearchCode() {
         IntList list = tree.searchCode('e');
-        assertEquals(list.get(0) == 1, true);
-        assertEquals(list.get(1) == 1, true);
+        assertEquals(1, list.get(0).intValue());
+        assertEquals(1, list.get(1).intValue());
         
         list = tree.searchCode('i');
-        assertEquals(list.get(0) == 1, true);
-        assertEquals(list.get(1) == 0, true);
+        assertEquals(1, list.get(0).intValue());
+        assertEquals(0, list.get(1).intValue());
         
         list = tree.searchCode('o');
-        assertEquals(list.get(0) == 0, true);
-        assertEquals(list.get(1) == 0, true);
+        assertEquals(0, list.get(0).intValue());
+        assertEquals(0, list.get(1).intValue());
         
         list = tree.searchCode('b');
-        assertEquals(list.get(0) == 0, true);
-        assertEquals(list.get(1) == 1, true);
-        assertEquals(list.get(2) == 1, true);
+        assertEquals(0, list.get(0).intValue());
+        assertEquals(1, list.get(1).intValue());
+        assertEquals(1, list.get(2).intValue());
 
         list = tree.searchCode('c');
-        assertEquals(list.get(0) == 0, true);
-        assertEquals(list.get(1) == 1, true);
-        assertEquals(list.get(2) == 0, true);
+        assertEquals(0, list.get(0).intValue());
+        assertEquals(1, list.get(1).intValue());
+        assertEquals(0, list.get(2).intValue());
     }
     
 }
