@@ -30,7 +30,7 @@ public class Main {
             System.out.println("Luettiin tekstitiedosto sijainnista " + f.getPath() + ", koko: " + bytes1.length + " tavua");
             
             byte[] bytes2 = Huffman.encode(bytes1);
-            f = new File("src/resources/compressed");
+            f = new File("src/resources/.compressed");
             FileOutputStream out = new FileOutputStream(f);
             out.write(bytes2);
             
@@ -63,7 +63,7 @@ public class Main {
             System.out.println("Luettiin tekstitiedosto sijainnista " + f.getPath() + ", koko: " + bytes1.length + " tavua");
             
             byte[] bytes2 = LempelZivWelch.encode(bytes1);
-            f = new File("src/resources/compressed");
+            f = new File("src/resources/.compressed");
             FileOutputStream out = new FileOutputStream(f);
             out.write(bytes2);
             
