@@ -4,8 +4,8 @@
 
 
 ## LempelZivWelch
-Testeiss‰ k‰ytet‰‰n merkkijonoa "! ! +" (tavuina), josta saadaan helposti k‰sin simuloimalla
-koodit 33, 32, 256 ja 43. N‰iden 12-bittiset versiot laitetaan byte[] taulukkoon.
+Testeiss‰ k‰ytet‰‰n merkkijonoa "! ! +" (tavuina), josta saadaan
+koodit 33(!), 32(v‰li), 256(!v‰li) ja 43(+). N‰iden 12-bittiset versiot laitetaan byte[] taulukkoon.
 
 Viimeinen testi testaa poikkeustilannetta, jossa sanakirjasta ei lˆydy merkkijonoa luetulle koodille.
 T‰m‰ tapahtuu esim. k‰ytetyll‰ merkkijonolla "1212121". T‰m‰ selitet‰‰n https://www.cs.duke.edu/csed/curious/compression/lzw.html 

@@ -2,6 +2,7 @@ package kompressor.lzw;
 
 import java.io.IOException;
 import java.util.Arrays;
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,26 +17,34 @@ public class LempelZivWelchTest {
     
     @Before
     public void setUp() {
-        this.unencoded = new byte[] { 0x21, 0x20, 0x21, 0x20, 0x2B };   //"! ! +", [33,32, 256,43]
+        this.unencoded = new byte[]{'!', ' ', '!', ' ', '+'};
         this.encoded = new byte[] { 
-            0x0, (byte) 0x21,   //12 bit code for 33
-            0x0, (byte) 0x20,   
+            0x0, '!',   //12 bit code for 33
+            0x0, ' ',   
             0x1, 0x0,               //12 bit code for 256 (new dictionary entry)
-            0x0, (byte) 0x2B
+            0x0, '+'
         };
     }
     
     @Test
      public void testEncode() throws IOException { 
-         byte[] encodedTest = LempelZivWelch.encode(this.unencoded);
-         assertEquals(true, Arrays.equals(this.encoded, encodedTest));
+         assertArrayEquals(this.encoded, LempelZivWelch.encode(this.unencoded));
+     }
+     
+     @Test
+     public void testEncodeEmpty() throws IOException {
+         assertArrayEquals(new byte[]{}, LempelZivWelch.encode(new byte[]{}));
      }
      
     @Test
     public void testDecode() {
-        byte[] decoded = LempelZivWelch.decode(this.encoded);
-        assertEquals(true, Arrays.equals(this.unencoded, decoded));
+        assertArrayEquals(this.unencoded, LempelZivWelch.decode(this.encoded));
     }
+    
+    @Test
+     public void testDecodeEmpty() {
+         assertArrayEquals(new byte[]{}, LempelZivWelch.decode(new byte[]{}));
+     }
     
     @Test 
     public void testDecodeNoDictionaryEntryFound() throws IOException {

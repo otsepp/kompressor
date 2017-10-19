@@ -7,22 +7,12 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Arrays;
 import kompressor.huffman.Huffman;
-import kompressor.huffman.TreeBuilder;
-import kompressor.huffman.bytearray.ByteArrayWriter;
-import kompressor.huffman.structures.HuffmanNode;
-import kompressor.huffman.structures.HuffmanTree;
 import kompressor.lzw.LempelZivWelch;
 
 public class Main {
 
     public static void main(String[] args) throws IOException {
-            String s = "cbboooiiiieeeee";
-            
-            for (byte b : Huffman.encode(s.getBytes())) {
-                System.out.println("*" + Integer.toHexString(Byte.toUnsignedInt(b)));
-            }
-            
-//        huffman();
+        lzw();
     }
     
     //nopeasti tehty copy paste metodi
@@ -61,7 +51,7 @@ public class Main {
     
     public static void lzw() {
         try {
-            File f = new File("src/resources/vermeer.jpg");
+            File f = new File("src/resources/textverylong.txt");
             FileInputStream in = new FileInputStream(f);
 
             byte[] bytes1 = new byte[(int)f.length()];

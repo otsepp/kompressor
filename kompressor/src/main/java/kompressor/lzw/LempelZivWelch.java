@@ -16,6 +16,7 @@ public class LempelZivWelch {
     
    public static byte[] encode(byte[] bytes) throws IOException {
        if (bytes.length == 0) return bytes;
+       
        ByteArrayOutputStream bs = new ByteArrayOutputStream();
        lzwDictionary<String, Integer> dictionary = initialiseEncodingDictionary();
        int nextCode = INIT_DICT_SIZE;
@@ -37,16 +38,14 @@ public class LempelZivWelch {
                 prev = current;
             }
        }
-       if (!prev.equals("")) {
-           bs.write(create12BitCode(dictionary.get(prev)));
-        }
+       bs.write(create12BitCode(dictionary.get(prev)));
        return bs.toByteArray();
    }
    
     public static byte[] decode(byte[] bytes) {
         if (bytes.length == 0) return bytes;
+       
         ByteArrayOutputStream bs = new ByteArrayOutputStream();
-        
         lzwDictionary<Integer, String> dictionary = initialiseDecodingDictionary();
         int nextCode = INIT_DICT_SIZE;
         String prev = "";
@@ -56,11 +55,8 @@ public class LempelZivWelch {
             int code = codeBuffer.getInt();
             String current;
             
-            if (dictionary.containsKey(code)) {
-                current = dictionary.get(code);
-            } else {
-                current = prev + prev.charAt(0);
-            }
+            if (dictionary.containsKey(code)) current = dictionary.get(code);
+            else current = prev + prev.charAt(0);
             
             for (char c : current.toCharArray()) {
                 bs.write(c);

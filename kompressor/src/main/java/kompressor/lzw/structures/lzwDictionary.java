@@ -7,8 +7,8 @@ public class lzwDictionary<K, V> {
     public lzwDictionary() {
         arr = new lzwLinkedList[M];
     }
-
-    public void put(K k, V v) {
+    
+    public void put(K k, V v) { 
         int i = hashFunction(k);
         if (this.arr[i] == null) {
             this.arr[i] = new lzwLinkedList(k, v);
@@ -31,9 +31,7 @@ public class lzwDictionary<K, V> {
     
     private int hashFunction(K k) {
         int code = k.hashCode() % M;
-        if (code < 0) {
-            return code*(-1);
-        }
+        if (code < 0) return code*(-1);
         return code;
     }   
 }

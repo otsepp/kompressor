@@ -57,6 +57,11 @@ ja lopussa se sisältää n kokoisen merkkijonon (tilavaativuus O(n)).
 Eli myös purkamisalgoritmin aikavaativuus on keskimäärin O(n), ja tilavaativuus on O(n).
 
 
+### Paranneltavaa
+
+Toteutuksen pahin puute on 12 bittiset koodit. Olisi tietenkin tehokkaampaa jos käytettäisiin ns. variable-length -koodeja. Lisäksi, koodeja ei kirjoiteta tiivisti eli jokaiseen kuuluu 8 turhaa nollabittiä.
+
+
 
 ## Huffman
 

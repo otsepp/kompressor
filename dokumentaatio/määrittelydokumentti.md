@@ -6,6 +6,7 @@ LZW:n sanakirjat (kaksi erilaista, toinen tiivistämiseen ja toinen purkamiseen) 
 Algoritmin aikavaativuus pitäisi tällöin olla o(n).
 
 Huffman-algoritmi käyttää puurakennetta ja prioritettijonoa, jolloin voidaan saavutta aikavaativuus O(n log n).
+Lisäksi Huffman käyttää listarakennetta koodien tallettamiseen.
 
 
 ##### Lähteet
