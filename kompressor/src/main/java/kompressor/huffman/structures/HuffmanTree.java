@@ -15,32 +15,13 @@ public class HuffmanTree {
     
     public IntList searchCode(char c) {
         IntList code = new IntList();
+        //kun puussa on vain yksi solmu, sitä aina vastaa koodi 0
          if (root.getCharacter() != null && root.getCharacter() == c) {
              code.add(0);
              return code;
          }
         return searchNode(root, c, code);
     }
-    
-     private IntList searchNode(HuffmanNode n, char c, IntList code) {
-         if (n.getCharacter() == null) {
-             IntList left = new IntList(code);
-             IntList right  = new IntList(code);
-             
-             left.add(1);
-             right.add(0);
-             
-             left = searchNode(n.getLeft(), c, left);
-             right = searchNode(n.getRight(), c, right);
-             
-             if (left != null) return left;
-             return right;
-             
-         } else {
-             if (n.getCharacter() == c) return code;
-             return null;
-         }
-     }
      
       public Character searchCharacter(IntList code) {
           HuffmanNode n = root;
@@ -57,5 +38,25 @@ public class HuffmanTree {
           return chr;
     }
     
+     private IntList searchNode(HuffmanNode n, char c, IntList code) {
+         if (n.getCharacter() == null) {
+             //luodaan kopiot syötelistasta
+             IntList left = new IntList(code);
+             IntList right  = new IntList(code);
+             
+             left.add(1);
+             right.add(0);
+             
+             left = searchNode(n.getLeft(), c, left);
+             right = searchNode(n.getRight(), c, right);
+             
+             if (left != null) return left; 
+             return right;
+             
+         } else {   //polku, jonka kautta oikea merkki löydetään, on ainoa joka palauttaa ei-null -arvon
+             if (n.getCharacter() == c) return code;
+             return null;
+         }
+     }
      
 }

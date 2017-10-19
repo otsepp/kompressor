@@ -18,11 +18,9 @@ public class Huffman {
         ByteArrayOutputStream bs = new ByteArrayOutputStream();
         
         HuffmanTree t = TreeBuilder.createTreeFromUnencodedBytes(bytes);
-        
         bs.write(createHeader(t.getRoot(), new ByteArrayWriter()).toByteArray(false));
         
         ByteArrayWriter bwr = new ByteArrayWriter();
-        
         for (byte b : bytes) {
             char c = (char) Byte.toUnsignedInt(b);
             for (int i : t.searchCode(c)) {

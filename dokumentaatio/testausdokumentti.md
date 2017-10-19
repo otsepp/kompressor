@@ -75,5 +75,3 @@ Get- ja add -metodien lisäksi testataan iteraattori ja toinen konstruktori, joka
 
 ## Suorituskykyvertailu
 [linkki](suorituskykyvertailu.md)
-
-[]

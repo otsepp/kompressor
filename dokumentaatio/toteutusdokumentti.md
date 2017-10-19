@@ -66,7 +66,55 @@ Lis‰ksi, koodeja ei kirjoiteta tiivisti eli jokaiseen kuuluu 4 turhaa nollabitti
 
 ## Huffman
 
-T‰m‰ valmiiksi sitten kuin Huffmanista on oikea versio (toivottavasti ensi viikolla)
+K‰ytet‰‰n esimerkkin‰ syˆtett‰ "cbboooiiiieeeee"
+
+**Pakkaus**
+
+Alussa TreeBuilder-luokkaa k‰ytt‰en luodaan HuffmanTree-puurakenne:
+
+Tavut k‰yd‰‰n l‰pi tallettaen merkkien esiintymism‰‰r‰t. T‰m‰n tiedon avulla luodaan jokaiselle esiintyv‰lle merkille oma
+HuffmanNode-olio, joka sis‰lt‰‰ merkkijonon ja sen esiintymism‰‰r‰n. Solmut laitetaan prioriteettijonoon, jossa ensimm‰isen alkion
+merkin esiintymism‰‰r‰ on pienin.
+Jono tyhjennet‰‰n kaksi alkiota kerrallaan; kaksi solmua, joiden merkkien esiintymism‰‰r‰t ovat pienimm‰t, yhdistet‰‰n uudeksi
+null-solmuksi, jonka frekvenssiarvo on n‰iden solmujen merkkifrekvenssien summa.
+Kun viimeinen solmu lˆydet‰‰n, se asetetaan puun juureksi. Saadaan seuraava puu:
+
+![tree](kuvat/tree.png)
+
+T‰m‰n j‰lkeen luodaan pakattujen bittien alkuun tuleva header, jonka avulla luodaan puu pakattuja bittej‰ purkaessa:
+
+Puu yksinkertaisesti k‰yd‰‰n rekursiivisesti l‰pi esij‰rjestyksess‰. Kun k‰sittelyyn tulee null-solmu, kirjoitetaan ByteArrayWriter-
+luokan avulla 0-bitti, ja lehtien tapauksessa kirjoitetaan 1-bitti ja lehden merkin ASCII-koodi.
+ByteArrayWriter kirjoittaa bittej‰ tyˆnt‰en ne vasemmalle puolelle.
+Seuraava kuva esitt‰‰ luokan toimintaa:
+
+![bytewrite](kuvat/bytewrite.png)
+
+Saatu header on 
+0  0  1  01100101(e)  1  01101001(i)  0  0  1  01100010(b)  1  01100011(c)  1  01101111(o)
+
+Nyt parametrina saadut tavut k‰yd‰‰n taas l‰pi, ja jokaiselle etsit‰‰n puusta koodi:
+Koodit lˆydet‰‰n k‰ym‰ll‰ puu rekursiivisesti l‰pi. Kun liikutaan vasemmalle, lis‰t‰‰n koodiin 1, ja oikealle liikkuessa taas 0.
+Esim. esimerkkipuusta saadaan koodi 010 merkille 'c'.
+Koodit kirjoitetaan taas taulukkoon ByteArrayWriter-luokalla. Kun kutsutaan toByteArray-metodia, true arvolla ilmaistaan, ett‰
+loppuun kirjoitetaan eof-tavu, jonka arvo kertoo, kuinka monta bitti‰ luetaan "viimeisest‰" tavusta (oikeasti toiseksi viimeinen)
+
+**Purkaminen**
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

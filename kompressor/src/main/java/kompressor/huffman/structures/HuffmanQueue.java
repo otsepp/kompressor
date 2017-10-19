@@ -1,6 +1,7 @@
 
 package kompressor.huffman.structures;
 
+//minimikeko, päällimmäisen alkion merkkifrekvenssi on kaikista pienin
 public class HuffmanQueue {
     private HuffmanNode[] a;
     private int heapSize;

@@ -14,6 +14,7 @@ public class ByteArrayWriter {
         space = 8;
     }
     
+    
     public void writeBit(int i) {
         checkSpace();
         b = (byte) (b | i << --space);
