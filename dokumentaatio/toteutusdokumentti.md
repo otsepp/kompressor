@@ -60,7 +60,7 @@ Eli myös purkamisalgoritmin aikavaativuus on keskimäärin O(n), ja tilavaativuus 
 ### Paranneltavaa
 
 Toteutuksen pahin puute on 12 bittiset koodit. Olisi tietenkin tehokkaampaa jos käytettäisiin ns. variable-length -koodeja.
-Lisäksi, koodeja ei kirjoiteta tiivisti eli jokaiseen kuuluu 8 turhaa nollabittiä.
+Lisäksi, koodeja ei kirjoiteta tiivisti eli jokaiseen kuuluu 4 turhaa nollabittiä.
 
 
 
