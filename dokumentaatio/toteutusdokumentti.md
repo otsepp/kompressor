@@ -70,6 +70,3 @@ Tämä valmiiksi sitten kuin Huffmanista on oikea versio (toivottavasti ensi viiko
 
 
 
-## LZW VS Huffman
-
---||--

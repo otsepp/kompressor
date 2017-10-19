@@ -1,4 +1,3 @@
-
 package kompressor;
 
 import java.io.File;
@@ -67,9 +66,8 @@ public class Main {
     public static File chooseFile(Scanner s) throws IOException {
         Path p = Paths.get("src/resources/");
         Map<Integer, File> m = new HashMap();
-        int i = 1;
-
         
+        int i = 1;
         for (Path pL : Files.newDirectoryStream(p)) {
             File f = pL.toFile();
             if (!f.getName().equals(".compressed")) m.put(i++, pL.toFile());

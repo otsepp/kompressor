@@ -19,9 +19,9 @@ public class LempelZivWelchTest {
     public void setUp() {
         this.unencoded = new byte[]{'!', ' ', '!', ' ', '+'};
         this.encoded = new byte[] { 
-            0x0, '!',   //12 bit code for 33
+            0x0, '!',   
             0x0, ' ',   
-            0x1, 0x0,               //12 bit code for 256 (new dictionary entry)
+            0x1, 0x0,
             0x0, '+'
         };
     }
@@ -48,7 +48,7 @@ public class LempelZivWelchTest {
     
     @Test 
     public void testDecodeNoDictionaryEntryFound() throws IOException {
-        byte[] encodedTest = new byte[] { 0x61, 0x62, 0x61, 0x62, 0x61, 0x62, 0x61 };
+        byte[] encodedTest = new byte[] { '1', '2', '1', '2', '1', '2', '1'};
         byte[] decodedTest = LempelZivWelch.decode(LempelZivWelch.encode(encodedTest));
         assertEquals(true, Arrays.equals(encodedTest, decodedTest));
     }

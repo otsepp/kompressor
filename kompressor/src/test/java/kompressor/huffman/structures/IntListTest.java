@@ -24,7 +24,7 @@ public class IntListTest {
         assertNull(list.get(-1));
         assertEquals(1, list.get(0).intValue());
         assertEquals(0, list.get(1).intValue());
-        assertNull(list.get(2));
+        assertNull(list.get(2));    //pienempi kuin taulun oikea koko (5), mutta suurempi index-kentän arvo
         assertNull(list.get(6));
     }
 
@@ -32,8 +32,8 @@ public class IntListTest {
     public void testAdd() {
         for (int i = 0; i <= 5; i++) {
             list.add(i);
+            assertEquals(i, list.get(i).intValue());
         }
-        assertEquals(5, list.get(5).intValue());
     }
 
     @Test
