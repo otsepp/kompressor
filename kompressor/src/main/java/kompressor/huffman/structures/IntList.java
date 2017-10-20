@@ -17,6 +17,10 @@ public class IntList implements Iterable<Integer> {
         index = 0;
     }
     
+    public int length() {
+        return index;
+    }
+    
     //luo uuden listan joka sisältää vanhat alkiot
     public IntList(IntList c) {
         a = new int[c.size];

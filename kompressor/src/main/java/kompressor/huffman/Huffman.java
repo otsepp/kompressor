@@ -18,13 +18,15 @@ public class Huffman {
         ByteArrayOutputStream bs = new ByteArrayOutputStream();
         
         HuffmanTree t = TreeBuilder.createTreeFromUnencodedBytes(bytes);
+        
         bs.write(createHeader(t.getRoot(), new ByteArrayWriter()).toByteArray(false));
         
         ByteArrayWriter bwr = new ByteArrayWriter();
         for (byte b : bytes) {
             char c = (char) Byte.toUnsignedInt(b);
-            for (int i : t.searchCode(c)) {
-                bwr.writeBit(i);
+            IntList codeReverse = t.searchCode(c);
+            for (int i = codeReverse.length() - 1; i >= 0; i--) {
+                bwr.writeBit(codeReverse.get(i));
             }
         }
         bs.write(bwr.toByteArray(true));
@@ -47,7 +49,6 @@ public class Huffman {
         while ((b = br.readBit()) != br.getErrorInt()) {
             code.add(b);
             Character cFound = t.searchCharacter(code);
-            
             if (cFound != null) {
                 bwr.writeCharacter(cFound);
                 code = new IntList();

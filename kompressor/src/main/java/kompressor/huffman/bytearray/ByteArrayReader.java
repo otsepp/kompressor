@@ -34,14 +34,16 @@ public class ByteArrayReader {
         //kun yritetään lukea viimeisen pakatun koodin jälkeen
         if (index == this.bytes.length - 2 && readBits == eofIndex) return ERROR_INT;   
         
-        int b = ((bytes[index] & 0x80) >>> 7);
-       
-        if (++readBits == 8) {  //kun koko tavu on luettu, siirrytään seuraavan 
+        //jos koko tavu on luettu, siirrytään seuraavaan
+        if (readBits == 8) {
             readBits = 0;
             index++;
-        } else {  //muuten siirrytään seuraavaan bittiin
-            bytes[index] = (byte) (bytes[index] << 1);
         }
+        
+        int b = ((bytes[index] & 0x80) >>> 7);  //nykyisen tavun ensimmäinen bitti vasemmalta
+        bytes[index] = (byte) (bytes[index] << 1);  //siirretään yhden vasemmalle
+        readBits++;
+        
         return b;
     }
   

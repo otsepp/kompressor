@@ -5,15 +5,25 @@ public class HuffmanTree {
     
     private HuffmanNode root;
     
+    private HuffmanNode[] leafs;
+    
     public HuffmanTree(HuffmanNode root) {
         this.root = root;
+    }
+    
+    public HuffmanTree(HuffmanNode root, HuffmanNode[] leafs) {
+        this.root = root;
+        this.leafs = leafs;
     }
     
     public HuffmanNode getRoot() {
         return this.root;
     }
     
-    //huonosti totetutettu, hyvin hidas
+    public HuffmanNode getLeaf(char c) {
+        return leafs[c];
+    }
+    
     public Character searchCharacter(IntList code) {
         HuffmanNode n = root;
         if (n.getCharacter() != null) return n.getCharacter();
@@ -29,33 +39,25 @@ public class HuffmanTree {
         return chr;
     }
     
+    //Koodit ovat väärinpäin!!!!!
     public IntList searchCode(char c) {
+        HuffmanNode n = this.getLeaf(c);
+        
         IntList code = new IntList();
-        //kun puussa on vain yksi solmu, sitä aina vastaa koodi 0
-        if (root.getCharacter() != null && root.getCharacter() == c) {
+        
+        HuffmanNode par = n.getParent();
+        if (par != null) {
+            while (par != null) {
+                if (par.getLeft().equals(n)) code.add(1);
+                if (par.getRight().equals(n)) code.add(0);
+                n = par;
+                par = par.getParent();
+            }
+            return code;
+
+        } else { //kun puussa on vain yksi solmu, sitä aina vastaa koodi 0
             code.add(0);
             return code;
-        }
-        return searchNode(root, c, code);
-    }
-    
-    private IntList searchNode(HuffmanNode n, char c, IntList code) {
-        if (n.getCharacter() == null) {
-            //luodaan kopiot syötelistasta
-            IntList left = new IntList(code);
-            IntList right  = new IntList(code);
-            
-            left.add(1);
-            right.add(0);
-            
-            left = searchNode(n.getLeft(), c, left);
-            right = searchNode(n.getRight(), c, right);
-            
-            if (left != null) return left;
-            return right;
-        } else {   //polku, jonka kautta oikea merkki löydetään, on ainoa joka palauttaa ei-null -arvon
-            if (n.getCharacter() == c) return code;
-            return null;
         }
     }
      
