@@ -16,8 +16,10 @@ public class TreeBuilder {
         for (byte b : bytes) {
             freqs[Byte.toUnsignedInt(b)]++;
         }
+        
         HuffmanQueue q = new HuffmanQueue();
         HuffmanNode[] leafs = new HuffmanNode[256];
+
         //laitetaan jonoon kaikki esiintyneet solmut
         for (int i = 0; i < freqs.length; i++) {   
             if (freqs[i] > 0) {
@@ -26,11 +28,14 @@ public class TreeBuilder {
                 leafs[i] = n;
             }
         }
+        
         HuffmanTree t = null;
+        
         while (q.size() > 0) {
             //jonosta poistetaan solmut (lehdet), joiden kirjaimia esiintyy vähiten
             HuffmanNode n0 = q.poll(); 
             HuffmanNode n1 = q.poll();  
+            
             if (n1 != null) {
                 //kun löytyy kaksi solmua, ne yhdistetään uudeksi
                 HuffmanNode nu = new HuffmanNode(null, n0.getFrequency() + n1.getFrequency());

@@ -21,14 +21,6 @@ public class IntList implements Iterable<Integer> {
         return index;
     }
     
-    //luo uuden listan joka sisältää vanhat alkiot
-    public IntList(IntList c) {
-        a = new int[c.size];
-        index = c.index;
-        size = c.size;
-        System.arraycopy(c.a, 0, a, 0, a.length);
-    }
-    
     public Integer get(int i) {
         if (i < index && i > -1) return a[i];
         return null;

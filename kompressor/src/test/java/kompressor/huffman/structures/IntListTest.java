@@ -46,12 +46,4 @@ public class IntListTest {
         }
     }
     
-    @Test
-    public void testSecondConstructor() {
-        list.add(1);
-        IntList listNew = new IntList(list);
-        assertEquals(1, listNew.get(0).intValue());
-        assertNull(listNew.get(1));
-    }
-    
 }

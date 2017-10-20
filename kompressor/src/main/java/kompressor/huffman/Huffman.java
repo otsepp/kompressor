@@ -22,16 +22,13 @@ public class Huffman {
         bs.write(createHeader(t.getRoot(), new ByteArrayWriter()).toByteArray(false));
         
         ByteArrayWriter bwr = new ByteArrayWriter();
+        
         for (byte b : bytes) {
             IntQueue code = t.searchCode((char) Byte.toUnsignedInt(b));
             Integer bit;
             while ((bit = code.pop()) != null) bwr.writeBit(bit);
-//            IntList codeReverse = t.searchReverseCode(c);
-//            for (int i = codeReverse.length() - 1; i >= 0; i--) {
-//                bwr.writeBit(codeReverse.get(i));
-//            }
-
         }
+        
         bs.write(bwr.toByteArray(true));
         return bs.toByteArray();
     }
@@ -60,7 +57,7 @@ public class Huffman {
         return bwr.toByteArray(false);
     }
      
-     private static ByteArrayWriter createHeader(HuffmanNode n, ByteArrayWriter bwr) throws IOException  {
+     private static ByteArrayWriter createHeader(HuffmanNode n, ByteArrayWriter bwr) {
         if (n.getCharacter() != null) {
             bwr.writeBit(1);
             bwr.writeCharacter(n.getCharacter());
