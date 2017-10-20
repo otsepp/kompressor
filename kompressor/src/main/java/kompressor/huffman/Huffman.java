@@ -7,6 +7,7 @@ import kompressor.huffman.structures.HuffmanTree;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import kompressor.huffman.structures.IntList;
+import kompressor.huffman.structures.IntQueue;
 
 public class Huffman {
     private Huffman() {
@@ -18,16 +19,18 @@ public class Huffman {
         ByteArrayOutputStream bs = new ByteArrayOutputStream();
         
         HuffmanTree t = TreeBuilder.createTreeFromUnencodedBytes(bytes);
-        
         bs.write(createHeader(t.getRoot(), new ByteArrayWriter()).toByteArray(false));
         
         ByteArrayWriter bwr = new ByteArrayWriter();
         for (byte b : bytes) {
-            char c = (char) Byte.toUnsignedInt(b);
-            IntList codeReverse = t.searchCode(c);
-            for (int i = codeReverse.length() - 1; i >= 0; i--) {
-                bwr.writeBit(codeReverse.get(i));
-            }
+            IntQueue code = t.searchCode((char) Byte.toUnsignedInt(b));
+            Integer bit;
+            while ((bit = code.pop()) != null) bwr.writeBit(bit);
+//            IntList codeReverse = t.searchReverseCode(c);
+//            for (int i = codeReverse.length() - 1; i >= 0; i--) {
+//                bwr.writeBit(codeReverse.get(i));
+//            }
+
         }
         bs.write(bwr.toByteArray(true));
         return bs.toByteArray();

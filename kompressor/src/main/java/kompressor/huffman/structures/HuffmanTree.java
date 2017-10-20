@@ -2,9 +2,8 @@
 package kompressor.huffman.structures;
 
 public class HuffmanTree {
-    
     private HuffmanNode root;
-    
+    //käytetään vain koodien etsimiseen
     private HuffmanNode[] leafs;
     
     public HuffmanTree(HuffmanNode root) {
@@ -18,10 +17,6 @@ public class HuffmanTree {
     
     public HuffmanNode getRoot() {
         return this.root;
-    }
-    
-    public HuffmanNode getLeaf(char c) {
-        return leafs[c];
     }
     
     public Character searchCharacter(IntList code) {
@@ -38,27 +33,48 @@ public class HuffmanTree {
         }
         return chr;
     }
-    
-    //Koodit ovat väärinpäin!!!!!
-    public IntList searchCode(char c) {
-        HuffmanNode n = this.getLeaf(c);
+
+    //parempi toteuttaa pinolla jotta saatasiin koodit oikeassa järjestyksessä
+    public IntQueue searchCode(char c) {
+        HuffmanNode n = this.getLeaf(c);    //aloitetaan lehdestä, liikutaan juurta kohti
         
-        IntList code = new IntList();
+        IntQueue code = new IntQueue();
         
         HuffmanNode par = n.getParent();
         if (par != null) {
             while (par != null) {
-                if (par.getLeft().equals(n)) code.add(1);
-                if (par.getRight().equals(n)) code.add(0);
+                if (par.getLeft().equals(n)) code.push(1);
+                if (par.getRight().equals(n)) code.push(0);
                 n = par;
                 par = par.getParent();
             }
             return code;
 
         } else { //kun puussa on vain yksi solmu, sitä aina vastaa koodi 0
-            code.add(0);
+            code.push(0);
             return code;
         }
+        
+//        IntList code = new IntList();
+//        
+//        HuffmanNode par = n.getParent();
+//        if (par != null) {
+//            while (par != null) {
+//                if (par.getLeft().equals(n)) code.add(1);
+//                if (par.getRight().equals(n)) code.add(0);
+//                n = par;
+//                par = par.getParent();
+//            }
+//            return code;
+//
+//        } else { //kun puussa on vain yksi solmu, sitä aina vastaa koodi 0
+//            code.add(0);
+//            return code;
+//        }
     }
      
+    private HuffmanNode getLeaf(char c) {
+        return leafs[c];
+    }
+    
 }

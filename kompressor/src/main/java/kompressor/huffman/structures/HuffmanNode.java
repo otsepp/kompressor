@@ -6,7 +6,7 @@ public class HuffmanNode {
     private HuffmanNode parent;
     private HuffmanNode right;
     private HuffmanNode left;
-    private int id;
+    private int id; //equals:ia varten, voidaan joutua verrata solmuja joiden c ja freq ovat samat
     
     private static int num = 0;
     
@@ -21,23 +21,23 @@ public class HuffmanNode {
     }
     
     public Character getCharacter() {
-        return this.c;
+        return c;
     }
     
     public int getFrequency() {
-        return this.freq;
+        return freq;
     }
     
     public HuffmanNode getParent() {
-        return this.parent;
+        return parent;
     }
     
     public HuffmanNode getLeft() {
-        return this.left;
+        return left;
     }
     
     public HuffmanNode getRight() {
-        return this.right;
+        return right;
     }
     
     public void setParent(HuffmanNode n) {
@@ -53,10 +53,10 @@ public class HuffmanNode {
     }
     
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(Object o) {   
         if (o instanceof HuffmanNode) {
             HuffmanNode n = (HuffmanNode) o;
-            if (this.id == n.id) return true;
+            if (id == n.id) return true;
         }
         return false;
     }

@@ -36,14 +36,11 @@ public class IntList implements Iterable<Integer> {
     
     public void add(int i) {
         a[index++] = i;
-        if (index == size) extendList();
-    }
-    
-    private void extendList() {
-        size *= 2;
-        int[] aNew = new int[size];
-        System.arraycopy(a, 0, aNew, 0, a.length);
-        a = aNew;
+        if (index == size) {
+            int[] aNew = new int[size * 2];
+            System.arraycopy(a, 0, aNew, 0, a.length);
+            a = aNew;
+        }
     }
     
     @Override
@@ -70,7 +67,6 @@ public class IntList implements Iterable<Integer> {
             return list.get(index++);
         }
         
-        //ei tarvitse
         @Override
         public void remove() {
         }

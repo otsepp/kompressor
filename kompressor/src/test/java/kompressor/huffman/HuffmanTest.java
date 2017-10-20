@@ -37,4 +37,18 @@ public class HuffmanTest {
         assertArrayEquals(b, Huffman.decode(b));
     }
     
+    //Syötteitä joilla alg ei saata toimia vaikka se toimii yllä olevalla testisyötteellä
+    
+    @Test
+    public void testAlternate1() throws IOException {   //EOF on 8
+        byte[] b = "genesis".getBytes();
+        assertArrayEquals(b, Huffman.decode(Huffman.encode(b)));
+    }
+    
+    @Test
+    public void testAlternate2() throws IOException {   //verrattavana kaksi null-solmua ilman frekvenssejä
+        byte[] b = "apw93n".getBytes();
+        assertArrayEquals(b, Huffman.decode(Huffman.encode(b)));
+    }
+    
 }
