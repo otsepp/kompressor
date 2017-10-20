@@ -46,6 +46,7 @@ public class TreeBuilder {
         ByteArrayReader br = new ByteArrayReader(bytes);
         HuffmanTree t = null;
         
+        //kun puussa on vain yksi solmu
         if (br.readBit() == 1) {
             t = new HuffmanTree(new HuffmanNode(br.readCharacter()));
             return new TreeBuilderReturnObject(t, br.getLeftoverBytes());
@@ -58,9 +59,11 @@ public class TreeBuilder {
     }
     
    private static HuffmanNode buildNode(HuffmanNode n, ByteArrayReader br) {
+       //vasen lapsi
         if (br.readBit() == 1) n.setLeft(new HuffmanNode(br.readCharacter()));
         else n.setLeft(buildNode(new HuffmanNode(null), br));
         
+        //oikea lapsi
         if (br.readBit() == 1) n.setRight(new HuffmanNode(br.readCharacter()));
         else n.setRight(buildNode(new HuffmanNode(null), br));
         

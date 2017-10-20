@@ -1,22 +1,23 @@
-
 package kompressor.huffman.structures;
-
-//implements Iterable
 
 import java.util.Iterator;
 
 public class IntList implements Iterable<Integer> {
-    private final int INIT_SIZE = 5;
+    //koko alussa
+    private final int INIT_SIZE = 10;
     private int[] a;
-    private int index;
+    //taulukon koko, kaksinkertaistetaan kun tulee täyteen
     private int size;
+    //indeksi, johon seuraava alkio lisätään
+    private int index;
     
     public IntList() {
         a = new int[INIT_SIZE];
-        index = 0;
         size = INIT_SIZE;
+        index = 0;
     }
     
+    //luo uuden listan joka sisältää vanhat alkiot
     public IntList(IntList c) {
         a = new int[c.size];
         index = c.index;
@@ -25,17 +26,13 @@ public class IntList implements Iterable<Integer> {
     }
     
     public Integer get(int i) {
-        if (i < index && i > -1) {
-            return a[i];
-        }
+        if (i < index && i > -1) return a[i];
         return null;
     }
     
     public void add(int i) {
         a[index++] = i;
-        if (index == size) {
-            extendList();
-        }
+        if (index == size) extendList();
     }
     
     private void extendList() {

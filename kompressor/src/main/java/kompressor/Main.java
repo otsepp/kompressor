@@ -30,18 +30,28 @@ public class Main {
         
         byte[] bytes2;
         
+        long start = System.currentTimeMillis();
+        
         if (lzw) bytes2 = LempelZivWelch.encode(bytes1);
         else bytes2 = Huffman.encode(bytes1);
+        
+        long end = System.currentTimeMillis();
         
         f = new File("src/resources/.compressed");
         FileOutputStream out = new FileOutputStream(f);
         out.write(bytes2);
-        System.out.println("Tiedosto pakattiin sijaintiin " + f.getPath() + ", koko: " + bytes2.length + " tavua");
-        System.out.printf("Koko alkuperäisestä: %.2f \n", (double) bytes2.length / bytes1.length);
+        System.out.println("Tiedosto pakattiin sijaintiin " + f.getPath() + ", koko: " + bytes2.length + " tavua ("+ (end - start) + " ms)");
+        System.out.printf("Koko alkuperäisestä: %.2f\n", (double) bytes2.length / bytes1.length);
+        System.out.println();
+        
+        start = System.currentTimeMillis();
         
         if (lzw) bytes2 = LempelZivWelch.decode(bytes2);
         else bytes2 = Huffman.decode(bytes2);
-        System.out.println("Purkamistesti: " + Arrays.equals(bytes1, bytes2));
+        
+        end = System.currentTimeMillis();
+        
+        System.out.println("Purkamistesti: " + Arrays.equals(bytes1, bytes2) + " (" + (end - start) + " ms)");
        
         out.close();
     }

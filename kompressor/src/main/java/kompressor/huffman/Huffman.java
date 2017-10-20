@@ -38,6 +38,7 @@ public class Huffman {
         HuffmanTree t = tbr.getTree();
         byte[] encoded = tbr.getLeftoverBytes();
         
+        //annetaan konstruktorissa viimeisessä tavussa sijaitseva eof-indeksi
         ByteArrayReader br = new ByteArrayReader(encoded, encoded[encoded.length - 1]);
         ByteArrayWriter bwr = new ByteArrayWriter();
         IntList code = new IntList();

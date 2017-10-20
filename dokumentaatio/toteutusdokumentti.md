@@ -90,18 +90,51 @@ Seuraava kuva esitt‰‰ luokan toimintaa:
 
 ![bytewrite](kuvat/bytewrite.png)
 
-Saatu header on 
+Saatu header on (ilman v‰lej‰ ja sulkuja)
 0  0  1  01100101(e)  1  01101001(i)  0  0  1  01100010(b)  1  01100011(c)  1  01101111(o)
 
 Nyt parametrina saadut tavut k‰yd‰‰n taas l‰pi, ja jokaiselle etsit‰‰n puusta koodi:
 Koodit lˆydet‰‰n k‰ym‰ll‰ puu rekursiivisesti l‰pi. Kun liikutaan vasemmalle, lis‰t‰‰n koodiin 1, ja oikealle liikkuessa taas 0.
 Esim. esimerkkipuusta saadaan koodi 010 merkille 'c'.
 Koodit kirjoitetaan taas taulukkoon ByteArrayWriter-luokalla. Kun kutsutaan toByteArray-metodia, true arvolla ilmaistaan, ett‰
-loppuun kirjoitetaan eof-tavu, jonka arvo kertoo, kuinka monta bitti‰ luetaan "viimeisest‰" tavusta (oikeasti toiseksi viimeinen)
+loppuun kirjoitetaan eof-tavu, jonka arvo kertoo, kuinka monta bitti‰ luetaan "viimeisest‰" tavusta (oikeasti toiseksi viimeinen).
+
+Saadaan: 
+
+010 011 011 00 00 00 10 10 10 10 11 11 11 11 11 1(eof)
+
+tavuina: 
+
+[01001101][10000001][01010101[11111111][10000000][00000001]
+
 
 **Purkaminen**
 
+Alussa rakennetaan puu uudestaan headerin kautta TreeBuilder-luokalla:
 
+Jos luetaan 0-bitti, luodaan null-solmu, asetetaan se k‰sittelyss‰ olevan solmun vasemmaksi lapseksi, ja siirryt‰‰n
+sen k‰sittelyyn. Jos luetaan 1-bitti, luodaan solmu jonka merkki saadaan lukemalla seuraavat 8 bitti‰, ja 
+asetetaan se vasemmaksi lapseksi. Sama sitten tehd‰‰n, jotta saadaan luotua oikeanpuoleinen lapsi. 
+Lopussa palautetaan puun ja headerin j‰lkeen tulevat tavut.
+
+T‰m‰n j‰lkeen loput tavut luetaan yksi kerrallaan. Luetuista tavuista rakennetaan koodeja IntList-luokalla, ja joka kerta kun
+luettu bitti lis‰t‰‰n listaan, saadulla koodilla yritet‰‰n lˆyt‰‰ merkki puusta: 
+
+IntList:n alkiot iteroidaan; kun alkio on 1, siirryt‰‰n puussa vasemmalle, kun alkio on 0, siirryt‰‰n oikealle.
+
+Jos merkki lˆydet‰‰n, se kirjoitetaan ByteArrayWriter:lla
+ja lista nollataan.
+
+### Aika- ja tilavaativuudet
+
+Syˆtteen koko on n ja eri merkkien m‰‰r‰ on k.
+
+**Pakkaus**
+
+
+
+
+**Purkaminen**
 
 
 
