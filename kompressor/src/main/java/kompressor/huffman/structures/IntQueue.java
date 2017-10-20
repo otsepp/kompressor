@@ -15,8 +15,7 @@ public class IntQueue {
     public void push(int i) {
         a[index++] = i;
         if (index == size) {
-            size *= 2;
-            int[] aNew = new int[size];
+            int[] aNew = new int[size * 2];
             System.arraycopy(a, 0, aNew, 0, a.length);
             a = aNew;
         }

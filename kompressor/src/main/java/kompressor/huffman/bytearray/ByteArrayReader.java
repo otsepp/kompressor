@@ -12,8 +12,6 @@ public class ByteArrayReader {
     //määrittää toiseksi viimeisestä tavusta luettavien bittien lukumäärän
     private int eofIndex;
     
-    private final int ERROR_INT = 0xFF;
-    
     public ByteArrayReader(byte[] bytes) {
         this.bytes = bytes;
         index = 0;
@@ -29,13 +27,13 @@ public class ByteArrayReader {
     }
     
     //luetaan bittejä vasemmalta 
-    public int readBit() {
+    public Integer readBit() {
         //kun yritetään lukea viimeisen pakatun koodin jälkeen
-        if (index == this.bytes.length - 2 && readBits == eofIndex) return ERROR_INT;   
+        if (index == this.bytes.length - 2 && readBits == eofIndex) return null;   
         
         //jos koko tavu on luettu, siirrytään seuraavaan
         if (readBits == 8) {
-            if (++index == bytes.length) return ERROR_INT;
+            if (++index == bytes.length) return null;
             readBits = 0;
         }
         
@@ -63,10 +61,6 @@ public class ByteArrayReader {
             bs.write(bytes[i]);
         }
         return bs.toByteArray();
-    }
-    
-    public int getErrorInt() {
-        return this.ERROR_INT;
     }
     
 }

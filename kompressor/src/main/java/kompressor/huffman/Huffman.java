@@ -48,8 +48,8 @@ public class Huffman {
         ByteArrayWriter bwr = new ByteArrayWriter();
         IntList code = new IntList();
         
-        int b;
-        while ((b = br.readBit()) != br.getErrorInt()) {
+        Integer b;
+        while ((b = br.readBit()) != null) {
             code.add(b);
             Character cFound = t.searchCharacter(code);
             if (cFound != null) {
