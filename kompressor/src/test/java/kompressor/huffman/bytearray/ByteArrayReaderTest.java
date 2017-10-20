@@ -12,7 +12,7 @@ public class ByteArrayReaderTest {
     public void testReadBit() {
         ByteArrayReader br = new ByteArrayReader(new byte[]{(byte) 0xFF, (byte) 0xFE});
         for (int i = 0; i < 15; i++) {
-            assertEquals(br.readBit(), 1);
+            assertEquals(1, br.readBit());
         }
         assertEquals(0, br.readBit());
         assertEquals(br.getErrorInt(), br.readBit());

@@ -18,7 +18,7 @@ public class ByteArrayReader {
         this.bytes = bytes;
         index = 0;
         readBits = 0;
-        eofIndex = 8;
+        eofIndex = 9;
     }
     
     public ByteArrayReader(byte[] bytes, int eofIndex) {
@@ -30,14 +30,13 @@ public class ByteArrayReader {
     
     //luetaan bittejä vasemmalta 
     public int readBit() {
-        if (index == bytes.length) return ERROR_INT;
         //kun yritetään lukea viimeisen pakatun koodin jälkeen
         if (index == this.bytes.length - 2 && readBits == eofIndex) return ERROR_INT;   
         
         //jos koko tavu on luettu, siirrytään seuraavaan
         if (readBits == 8) {
+            if (++index == bytes.length) return ERROR_INT;
             readBits = 0;
-            index++;
         }
         
         int b = ((bytes[index] & 0x80) >>> 7);  //nykyisen tavun ensimmäinen bitti vasemmalta

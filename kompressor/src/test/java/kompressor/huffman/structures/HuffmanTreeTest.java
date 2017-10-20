@@ -1,5 +1,6 @@
 package kompressor.huffman.structures;
 
+import kompressor.huffman.TreeBuilder;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 import org.junit.Before;
@@ -12,16 +13,7 @@ public class HuffmanTreeTest {
 
     @Before
     public void setUp() {
-        tree = new HuffmanTree(new HuffmanNode(null));
-        tree.getRoot().setLeft(new HuffmanNode(null));
-        tree.getRoot().getLeft().setLeft(new HuffmanNode('e'));
-        tree.getRoot().getLeft().setRight(new HuffmanNode('i'));
-        
-        tree.getRoot().setRight(new HuffmanNode(null));
-        tree.getRoot().getRight().setLeft(new HuffmanNode(null));
-        tree.getRoot().getRight().getLeft().setLeft(new HuffmanNode('b'));
-        tree.getRoot().getRight().getLeft().setRight(new HuffmanNode('c'));
-        tree.getRoot().getRight().setRight(new HuffmanNode('o'));
+        tree = TreeBuilder.createTreeFromUnencodedBytes("cbboooiiiieeeee".getBytes());
 //        	 null
 //            /       \
 //        null      null
@@ -68,17 +60,17 @@ public class HuffmanTreeTest {
         assertEquals(1, list.get(1).intValue());
         
         list = tree.searchCode('i');
-        assertEquals(1, list.get(0).intValue());
-        assertEquals(0, list.get(1).intValue());
+        assertEquals(0, list.get(0).intValue());
+        assertEquals(1, list.get(1).intValue());
         
         list = tree.searchCode('o');
         assertEquals(0, list.get(0).intValue());
         assertEquals(0, list.get(1).intValue());
         
         list = tree.searchCode('b');
-        assertEquals(0, list.get(0).intValue());
+        assertEquals(1, list.get(0).intValue());
         assertEquals(1, list.get(1).intValue());
-        assertEquals(1, list.get(2).intValue());
+        assertEquals(0, list.get(2).intValue());
 
         list = tree.searchCode('c');
         assertEquals(0, list.get(0).intValue());

@@ -13,11 +13,18 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 import kompressor.huffman.Huffman;
+import kompressor.huffman.bytearray.ByteArrayReader;
 import kompressor.lzw.LempelZivWelch;
 
 public class Main {
 
     public static void main(String[] args) throws IOException  {
+//        ByteArrayReader br = new ByteArrayReader(new byte[]{(byte) 0xFF, (byte) 0xFE});
+//        for (int i = 0; i < 15; i++) {
+//            System.out.print(br.readBit() + " ");
+//        }
+//        System.out.println(br.readBit());
+//        System.out.println(br.readBit());
         boolean lzw = false;
         Scanner s = new Scanner(System.in);
         
