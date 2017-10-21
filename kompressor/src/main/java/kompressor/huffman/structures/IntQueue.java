@@ -25,6 +25,7 @@ public class IntQueue {
         }
     }
     
+    //ei tarvitse muuttaa kokoa, sillä pop-operaatioiden jälkeen ei lisätä mitään
     public Integer pop() {
         if (index == 0) return null;
         return a[--index];

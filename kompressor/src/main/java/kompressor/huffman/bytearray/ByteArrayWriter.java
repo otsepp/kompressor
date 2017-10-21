@@ -39,6 +39,7 @@ public class ByteArrayWriter {
         return bs.toByteArray();
     }
 
+    //kirjoitetaan täynnä oleva tavu, otetaan uusi tilalle
     private void checkSpace() {
         if (space == 0) {
             bs.write(b);

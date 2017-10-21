@@ -70,8 +70,11 @@ solmun frekvenssi on pienin.
 
 
 #### IntList
-Get- ja add -metodien lis‰ksi testataan iteraattori ja toinen konstruktori, joka luoma lista sis‰lt‰‰ vanhan listan alkiot.
+Get- ja add -metodien lis‰ksi testataan iteraattori, listan kasvattmista sek‰ toinen konstruktori, joka luoma lista sis‰lt‰‰ 
+vanhan listan alkiot.
 
+### IntQueue
+Yksinkertainen testi push- ja pop-operaatiolle, ja testi jonon koon kasvattamisesta.
 
 ## Suorituskykyvertailu
 [linkki](suorituskykyvertailu.md)

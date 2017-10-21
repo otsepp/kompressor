@@ -77,13 +77,14 @@ HuffmanNode-olio, joka sisältää merkkijonon ja sen esiintymismäärän. Solmut lait
 merkin esiintymismäärä on pienin.
 Jono tyhjennetään kaksi alkiota kerrallaan; kaksi solmua, joiden merkkien esiintymismäärät ovat pienimmät, yhdistetään uudeksi
 null-solmuksi, jonka frekvenssiarvo on näiden solmujen merkkifrekvenssien summa.
-Kun viimeinen solmu löydetään, se asetetaan puun juureksi. Saadaan seuraava puu:
+Kun viimeinen solmu löydetään, se asetetaan puun juureksi. Lisäksi puulle annetaan lehdet sisältävän taulukon, jonka avulla puusta etsitään
+koodeja. Saadaan seuraava puu:
 
 ![tree](kuvat/tree.png)
 
 Tämän jälkeen luodaan pakattujen bittien alkuun tuleva header, jonka avulla luodaan puu pakattuja bittejä purkaessa:
 
-Puu yksinkertaisesti käydään rekursiivisesti läpi esijärjestyksessä. Kun käsittelyyn tulee null-solmu, kirjoitetaan ByteArrayWriter-
+Puu käydään rekursiivisesti läpi esijärjestyksessä. Kun käsittelyyn tulee null-solmu, kirjoitetaan ByteArrayWriter-
 luokan avulla 0-bitti, ja lehtien tapauksessa kirjoitetaan 1-bitti ja lehden merkin ASCII-koodi.
 ByteArrayWriter kirjoittaa bittejä työntäen ne vasemmalle puolelle.
 Seuraava kuva esittää luokan toimintaa:
@@ -94,8 +95,9 @@ Saatu header on (ilman välejä ja sulkuja)
 0  0  1  01100101(e)  1  01101001(i)  0  0  1  01100010(b)  1  01100011(c)  1  01101111(o)
 
 Nyt parametrina saadut tavut käydään taas läpi, ja jokaiselle etsitään puusta koodi:
-Koodit löydetään käymällä puu rekursiivisesti läpi. Kun liikutaan vasemmalle, lisätään koodiin 1, ja oikealle liikkuessa taas 0.
-Esim. esimerkkipuusta saadaan koodi 010 merkille 'c'.
+Haetaan lehtitaulukosta merkin sisältävä lehti, ja liikutaan ylöspäin juurta kohti. Koodin "bitit" lisätään pinoon, koska muuten ne 
+olisivat väärinpäin. Esim. esimerkkipuusta saadaan koodi 010 merkille 'c'.
+
 Koodit kirjoitetaan taas taulukkoon ByteArrayWriter-luokalla. Kun kutsutaan toByteArray-metodia, true arvolla ilmaistaan, että
 loppuun kirjoitetaan eof-tavu, jonka arvo kertoo, kuinka monta bittiä luetaan "viimeisestä" tavusta (oikeasti toiseksi viimeinen).
 
@@ -127,14 +129,35 @@ ja lista nollataan.
 
 ### Aika- ja tilavaativuudet
 
-Syötteen koko on n ja eri merkkien määrä on k.
+Syötteen koko tavuina on n ja eri merkkien määrä on k.
 
-**Pakkaus**
+#### Pakkaus
+
+**Luodaan puu:**
+
+* Käydään syöte läpi, O(n)
+* Lisätään prioriteettijonoon k alkiota, sitten poistetaan, O(k log k)
+* Aikavaativuus siis O(n + k log k)
+* Tilavaativuus: O(k) (prioriteettijono ja puu)
+
+**Luodaan header:**
+
+* Käydään puu rekursiivisesti läpi, O(k)
+* Tilavaativuus: O(log k) (rekursiopino)
+
+**Käydään syöte läpi**
+
+* Jokaiselle tavulle etsitään puusta koodi, aikavaativuus siis O(n log k)
+* Tilavaativuus: O(n + k) (pakattu data ja puu)
+* Pahimmat vaativuudet
+
+Siis: 
+
+Aikavaativuus: O(n log k)
+Tilavaativuus: O(n + k)
 
 
-
-
-**Purkaminen**
+#### Purkaminen
 
 
 

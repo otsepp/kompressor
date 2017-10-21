@@ -17,7 +17,7 @@ public class IntListTest {
     }
     
     @Test
-    public void testGet() {
+    public void testAddAndGet() {
         assertNull(list.get(0));
         list.add(1);
         list.add(0);
@@ -29,11 +29,13 @@ public class IntListTest {
     }
 
     @Test
-    public void testAdd() {
-        for (int i = 0; i <= 5; i++) {
+    public void testExtend() {
+        for (int i = 0; i < 10; i++) {
             list.add(i);
             assertEquals(i, list.get(i).intValue());
         }
+        list.add(10);   //11. alkio, listaa kasvatetaan
+        assertEquals(10, list.get(10).intValue());
     }
 
     @Test

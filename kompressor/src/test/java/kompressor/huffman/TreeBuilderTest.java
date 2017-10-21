@@ -22,7 +22,7 @@ public class TreeBuilderTest {
             (byte) 'i', (byte) 'i', (byte) 'i', (byte) 'i',
             (byte) 'e', (byte) 'e', (byte) 'e', (byte) 'e', (byte) 'e',};
             
-        HuffmanTree t = TreeBuilder.createTreeFromUnencodedBytes(bytes);
+        HuffmanTree t = TreeBuilder.createTreeFromUnencodedBytes(bytes);    
         
         HuffmanNode p = t.getRoot();
         HuffmanNode l;

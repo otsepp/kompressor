@@ -20,15 +20,18 @@ public class TreeBuilder {
         HuffmanQueue q = new HuffmanQueue();
         HuffmanNode[] leafs = new HuffmanNode[256];
 
-        //laitetaan jonoon kaikki esiintyneet solmut
+        //laitetaan jonoon ja lehtitaulukkoon kaikki esiintyneet solmut
+        int g = 0;
         for (int i = 0; i < freqs.length; i++) {   
             if (freqs[i] > 0) {
                 HuffmanNode n = new HuffmanNode((char) i, freqs[i]);
                 q.add(n);
                 leafs[i] = n;
+            
+                g++;
             }
         }
-        
+        System.out.println(g);
         HuffmanTree t = null;
         
         while (q.size() > 0) {

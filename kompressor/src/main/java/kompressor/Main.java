@@ -18,44 +18,42 @@ import kompressor.lzw.LempelZivWelch;
 public class Main {
 
     public static void main(String[] args) throws IOException  {
-        Huffman.encode("cbboooiiiieeeee".getBytes());
+        boolean lzw = false;
+        Scanner s = new Scanner(System.in);
         
-//        boolean lzw = false;
-//        Scanner s = new Scanner(System.in);
-//        
-//       if (chooseAlg(s).equals("1")) lzw = true;
-//        
-//        File f = chooseFile(s);
-//        
-//        byte[] bytes1 = readFile(f);
-//        System.out.println("Luettiin tekstitiedosto sijainnista " + f.getPath() + ", koko: " + bytes1.length + " tavua");
-//        
-//        byte[] bytes2;
-//        
-//        long start = System.currentTimeMillis();
-//        
-//        if (lzw) bytes2 = LempelZivWelch.encode(bytes1);
-//        else bytes2 = Huffman.encode(bytes1);
-//        
-//        long end = System.currentTimeMillis();
-//        
-//        f = new File("src/resources/.compressed");
-//        FileOutputStream out = new FileOutputStream(f);
-//        out.write(bytes2);
-//        System.out.println("Tiedosto pakattiin sijaintiin " + f.getPath() + ", koko: " + bytes2.length + " tavua ("+ (end - start) + " ms)");
-//        System.out.printf("Koko alkuperäisestä: %.2f\n", (double) bytes2.length / bytes1.length);
-//        System.out.println();
-//        
-//        start = System.currentTimeMillis();
-//        
-//        if (lzw) bytes2 = LempelZivWelch.decode(bytes2);
-//        else bytes2 = Huffman.decode(bytes2);
-//        
-//        end = System.currentTimeMillis();
-//        
-//        System.out.println("Purkamistesti: " + Arrays.equals(bytes1, bytes2) + " (" + (end - start) + " ms)");
-//       
-//        out.close();
+       if (chooseAlg(s).equals("1")) lzw = true;
+        
+        File f = chooseFile(s);
+        
+        byte[] bytes1 = readFile(f);
+        System.out.println("Luettiin tekstitiedosto sijainnista " + f.getPath() + ", koko: " + bytes1.length + " tavua");
+        
+        byte[] bytes2;
+        
+        long start = System.currentTimeMillis();
+        
+        if (lzw) bytes2 = LempelZivWelch.encode(bytes1);
+        else bytes2 = Huffman.encode(bytes1);
+        
+        long end = System.currentTimeMillis();
+        
+        f = new File("src/resources/.compressed");
+        FileOutputStream out = new FileOutputStream(f);
+        out.write(bytes2);
+        System.out.println("Tiedosto pakattiin sijaintiin " + f.getPath() + ", koko: " + bytes2.length + " tavua ("+ (end - start) + " ms)");
+        System.out.printf("Koko alkuperäisestä: %.2f\n", (double) bytes2.length / bytes1.length);
+        System.out.println();
+        
+        start = System.currentTimeMillis();
+        
+        if (lzw) bytes2 = LempelZivWelch.decode(bytes2);
+        else bytes2 = Huffman.decode(bytes2);
+        
+        end = System.currentTimeMillis();
+        
+        System.out.println("Purkamistesti: " + Arrays.equals(bytes1, bytes2) + " (" + (end - start) + " ms)");
+       
+        out.close();
     }
     
     public static byte[] readFile(File f) throws FileNotFoundException {
@@ -92,8 +90,6 @@ public class Main {
                 File f = m.get(index);
                 System.out.println(index + ". " + f.getName() + ", " + f.length() + " tavua");
             }
-            
-            System.out.println("");
             
             int input;
             if (s.hasNextInt()) {

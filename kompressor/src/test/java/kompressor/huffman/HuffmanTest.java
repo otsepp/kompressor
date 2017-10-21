@@ -39,6 +39,12 @@ public class HuffmanTest {
     
     //Syötteitä joilla alg ei saata toimia vaikka se toimii yllä olevalla testisyötteellä
     
+     @Test
+    public void testSingleCharacter() throws IOException {  //puu jossa on vain juuri
+        byte b[] = "aaaaa".getBytes();
+        assertArrayEquals(b, Huffman.decode(Huffman.encode(b)));
+    }
+    
     @Test
     public void testAlternate1() throws IOException {   //EOF on 8
         byte[] b = "genesis".getBytes();

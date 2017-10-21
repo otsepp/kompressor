@@ -13,7 +13,7 @@ public class HuffmanTreeTest {
 
     @Before
     public void setUp() {
-        tree = TreeBuilder.createTreeFromUnencodedBytes("cbboooiiiieeeee".getBytes());
+        tree = TreeBuilder.createTreeFromUnencodedBytes("cbboooiiiieeeee".getBytes()); 
 //        	 null
 //            /       \
 //        null      null
