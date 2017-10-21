@@ -75,7 +75,7 @@ Yksinkertainen testi push- ja pop-operaatiolle, ja testi jonon koon kasvattamise
 
 #### text1.txt (11484 tavua)
 
-[kaavio1](kuvat/kaavio1.png)
+![kaavio1](kuvat/kaavio1.png)
 
 N‰hd‰‰n, ett‰ Huffman pakkaa tiedostoja pienemp‰‰n kokoon kuin LZW, kuten odotettiin. Lis‰ksi Huffman on hieman nopeampi.
 
