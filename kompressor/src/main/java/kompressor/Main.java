@@ -18,10 +18,12 @@ import kompressor.lzw.LempelZivWelch;
 public class Main {
 
     public static void main(String[] args) throws IOException  {
+//        byte[] b = "cbboooiiiieeeee".getBytes();
+//        System.out.println(Arrays.equals(Huffman.decode(Huffman.encode(b)), b));
         boolean lzw = false;
         Scanner s = new Scanner(System.in);
         
-       if (chooseAlg(s).equals("1")) lzw = true;
+        if (chooseAlg(s).equals("1")) lzw = true;
         
         File f = chooseFile(s);
         

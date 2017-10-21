@@ -159,6 +159,20 @@ Tilavaativuus: O(n + k)
 
 #### Purkaminen
 
+**Luodaan puu:**
+
+* Aikavaativuus O(k)
+* Tilavaativuus O(log k) (rekursiopino)
+
+** Luetaan pakattu data **
+
+
+
+Siis
+
+Aikavaativuus: O(n log k)
+Tilavaativuus: O(n + k)
+
 
 
 

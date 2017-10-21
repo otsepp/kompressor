@@ -6,7 +6,6 @@ import kompressor.huffman.structures.HuffmanNode;
 import kompressor.huffman.structures.HuffmanTree;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import kompressor.huffman.structures.IntList;
 import kompressor.huffman.structures.IntQueue;
 
 public class Huffman {
@@ -43,15 +42,22 @@ public class Huffman {
         //annetaan konstruktorissa viimeisessä tavussa sijaitseva eof-indeksi
         ByteArrayReader br = new ByteArrayReader(encoded, encoded[encoded.length - 1]);
         ByteArrayWriter bwr = new ByteArrayWriter();
-        IntList code = new IntList();
         
         Integer b;
+        HuffmanNode n = t.getRoot();
+        
         while ((b = br.readBit()) != null) {
-            code.add(b);
-            Character cFound = t.searchCharacter(code);
-            if (cFound != null) {
-                bwr.writeCharacter(cFound);
-                code = new IntList();
+            //jos puussa on vain juuri
+            if (n.getCharacter() != null) { 
+                bwr.writeCharacter(n.getCharacter());
+                continue;
+            }
+            
+            if (b == 1) n = n.getLeft();
+            if (b == 0) n = n.getRight();
+            if (n.getCharacter() != null) {
+                bwr.writeCharacter(n.getCharacter());
+                n = t.getRoot();
             }
         }
         return bwr.toByteArray(false);
