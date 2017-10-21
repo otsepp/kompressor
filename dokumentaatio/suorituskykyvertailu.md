@@ -1,6 +1,6 @@
 ## Suorituskykyvertailu
 
-text1.txt (11484 tavua)
+#### text1.txt (11484 tavua)
 
 | Algoritmi | % alkuperäisestä | Aika (pakkaus)(ms) | Aika (Purkaminen)(ms) |
 | --------- | -----------------| ------------------ | --------------------- |
@@ -8,7 +8,7 @@ text1.txt (11484 tavua)
 | Huffman 	| 57			   | 11 			    | 12
 
 		
-text2.txt (6617123 tavua)
+#### text2.txt (6617123 tavua)
 
 | Algoritmi | % alkuperäisestä | Aika (pakkaus)(ms) | Aika (Purkaminen)(ms) |
 | --------- | -----------------| ------------------ | --------------------- |
@@ -16,7 +16,7 @@ text2.txt (6617123 tavua)
 | Huffman 	| 57			   | 572 			    | 270
 
 				
-Generoitu merkkijono (500 000 tavua)
+#### Generoitu merkkijono (500 000 tavua)
 
 | Algoritmi | % alkuperäisestä | Aika (pakkaus)(ms) | Aika (Purkaminen)(ms) |
 | --------- | -----------------| ------------------ | --------------------- |
@@ -24,7 +24,7 @@ Generoitu merkkijono (500 000 tavua)
 | Huffman 	| 100			   | 83 			    | 67
 
 
-img.jpg	(725249 tavua)´
+#### img.jpg	(725249 tavua)´
 
 | Algoritmi | % alkuperäisestä | Aika (pakkaus)(ms) | Aika (Purkaminen)(ms) |
 | --------- | -----------------| ------------------ | --------------------- |
@@ -37,3 +37,7 @@ gif.gif (1004638 tavua)
 | --------- | -----------------| ------------------ | --------------------- |
 | LZW		| 193			   | 238			    | 201
 | Huffman 	| 100			   | 155 			    | 118
+
+</br>
+
+Test
