@@ -61,17 +61,12 @@ sis‰lt‰‰ arvon 4, koska parametrina on true.
 
 
 #### HuffmanTree
-Taas k‰ytet‰‰n samaa esim. puuta, joka on luotu kuitenkin k‰sin ennen testej‰. Testataan merkkien ja koodien etsiminen.
+Taas k‰ytet‰‰n samaa esim. puuta
 
 #### HuffmanQueue
 Jonoon lis‰t‰‰n solmut joiden frekvenssit ovat 33, 51, 12 ,3 ,57. Ne
 poistetaan jonosta yksi kerrallaan, joka kerta varmistaen ett‰ poistetun 
 solmun frekvenssi on pienin.
-
-
-#### IntList
-Get- ja add -metodien lis‰ksi testataan iteraattori, listan kasvattmista sek‰ toinen konstruktori, joka luoma lista sis‰lt‰‰ 
-vanhan listan alkiot.
 
 ### IntQueue
 Yksinkertainen testi push- ja pop-operaatiolle, ja testi jonon koon kasvattamisesta.

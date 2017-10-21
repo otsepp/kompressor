@@ -19,20 +19,6 @@ public class HuffmanTree {
         return this.root;
     }
     
-    public Character searchCharacter(IntList code) {
-        HuffmanNode n = root;
-        if (n.getCharacter() != null) return n.getCharacter();
-        
-        Character chr = null;
-        //käydään koodi läpi, jos bitti on 1 siirrytään vasemmalle, muuten oikealle
-        for (int c : code) {  
-            if (c == 1) n = n.getLeft();  
-            else if (c == 0) n = n.getRight();
-            chr = n.getCharacter();     //lehti löydetty
-        }
-        return chr;
-    }
-    
     public IntQueue searchCode(char c) {
         HuffmanNode n = this.getLeaf(c);    //aloitetaan lehdestä, liikutaan juurta kohti
         IntQueue code = new IntQueue();

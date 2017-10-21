@@ -119,13 +119,9 @@ sen käsittelyyn. Jos luetaan 1-bitti, luodaan solmu jonka merkki saadaan lukemal
 asetetaan se vasemmaksi lapseksi. Sama sitten tehdään, jotta saadaan luotua oikeanpuoleinen lapsi. 
 Lopussa palautetaan puun ja headerin jälkeen tulevat tavut.
 
-Tämän jälkeen loput tavut luetaan yksi kerrallaan. Luetuista tavuista rakennetaan koodeja IntList-luokalla, ja joka kerta kun
-luettu bitti lisätään listaan, saadulla koodilla yritetään löytää merkki puusta: 
+Tämän jälkeen loput tavut luetaan yksi bitti kerralla kerrallaan. Samalla aikaa puuta käydään läpi. Kun luetaan 1-bitti, siirrytään
+vasemmalle, muuten oikealle. Kun lehti löydetään, siirrytään takaisin juureen.
 
-IntList:n alkiot iteroidaan; kun alkio on 1, siirrytään puussa vasemmalle, kun alkio on 0, siirrytään oikealle.
-
-Jos merkki löydetään, se kirjoitetaan ByteArrayWriter:lla
-ja lista nollataan.
 
 ### Aika- ja tilavaativuudet
 
@@ -147,14 +143,10 @@ Syötteen koko tavuina on n ja eri merkkien määrä on k.
 
 **Käydään syöte läpi**
 
-* Jokaiselle tavulle etsitään puusta koodi, aikavaativuus siis O(n log k)
+* Käsiteltävälle tavulle etsitään puusta koodi, aikavaativuus ja tilavaativuus O(log k) (keskimääräinen koodin pituus)
+* Kirjoitetaan etsitty koodi bitti kerrallaan , aikavaativuus O(log k) 
+* Aikavaativuus siis O(n log k)
 * Tilavaativuus: O(n + k) (pakattu data ja puu)
-* Pahimmat vaativuudet
-
-Siis: 
-
-Aikavaativuus: O(n log k)
-Tilavaativuus: O(n + k)
 
 
 #### Purkaminen
@@ -164,14 +156,12 @@ Tilavaativuus: O(n + k)
 * Aikavaativuus O(k)
 * Tilavaativuus O(log k) (rekursiopino)
 
-** Luetaan pakattu data **
+** Luetaan pakattu data: **
 
+* Etsitään puusta lehtiä yhteensä n kertaa; aikavaativuus O(n log k) 
+* Tilavaativuus O(n) purettu data
 
-
-Siis
-
-Aikavaativuus: O(n log k)
-Tilavaativuus: O(n + k)
+##### Molempien keskimääräinen aikavaativuus on O(n log k)
 
 
 
