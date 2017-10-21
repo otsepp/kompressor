@@ -63,6 +63,7 @@ public class Huffman {
         return bwr.toByteArray(false);
     }
      
+     //Kirjoittaa headerin pakatun datan alkuun, josta rakennetaan puu purkaessa
      private static ByteArrayWriter createHeader(HuffmanNode n, ByteArrayWriter bwr) {
         if (n.getCharacter() != null) {
             bwr.writeBit(1);

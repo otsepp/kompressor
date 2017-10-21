@@ -54,6 +54,7 @@ public class TreeBuilder {
         return t;
     }
     
+    //Rakentaa pakatun datan alussa olevasta headerista puun
     public static TreeBuilderReturnObject createTreeFromHeader(byte[] bytes) {
         ByteArrayReader br = new ByteArrayReader(bytes);
         HuffmanTree t = null;
@@ -70,7 +71,7 @@ public class TreeBuilder {
         return new TreeBuilderReturnObject(t, br.getLeftoverBytes());
     }
     
-   private static HuffmanNode buildNode(HuffmanNode n, ByteArrayReader br) {
+    private static HuffmanNode buildNode(HuffmanNode n, ByteArrayReader br) {
        //vasen lapsi
         if (br.readBit() == 1) n.setLeft(new HuffmanNode(br.readCharacter()));
         else n.setLeft(buildNode(new HuffmanNode(null), br));

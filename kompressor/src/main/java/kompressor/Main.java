@@ -81,15 +81,6 @@ public class Main {
     }
     
     public static File chooseFile(Scanner s) throws IOException {
-
-        InputStream is = Main.class.getClassLoader().getResourceAsStream("test.txt");
-        
-        
-        
-        System.out.println(is == null);
-        
-        
-        
         Path p = Paths.get("src/main/resources/files");
 
         Map<Integer, File> m = new HashMap();
