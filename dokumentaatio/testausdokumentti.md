@@ -77,6 +77,14 @@ Yksinkertainen testi push- ja pop-operaatiolle, ja testi jonon koon kasvattamise
 
 ![kaavio1](kuvat/kaavio1.png)
 
+#### text2.txt (6617123 tavua)
+
+![kaavio2](kuvat/kaavio2.png)
+
+#### Generoitu merkkijono (500 000 tavua)
+
+![kaavio3](kuvat/kaavio3.png)
+
 N‰hd‰‰n, ett‰ Huffman pakkaa tiedostoja pienemp‰‰n kokoon kuin LZW, kuten odotettiin. Lis‰ksi Huffman on hieman nopeampi.
 
 Selv‰stikin algoritmien totetus sopii vain tekstin pakkaamiseen, sill‰ muiden tiedostotyyppien pakkamiinen vaikuttaa vain kasvattavan 
