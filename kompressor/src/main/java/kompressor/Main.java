@@ -44,7 +44,7 @@ public class Main {
         
         long end = System.currentTimeMillis();
         
-        f = new File("src/main/resources/files/.compressed");
+        f = new File("src/main/resources/.compressed");
         FileOutputStream out = new FileOutputStream(f);
         out.write(bytes2);
         System.out.println("Tiedosto pakattiin sijaintiin " + f.getPath() + ", koko: " + bytes2.length + " tavua ("+ (end - start) + " ms)");
@@ -81,7 +81,7 @@ public class Main {
     }
     
     public static File chooseFile(Scanner s) throws IOException {
-        Path p = Paths.get("src/main/resources/files");
+        Path p = Paths.get("src/main/resources");
 
         Map<Integer, File> m = new HashMap();
         
