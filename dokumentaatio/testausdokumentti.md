@@ -72,4 +72,16 @@ solmun frekvenssi on pienin.
 Yksinkertainen testi push- ja pop-operaatiolle, ja testi jonon koon kasvattamisesta.
 
 ## Suorituskykyvertailu
-[linkki](suorituskykyvertailu.md)
+
+#### text1.txt (11484 tavua)
+
+[kaavio1](kuvat/kaavio1.png)
+
+N‰hd‰‰n, ett‰ Huffman pakkaa tiedostoja pienemp‰‰n kokoon kuin LZW, kuten odotettiin. Lis‰ksi Huffman on hieman nopeampi.
+
+Selv‰stikin algoritmien totetus sopii vain tekstin pakkaamiseen, sill‰ muiden tiedostotyyppien pakkamiinen vaikuttaa vain kasvattavan 
+tiedoston kokoa. Generoidun merkkijonon testituloksista n‰hd‰‰n, ett‰ molemmat algoritmit vaativat ett‰ pakattavassa datassa esiintyy
+toistoa, jotta ne toimisivat kunnolla. LZW: tapauksessa t‰m‰ oli kuitenkin odotettavissa, sill‰ sen toimintaperiaate perustuu siihen.
+
+[tarkka data](suorituskykyvertailu.md)
+

@@ -1,7 +1,5 @@
 # Toteutus
 
-
-
 ## LempelZivWelch
 
 **Pakkausalgoritmi** saa syötteenä taulukon tavuja, jotka kuvaavat ASCII-merkistön symboleita.
@@ -165,7 +163,11 @@ Syötteen koko tavuina on n ja eri merkkien määrä on k.
 
 
 
+### Paranneltavaa
 
+Pakkaminen voitaisiin toteuttaa purkamisen tapaan, niin, että koodeja kirjoitetaan samalla kun liikutaan puuta pitkin. 
+
+Muutakin varmaan löytyy...
 
 
 

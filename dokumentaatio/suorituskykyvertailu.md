@@ -31,13 +31,9 @@
 | LZW		| 189			   | 195			    | 139
 | Huffman 	| 100			   | 118 			    | 93
 
-gif.gif (1004638 tavua)
+#### gif.gif (1004638 tavua)
 
 | Algoritmi | % alkuperäisestä | Aika (pakkaus)(ms) | Aika (Purkaminen)(ms) |
 | --------- | -----------------| ------------------ | --------------------- |
 | LZW		| 193			   | 238			    | 201
 | Huffman 	| 100			   | 155 			    | 118
-
-</br>
-
-Test
