@@ -14,7 +14,6 @@ Pakkausalgoritmi pohjautuu seuraavaan pseudokoodiin:
 ![lzw-encode-img](kuvat/lzwencode.png)
 **lähde: https://www.cs.duke.edu/csed/curious/compression/lzw.html**
 
-
 **Purkamisalgoritmi** saa myös syötteenä taulukon tavuja, joka sisältää 12-bittisiä koodeja. Koodit 
 käännetään merkkijonoiksi sanakirjan avulla, mutta nyt koodit ovat avaimia. Sanakirjaa täydennetään taas 
 syötettä luettaessa, mutta erilaisella periaatteella. Taas käytetään ByteArrayOutputStream.
@@ -23,8 +22,6 @@ Purkamisalgoritmi pohjautuu seuraavaan pseudokoodiin:
 
 ![lzw-encode-img](kuvat/lzwdecode.png)
 **lähde: https://www.cs.duke.edu/csed/curious/compression/lzw.html**
-
-
 
 ### Aika- ja tilavaativuudet
 
@@ -43,7 +40,6 @@ tilavaativuus on O(n)
 
 Eli pakkausalgoritmin aikavaativuus on keskimäärin O(n), ja tilavaativuus on O(n).
 
-
 **Purkaminen**
 
 Alussa luodaan sanakirja samalla tavalla kuin pakatessa, aika- ja tilavaativuudet samat.
@@ -54,13 +50,10 @@ ja lopussa se sisältää n kokoisen merkkijonon (tilavaativuus O(n)).
 
 Eli myös purkamisalgoritmin aikavaativuus on keskimäärin O(n), ja tilavaativuus on O(n).
 
-
 ### Paranneltavaa
 
 Toteutuksen pahin puute on 12 bittiset koodit. Olisi tietenkin tehokkaampaa jos käytettäisiin ns. variable-length -koodeja.
 Lisäksi, koodeja ei kirjoiteta tiivisti eli jokaiseen kuuluu 4 turhaa nollabittiä.
-
-
 
 ## Huffman
 
@@ -160,8 +153,6 @@ Syötteen koko tavuina on n ja eri merkkien määrä on k.
 * Tilavaativuus O(n) purettu data
 
 ##### Molempien keskimääräinen aikavaativuus on O(n log k)
-
-
 
 ### Paranneltavaa
 

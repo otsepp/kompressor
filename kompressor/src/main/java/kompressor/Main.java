@@ -5,7 +5,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -34,7 +35,6 @@ public class Main {
     public static void test(File f, boolean lzw) throws IOException {
         byte[] bytes1 = readFile(f);
         System.out.println("Luettiin tekstitiedosto sijainnista " + f.getPath() + ", koko: " + bytes1.length + " tavua");
-        
         byte[] bytes2;
         
         long start = System.currentTimeMillis();
@@ -44,7 +44,7 @@ public class Main {
         
         long end = System.currentTimeMillis();
         
-        f = new File("src/main/resources/.compressed");
+        f = new File("src/main/resources/files/.compressed");
         FileOutputStream out = new FileOutputStream(f);
         out.write(bytes2);
         System.out.println("Tiedosto pakattiin sijaintiin " + f.getPath() + ", koko: " + bytes2.length + " tavua ("+ (end - start) + " ms)");
@@ -81,8 +81,8 @@ public class Main {
     }
     
     public static File chooseFile(Scanner s) throws IOException {
-        Path p = Paths.get("src/main/resources");
-
+        Path p = Paths.get("src/main/resources/files");
+        System.out.println(p.toAbsolutePath());
         Map<Integer, File> m = new HashMap();
         
         int i = 1;
