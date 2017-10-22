@@ -1,5 +1,7 @@
 ## Suorituskykyvertailu
 
+Keskiarvoja, testit toistettu 5 kertaa
+
 #### text1.txt (11484 tavua)
 
 | Algoritmi | % alkuperäisestä | Aika (pakkaus)(ms) | Aika (Purkaminen)(ms) |

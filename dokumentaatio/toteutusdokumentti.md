@@ -147,7 +147,7 @@ Syötteen koko tavuina on n ja eri merkkien määrä on k.
 * Aikavaativuus O(k)
 * Tilavaativuus O(log k) (rekursiopino)
 
-** Luetaan pakattu data: **
+**Luetaan pakattu data:**
 
 * Etsitään puusta lehtiä yhteensä n kertaa; aikavaativuus O(n log k) 
 * Tilavaativuus O(n) purettu data
